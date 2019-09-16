@@ -86,4 +86,7 @@ module.exports = {
       screen: '100vw',
     })
   },
+  variants: {
+    padding: ['responsive', 'hover', 'focus'],
+  }
 }

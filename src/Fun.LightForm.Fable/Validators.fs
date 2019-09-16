@@ -49,3 +49,32 @@ let minNum errorMsg min: Validator =
         if field.Value <> null && unbox<float> field.Value < min
         then Invalid [ errorMsg ]
         else Valid
+
+
+let dateValidator errorMsg: Validator =
+  fun f ->
+    match f.Value with
+    | :? DateTime as d -> Valid
+    | x ->
+        match string x |> DateTime.TryParse with
+        | true, _ -> Valid
+        | false, _ -> Invalid [ errorMsg ]
+
+
+let listMinLen errorMsg min: Validator =
+  fun f ->
+    try
+        if f.Value |> unbox<_ seq> |> Seq.length < min
+        then Invalid [ errorMsg ]
+        else Valid
+      with _ ->
+        Valid
+
+let listMaxLen errorMsg max: Validator =
+  fun f ->
+    try
+        if f.Value |> unbox<_ seq> |> Seq.length > max
+        then Invalid [ errorMsg ]
+        else Valid
+      with _ ->
+        Valid

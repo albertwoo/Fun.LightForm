@@ -22,11 +22,13 @@ type Page =
 type UserProfile =
   { UserName: string
     Password: string
+    Birthday: DateTime
     Roles: string list
     Address: Address }
   static member defaultValue =
-    { UserName = ""
-      Password = ""
+    { UserName = "email"
+      Password = "password"
+      Birthday = DateTime.Now
       Roles = []
       Address = Address.defaultValue }
 and Address =
@@ -35,7 +37,7 @@ and Address =
     Street: string option
     ZipCode: int }
   static member defaultValue =
-    { Country = ""
-      City = ""
+    { Country = "shanghai"
+      City = "shanghai"
       Street = None
       ZipCode = 12 }
