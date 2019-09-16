@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Common\Common.fs" />
+    <Compile Include="Common\Json.fs" />
+    <Compile Include="Controls\Common.fs" />
+    <Compile Include="App\Domain.fs" />
+    <Compile Include="App\States.fs" />
+    <Compile Include="App\Views.fs" />
+    <Compile Include="Startup.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Fun.LightForm.Fable\Fun.LightForm.Fable.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

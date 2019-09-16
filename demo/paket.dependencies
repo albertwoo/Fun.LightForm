@@ -1,0 +1,41 @@
+group Server
+  source https://api.nuget.org/v3/index.json
+  storage: none
+
+  nuget FSharp.Core
+  nuget Giraffe
+  nuget Microsoft.AspNetCore
+  nuget Microsoft.AspNetCore.Mvc
+  nuget Microsoft.AspNetCore.HttpsPolicy
+  nuget Microsoft.AspNetCore.StaticFiles
+  nuget Microsoft.AspNetCore.Rewrite
+  nuget Microsoft.AspNetCore.ResponseCompression
+  nuget Microsoft.FSharpLu
+  nuget Microsoft.FSharpLu.Json
+
+
+group Client
+  source https://api.nuget.org/v3/index.json
+  storage: none
+
+  nuget Fable.Core
+  nuget Fable.Elmish
+  nuget Fable.Elmish.HMR
+  nuget Fable.Elmish.React
+  nuget Fable.Elmish.Debugger
+  nuget Fable.React
+  nuget Thoth.Json
+  nuget Thoth.Json.Net
+  nuget Zanaptak.TypedCssClasses
+  
+
+group Build
+  source https://api.nuget.org/v3/index.json
+  storage: none
+
+  nuget FSharp.Core
+  nuget Fake.Core.ReleaseNotes
+  nuget Fake.Core.Target
+  nuget Fake.DotNet.Cli
+  nuget Fake.IO.FileSystem
+  nuget Fake.IO.Zip

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Fun.LightForm.Fable\Domain.fs" Link="SimpleForm\Domain.fs" />
+    <Compile Include="..\Fun.LightForm.Fable\Validators.fs" Link="SimpleForm\Validators.fs" />
+    <Compile Include="..\Fun.LightForm.Fable\States.fs" Link="SimpleForm\States.fs" />
+  </ItemGroup>
+</Project>

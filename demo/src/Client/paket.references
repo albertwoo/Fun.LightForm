@@ -1,0 +1,11 @@
+group Client
+    FSharp.Core
+    Fable.Core
+    Fable.Elmish
+    Fable.Elmish.HMR
+    Fable.Elmish.React
+    Fable.Elmish.Debugger
+    Fable.React
+    Thoth.Json
+    Thoth.Json.Net
+    Zanaptak.TypedCssClasses
