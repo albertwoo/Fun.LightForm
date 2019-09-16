@@ -4,162 +4,75 @@ open System
 open Fable.React
 open Fable.React.Props
 open Zanaptak.TypedCssClasses
-open Fun
+open Fun.LightForm.Views
 
 type tailwind = CssClasses<"./public/css/tailwind-generated.css", Naming.Verbatim>
 type fontAwsome = CssClasses<"./public/css/font-awesome-v5-10-2.min.css", Naming.Verbatim>
 
 
-let Classes str = str |> List.filter (String.IsNullOrEmpty >> not) |> String.concat " " |> Class
+let classes str = str |> List.filter (String.IsNullOrEmpty >> not) |> String.concat " "
+let Classes = classes >> Class
 
 let emptyView = div [ Style [ Display DisplayOptions.None ] ] []
 
-
-
-type FieldRenderer = LightForm.Domain.FormField -> (LightForm.Domain.Msg -> unit) -> Fable.React.ReactElement
-
-let formElement (state: LightForm.Domain.Model) dispatch key (render: FieldRenderer) =
-    state
-    |> List.tryFind (fun x -> x.Name = key)
-    |> Option.map (fun field ->
-        fragment 
-            [ FragmentProp.Key field.Name ] 
-            [ render field dispatch ])
-    |> Option.defaultValue 
-        (div [ Style [ Color "red" ] ] 
-             [ str (sprintf "Field is not configured for %s" key) ])
-
-
-let formOuter children =
-  div [
-    Classes [
-      yield tailwind.border
-      yield tailwind.``border-gray-200``
-      yield tailwind.``border-2``
-      yield tailwind.``p-02``
-      yield tailwind.``m-02``
-      yield tailwind.rounded
-      yield tailwind.``appearance-none``
-      yield tailwind.``w-full``
-    ]
-  ] children
-
-let formLabel label =
-  div [
-    Classes [
-      tailwind.``text-gray-600``
-      tailwind.``pb-01``
-    ]
-  ] [
-    str label
+let formOuterClasses =
+  classes [
+    tailwind.border
+    tailwind.``border-gray-200``
+    tailwind.``border-2``
+    tailwind.``p-02``
+    tailwind.``m-02``
+    tailwind.rounded
   ]
 
-let formError state =
-  match state with
-  | LightForm.Domain.Valid -> [ ]
-  | LightForm.Domain.Invalid es ->
-       [
-        for e in es ->
-          div [
-            Classes [
-              tailwind.``text-red-400``
-              tailwind.``mt-01``
-              tailwind.``text-sm``
-            ]
-          ] [
-            str e
-          ]
-       ]
+let formLabelClasses =
+  classes [
+    tailwind.``text-gray-600``
+    tailwind.``text-sm``
+    tailwind.``pb-01``
+  ]
 
+let formErrorClasses =
+  classes [
+    tailwind.``text-red-400``
+    tailwind.``mt-01``
+    tailwind.``text-sm``
+  ]
 
-type InputType =
-  | Email
-  | Text
-  | Number
-  | Password
-  | DateTime of format: string
-
-let formInput ty label classes: FieldRenderer =
-    fun field dispatch ->
-      formOuter [
-        yield formLabel label
-
-        yield input [
-          Classes [
-            yield tailwind.``focus:outline-none``
-            yield tailwind.``focus:shadow-outline``
-            yield tailwind.``border-b-2``
-            yield tailwind.``w-full``
-            yield! classes
-          ]
-          Type (
-               match ty with
-               | Email -> "email"
-               | DateTime _
-               | Text -> "text"
-               | Number -> "number"
-               | Password -> "password"
-               )
-          DefaultValue (
-              match ty with
-              | Email
-              | Text
-              | Password
-              | Number -> string field.Value
-              | DateTime f -> (field.Value :?> DateTime).ToString(f)
-              )
-          OnChange (fun e ->
-              match ty with
-              | Email
-              | Text
-              | Password
-              | Number -> e.Value |> box
-              | DateTime _ -> DateTime.Parse e.Value |> box
-              |> fun v -> LightForm.Domain.OnChangeField (field.Name, v)
-              |> dispatch)
+let formInput ty label =
+  formInput
+    { OuterClasses = formOuterClasses
+      LabelClasses = formLabelClasses
+      ErrorClasses = formErrorClasses
+      InputClasses =
+        classes [
+          tailwind.``outline-none``
+          tailwind.``bg-gray-200``
+          tailwind.``py-01``
+          tailwind.``px-03``
+          tailwind.``w-full``
+          tailwind.``focus:border-blue-400``
+          tailwind.``focus:bg-blue-100``
+          tailwind.``text-gray-700``
         ]
+      Label = label
+      Type = ty }
 
-        yield! formError field.ValidationState
-      ]
-
-
-let formSelects label (sourceList: ('id * 'v) list) (displayer: 'id * 'v -> ReactElement): FieldRenderer =
-  fun f disp ->
-    let ids =
-      try f.Value :?> 'id seq
-      with _ -> [||] :> 'id seq
-    let createNewValue id =
-      ids
-      |> List.ofSeq
-      |> List.partition (fun id' -> id = id')
-      |> function
-        | [], x -> id::x
-        | _, x  -> x
-      |> List.toArray
-    formOuter [
-      yield formLabel label
-
-      for (id, v) in sourceList do
-        yield div [
-            Classes [
-              tailwind.flex
-              tailwind.``items-center``
-            ]
-          ] [
-            input [
-              Type "checkbox"
-              Value (ids |> Seq.exists ((=) id))
-              OnChange (fun _ -> LightForm.Domain.OnChangeField (f.Name, box (createNewValue id)) |> disp)
-              Classes [
-                tailwind.``ml-02``
-                tailwind.``mr-01``
-              ]
-            ]
-            displayer (id, v)
-          ]
-
-      yield! formError f.ValidationState
-    ]
+let formSelects label sourceList displayer =
+  formSelects
+    { OuterClasses = formOuterClasses
+      LabelClasses = formLabelClasses
+      ErrorClasses = formErrorClasses
+      InputClasses =
+        classes [
+          tailwind.flex
+          tailwind.``items-center``
+          tailwind.``text-gray-700``
+          tailwind.``ml-01``
+        ]
+      Label = label
+      SourceList = sourceList
+      Displayer = displayer }
 
 
 let app state dispatch =
@@ -175,15 +88,39 @@ let app state dispatch =
         tailwind.``items-center``
       ]
     ] [
-      form [] [
-        formEl "UserName"         (formInput InputType.Email "Email" [  ])
-        formEl "Password"         (formInput InputType.Password "Password" [])
-        formEl "Birthday"         (formInput (InputType.DateTime "yyyy/MM/dd") "Birthday" [])
-        formEl "Roles"            (formSelects "Roles" [ 1, "R1"; 2, "R2" ] (fun (_,v) -> str v))
-        formEl "Address:Country"  (formInput InputType.Text "Country" [])
+      form [
+        Classes [
+          tailwind.``sm:w-full``
+          tailwind.``md:w-01/04``
+          tailwind.``shadow-xl``
+        ]
+      ] [
+        formEl "UserName"         (formInput InputType.Email "Email")
+        formEl "Password"         (formInput InputType.Password "Password")
+        formEl "Birthday"         (formInput (InputType.DateTime "yyyy/MM/dd") "Birthday")
+        formEl "Roles"            (formSelects "Roles" [ 1, "R1"; 2, "R2" ] (fun (_,v) -> span [ Classes [ tailwind.``ml-01`` ] ] [ str v ]))
+        formEl "Address:Country"  (formInput InputType.Text "Country")
+
+        button [
+          Classes [
+            tailwind.``m-02``
+            tailwind.``py-01``
+            tailwind.``px-02``
+            tailwind.rounded
+            tailwind.``text-white``
+            tailwind.``bg-green-400``
+            tailwind.``hover:bg-green-500``
+          ]
+        ] [
+          str "Submit"
+        ]
       ]
 
-      div [] [
+      div [
+        Classes [
+          tailwind.``text-gray-600``
+        ]
+      ] [
         str (sprintf "%A" state.UserProfileForm)
       ]
     ]

@@ -5862,6 +5862,1146 @@ video {
   padding-left: 2rem;
 }
 
+.hover\:p-10:hover {
+  padding: 2.5rem;
+}
+
+.hover\:p-12:hover {
+  padding: 3rem;
+}
+
+.hover\:p-16:hover {
+  padding: 4rem;
+}
+
+.hover\:p-20:hover {
+  padding: 5rem;
+}
+
+.hover\:p-24:hover {
+  padding: 6rem;
+}
+
+.hover\:p-32:hover {
+  padding: 8rem;
+}
+
+.hover\:p-40:hover {
+  padding: 10rem;
+}
+
+.hover\:p-48:hover {
+  padding: 12rem;
+}
+
+.hover\:p-56:hover {
+  padding: 14rem;
+}
+
+.hover\:p-64:hover {
+  padding: 16rem;
+}
+
+.hover\:p-px:hover {
+  padding: 1px;
+}
+
+.hover\:p-00:hover {
+  padding: 0;
+}
+
+.hover\:p-01:hover {
+  padding: 0.25rem;
+}
+
+.hover\:p-02:hover {
+  padding: 0.5rem;
+}
+
+.hover\:p-03:hover {
+  padding: 0.75rem;
+}
+
+.hover\:p-04:hover {
+  padding: 1rem;
+}
+
+.hover\:p-05:hover {
+  padding: 1.25rem;
+}
+
+.hover\:p-06:hover {
+  padding: 1.5rem;
+}
+
+.hover\:p-08:hover {
+  padding: 2rem;
+}
+
+.hover\:py-10:hover {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.hover\:px-10:hover {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.hover\:py-12:hover {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.hover\:px-12:hover {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.hover\:py-16:hover {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.hover\:px-16:hover {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.hover\:py-20:hover {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.hover\:px-20:hover {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.hover\:py-24:hover {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.hover\:px-24:hover {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.hover\:py-32:hover {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.hover\:px-32:hover {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.hover\:py-40:hover {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.hover\:px-40:hover {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.hover\:py-48:hover {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
+
+.hover\:px-48:hover {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+.hover\:py-56:hover {
+  padding-top: 14rem;
+  padding-bottom: 14rem;
+}
+
+.hover\:px-56:hover {
+  padding-left: 14rem;
+  padding-right: 14rem;
+}
+
+.hover\:py-64:hover {
+  padding-top: 16rem;
+  padding-bottom: 16rem;
+}
+
+.hover\:px-64:hover {
+  padding-left: 16rem;
+  padding-right: 16rem;
+}
+
+.hover\:py-px:hover {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.hover\:px-px:hover {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.hover\:py-00:hover {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.hover\:px-00:hover {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.hover\:py-01:hover {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.hover\:px-01:hover {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.hover\:py-02:hover {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.hover\:px-02:hover {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.hover\:py-03:hover {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.hover\:px-03:hover {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.hover\:py-04:hover {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.hover\:px-04:hover {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.hover\:py-05:hover {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.hover\:px-05:hover {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.hover\:py-06:hover {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.hover\:px-06:hover {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.hover\:py-08:hover {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.hover\:px-08:hover {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.hover\:pt-10:hover {
+  padding-top: 2.5rem;
+}
+
+.hover\:pr-10:hover {
+  padding-right: 2.5rem;
+}
+
+.hover\:pb-10:hover {
+  padding-bottom: 2.5rem;
+}
+
+.hover\:pl-10:hover {
+  padding-left: 2.5rem;
+}
+
+.hover\:pt-12:hover {
+  padding-top: 3rem;
+}
+
+.hover\:pr-12:hover {
+  padding-right: 3rem;
+}
+
+.hover\:pb-12:hover {
+  padding-bottom: 3rem;
+}
+
+.hover\:pl-12:hover {
+  padding-left: 3rem;
+}
+
+.hover\:pt-16:hover {
+  padding-top: 4rem;
+}
+
+.hover\:pr-16:hover {
+  padding-right: 4rem;
+}
+
+.hover\:pb-16:hover {
+  padding-bottom: 4rem;
+}
+
+.hover\:pl-16:hover {
+  padding-left: 4rem;
+}
+
+.hover\:pt-20:hover {
+  padding-top: 5rem;
+}
+
+.hover\:pr-20:hover {
+  padding-right: 5rem;
+}
+
+.hover\:pb-20:hover {
+  padding-bottom: 5rem;
+}
+
+.hover\:pl-20:hover {
+  padding-left: 5rem;
+}
+
+.hover\:pt-24:hover {
+  padding-top: 6rem;
+}
+
+.hover\:pr-24:hover {
+  padding-right: 6rem;
+}
+
+.hover\:pb-24:hover {
+  padding-bottom: 6rem;
+}
+
+.hover\:pl-24:hover {
+  padding-left: 6rem;
+}
+
+.hover\:pt-32:hover {
+  padding-top: 8rem;
+}
+
+.hover\:pr-32:hover {
+  padding-right: 8rem;
+}
+
+.hover\:pb-32:hover {
+  padding-bottom: 8rem;
+}
+
+.hover\:pl-32:hover {
+  padding-left: 8rem;
+}
+
+.hover\:pt-40:hover {
+  padding-top: 10rem;
+}
+
+.hover\:pr-40:hover {
+  padding-right: 10rem;
+}
+
+.hover\:pb-40:hover {
+  padding-bottom: 10rem;
+}
+
+.hover\:pl-40:hover {
+  padding-left: 10rem;
+}
+
+.hover\:pt-48:hover {
+  padding-top: 12rem;
+}
+
+.hover\:pr-48:hover {
+  padding-right: 12rem;
+}
+
+.hover\:pb-48:hover {
+  padding-bottom: 12rem;
+}
+
+.hover\:pl-48:hover {
+  padding-left: 12rem;
+}
+
+.hover\:pt-56:hover {
+  padding-top: 14rem;
+}
+
+.hover\:pr-56:hover {
+  padding-right: 14rem;
+}
+
+.hover\:pb-56:hover {
+  padding-bottom: 14rem;
+}
+
+.hover\:pl-56:hover {
+  padding-left: 14rem;
+}
+
+.hover\:pt-64:hover {
+  padding-top: 16rem;
+}
+
+.hover\:pr-64:hover {
+  padding-right: 16rem;
+}
+
+.hover\:pb-64:hover {
+  padding-bottom: 16rem;
+}
+
+.hover\:pl-64:hover {
+  padding-left: 16rem;
+}
+
+.hover\:pt-px:hover {
+  padding-top: 1px;
+}
+
+.hover\:pr-px:hover {
+  padding-right: 1px;
+}
+
+.hover\:pb-px:hover {
+  padding-bottom: 1px;
+}
+
+.hover\:pl-px:hover {
+  padding-left: 1px;
+}
+
+.hover\:pt-00:hover {
+  padding-top: 0;
+}
+
+.hover\:pr-00:hover {
+  padding-right: 0;
+}
+
+.hover\:pb-00:hover {
+  padding-bottom: 0;
+}
+
+.hover\:pl-00:hover {
+  padding-left: 0;
+}
+
+.hover\:pt-01:hover {
+  padding-top: 0.25rem;
+}
+
+.hover\:pr-01:hover {
+  padding-right: 0.25rem;
+}
+
+.hover\:pb-01:hover {
+  padding-bottom: 0.25rem;
+}
+
+.hover\:pl-01:hover {
+  padding-left: 0.25rem;
+}
+
+.hover\:pt-02:hover {
+  padding-top: 0.5rem;
+}
+
+.hover\:pr-02:hover {
+  padding-right: 0.5rem;
+}
+
+.hover\:pb-02:hover {
+  padding-bottom: 0.5rem;
+}
+
+.hover\:pl-02:hover {
+  padding-left: 0.5rem;
+}
+
+.hover\:pt-03:hover {
+  padding-top: 0.75rem;
+}
+
+.hover\:pr-03:hover {
+  padding-right: 0.75rem;
+}
+
+.hover\:pb-03:hover {
+  padding-bottom: 0.75rem;
+}
+
+.hover\:pl-03:hover {
+  padding-left: 0.75rem;
+}
+
+.hover\:pt-04:hover {
+  padding-top: 1rem;
+}
+
+.hover\:pr-04:hover {
+  padding-right: 1rem;
+}
+
+.hover\:pb-04:hover {
+  padding-bottom: 1rem;
+}
+
+.hover\:pl-04:hover {
+  padding-left: 1rem;
+}
+
+.hover\:pt-05:hover {
+  padding-top: 1.25rem;
+}
+
+.hover\:pr-05:hover {
+  padding-right: 1.25rem;
+}
+
+.hover\:pb-05:hover {
+  padding-bottom: 1.25rem;
+}
+
+.hover\:pl-05:hover {
+  padding-left: 1.25rem;
+}
+
+.hover\:pt-06:hover {
+  padding-top: 1.5rem;
+}
+
+.hover\:pr-06:hover {
+  padding-right: 1.5rem;
+}
+
+.hover\:pb-06:hover {
+  padding-bottom: 1.5rem;
+}
+
+.hover\:pl-06:hover {
+  padding-left: 1.5rem;
+}
+
+.hover\:pt-08:hover {
+  padding-top: 2rem;
+}
+
+.hover\:pr-08:hover {
+  padding-right: 2rem;
+}
+
+.hover\:pb-08:hover {
+  padding-bottom: 2rem;
+}
+
+.hover\:pl-08:hover {
+  padding-left: 2rem;
+}
+
+.focus\:p-10:focus {
+  padding: 2.5rem;
+}
+
+.focus\:p-12:focus {
+  padding: 3rem;
+}
+
+.focus\:p-16:focus {
+  padding: 4rem;
+}
+
+.focus\:p-20:focus {
+  padding: 5rem;
+}
+
+.focus\:p-24:focus {
+  padding: 6rem;
+}
+
+.focus\:p-32:focus {
+  padding: 8rem;
+}
+
+.focus\:p-40:focus {
+  padding: 10rem;
+}
+
+.focus\:p-48:focus {
+  padding: 12rem;
+}
+
+.focus\:p-56:focus {
+  padding: 14rem;
+}
+
+.focus\:p-64:focus {
+  padding: 16rem;
+}
+
+.focus\:p-px:focus {
+  padding: 1px;
+}
+
+.focus\:p-00:focus {
+  padding: 0;
+}
+
+.focus\:p-01:focus {
+  padding: 0.25rem;
+}
+
+.focus\:p-02:focus {
+  padding: 0.5rem;
+}
+
+.focus\:p-03:focus {
+  padding: 0.75rem;
+}
+
+.focus\:p-04:focus {
+  padding: 1rem;
+}
+
+.focus\:p-05:focus {
+  padding: 1.25rem;
+}
+
+.focus\:p-06:focus {
+  padding: 1.5rem;
+}
+
+.focus\:p-08:focus {
+  padding: 2rem;
+}
+
+.focus\:py-10:focus {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.focus\:px-10:focus {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.focus\:py-12:focus {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.focus\:px-12:focus {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.focus\:py-16:focus {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.focus\:px-16:focus {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.focus\:py-20:focus {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.focus\:px-20:focus {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.focus\:py-24:focus {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.focus\:px-24:focus {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.focus\:py-32:focus {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.focus\:px-32:focus {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.focus\:py-40:focus {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.focus\:px-40:focus {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.focus\:py-48:focus {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
+
+.focus\:px-48:focus {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+.focus\:py-56:focus {
+  padding-top: 14rem;
+  padding-bottom: 14rem;
+}
+
+.focus\:px-56:focus {
+  padding-left: 14rem;
+  padding-right: 14rem;
+}
+
+.focus\:py-64:focus {
+  padding-top: 16rem;
+  padding-bottom: 16rem;
+}
+
+.focus\:px-64:focus {
+  padding-left: 16rem;
+  padding-right: 16rem;
+}
+
+.focus\:py-px:focus {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.focus\:px-px:focus {
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.focus\:py-00:focus {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.focus\:px-00:focus {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.focus\:py-01:focus {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.focus\:px-01:focus {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.focus\:py-02:focus {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.focus\:px-02:focus {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.focus\:py-03:focus {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.focus\:px-03:focus {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.focus\:py-04:focus {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.focus\:px-04:focus {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.focus\:py-05:focus {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.focus\:px-05:focus {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.focus\:py-06:focus {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.focus\:px-06:focus {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.focus\:py-08:focus {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.focus\:px-08:focus {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.focus\:pt-10:focus {
+  padding-top: 2.5rem;
+}
+
+.focus\:pr-10:focus {
+  padding-right: 2.5rem;
+}
+
+.focus\:pb-10:focus {
+  padding-bottom: 2.5rem;
+}
+
+.focus\:pl-10:focus {
+  padding-left: 2.5rem;
+}
+
+.focus\:pt-12:focus {
+  padding-top: 3rem;
+}
+
+.focus\:pr-12:focus {
+  padding-right: 3rem;
+}
+
+.focus\:pb-12:focus {
+  padding-bottom: 3rem;
+}
+
+.focus\:pl-12:focus {
+  padding-left: 3rem;
+}
+
+.focus\:pt-16:focus {
+  padding-top: 4rem;
+}
+
+.focus\:pr-16:focus {
+  padding-right: 4rem;
+}
+
+.focus\:pb-16:focus {
+  padding-bottom: 4rem;
+}
+
+.focus\:pl-16:focus {
+  padding-left: 4rem;
+}
+
+.focus\:pt-20:focus {
+  padding-top: 5rem;
+}
+
+.focus\:pr-20:focus {
+  padding-right: 5rem;
+}
+
+.focus\:pb-20:focus {
+  padding-bottom: 5rem;
+}
+
+.focus\:pl-20:focus {
+  padding-left: 5rem;
+}
+
+.focus\:pt-24:focus {
+  padding-top: 6rem;
+}
+
+.focus\:pr-24:focus {
+  padding-right: 6rem;
+}
+
+.focus\:pb-24:focus {
+  padding-bottom: 6rem;
+}
+
+.focus\:pl-24:focus {
+  padding-left: 6rem;
+}
+
+.focus\:pt-32:focus {
+  padding-top: 8rem;
+}
+
+.focus\:pr-32:focus {
+  padding-right: 8rem;
+}
+
+.focus\:pb-32:focus {
+  padding-bottom: 8rem;
+}
+
+.focus\:pl-32:focus {
+  padding-left: 8rem;
+}
+
+.focus\:pt-40:focus {
+  padding-top: 10rem;
+}
+
+.focus\:pr-40:focus {
+  padding-right: 10rem;
+}
+
+.focus\:pb-40:focus {
+  padding-bottom: 10rem;
+}
+
+.focus\:pl-40:focus {
+  padding-left: 10rem;
+}
+
+.focus\:pt-48:focus {
+  padding-top: 12rem;
+}
+
+.focus\:pr-48:focus {
+  padding-right: 12rem;
+}
+
+.focus\:pb-48:focus {
+  padding-bottom: 12rem;
+}
+
+.focus\:pl-48:focus {
+  padding-left: 12rem;
+}
+
+.focus\:pt-56:focus {
+  padding-top: 14rem;
+}
+
+.focus\:pr-56:focus {
+  padding-right: 14rem;
+}
+
+.focus\:pb-56:focus {
+  padding-bottom: 14rem;
+}
+
+.focus\:pl-56:focus {
+  padding-left: 14rem;
+}
+
+.focus\:pt-64:focus {
+  padding-top: 16rem;
+}
+
+.focus\:pr-64:focus {
+  padding-right: 16rem;
+}
+
+.focus\:pb-64:focus {
+  padding-bottom: 16rem;
+}
+
+.focus\:pl-64:focus {
+  padding-left: 16rem;
+}
+
+.focus\:pt-px:focus {
+  padding-top: 1px;
+}
+
+.focus\:pr-px:focus {
+  padding-right: 1px;
+}
+
+.focus\:pb-px:focus {
+  padding-bottom: 1px;
+}
+
+.focus\:pl-px:focus {
+  padding-left: 1px;
+}
+
+.focus\:pt-00:focus {
+  padding-top: 0;
+}
+
+.focus\:pr-00:focus {
+  padding-right: 0;
+}
+
+.focus\:pb-00:focus {
+  padding-bottom: 0;
+}
+
+.focus\:pl-00:focus {
+  padding-left: 0;
+}
+
+.focus\:pt-01:focus {
+  padding-top: 0.25rem;
+}
+
+.focus\:pr-01:focus {
+  padding-right: 0.25rem;
+}
+
+.focus\:pb-01:focus {
+  padding-bottom: 0.25rem;
+}
+
+.focus\:pl-01:focus {
+  padding-left: 0.25rem;
+}
+
+.focus\:pt-02:focus {
+  padding-top: 0.5rem;
+}
+
+.focus\:pr-02:focus {
+  padding-right: 0.5rem;
+}
+
+.focus\:pb-02:focus {
+  padding-bottom: 0.5rem;
+}
+
+.focus\:pl-02:focus {
+  padding-left: 0.5rem;
+}
+
+.focus\:pt-03:focus {
+  padding-top: 0.75rem;
+}
+
+.focus\:pr-03:focus {
+  padding-right: 0.75rem;
+}
+
+.focus\:pb-03:focus {
+  padding-bottom: 0.75rem;
+}
+
+.focus\:pl-03:focus {
+  padding-left: 0.75rem;
+}
+
+.focus\:pt-04:focus {
+  padding-top: 1rem;
+}
+
+.focus\:pr-04:focus {
+  padding-right: 1rem;
+}
+
+.focus\:pb-04:focus {
+  padding-bottom: 1rem;
+}
+
+.focus\:pl-04:focus {
+  padding-left: 1rem;
+}
+
+.focus\:pt-05:focus {
+  padding-top: 1.25rem;
+}
+
+.focus\:pr-05:focus {
+  padding-right: 1.25rem;
+}
+
+.focus\:pb-05:focus {
+  padding-bottom: 1.25rem;
+}
+
+.focus\:pl-05:focus {
+  padding-left: 1.25rem;
+}
+
+.focus\:pt-06:focus {
+  padding-top: 1.5rem;
+}
+
+.focus\:pr-06:focus {
+  padding-right: 1.5rem;
+}
+
+.focus\:pb-06:focus {
+  padding-bottom: 1.5rem;
+}
+
+.focus\:pl-06:focus {
+  padding-left: 1.5rem;
+}
+
+.focus\:pt-08:focus {
+  padding-top: 2rem;
+}
+
+.focus\:pr-08:focus {
+  padding-right: 2rem;
+}
+
+.focus\:pb-08:focus {
+  padding-bottom: 2rem;
+}
+
+.focus\:pl-08:focus {
+  padding-left: 2rem;
+}
+
 .placeholder-transparent::-webkit-input-placeholder {
   color: transparent;
 }
@@ -16594,6 +17734,1146 @@ video {
   }
 
   .sm\:pl-08 {
+    padding-left: 2rem;
+  }
+
+  .sm\:hover\:p-10:hover {
+    padding: 2.5rem;
+  }
+
+  .sm\:hover\:p-12:hover {
+    padding: 3rem;
+  }
+
+  .sm\:hover\:p-16:hover {
+    padding: 4rem;
+  }
+
+  .sm\:hover\:p-20:hover {
+    padding: 5rem;
+  }
+
+  .sm\:hover\:p-24:hover {
+    padding: 6rem;
+  }
+
+  .sm\:hover\:p-32:hover {
+    padding: 8rem;
+  }
+
+  .sm\:hover\:p-40:hover {
+    padding: 10rem;
+  }
+
+  .sm\:hover\:p-48:hover {
+    padding: 12rem;
+  }
+
+  .sm\:hover\:p-56:hover {
+    padding: 14rem;
+  }
+
+  .sm\:hover\:p-64:hover {
+    padding: 16rem;
+  }
+
+  .sm\:hover\:p-px:hover {
+    padding: 1px;
+  }
+
+  .sm\:hover\:p-00:hover {
+    padding: 0;
+  }
+
+  .sm\:hover\:p-01:hover {
+    padding: 0.25rem;
+  }
+
+  .sm\:hover\:p-02:hover {
+    padding: 0.5rem;
+  }
+
+  .sm\:hover\:p-03:hover {
+    padding: 0.75rem;
+  }
+
+  .sm\:hover\:p-04:hover {
+    padding: 1rem;
+  }
+
+  .sm\:hover\:p-05:hover {
+    padding: 1.25rem;
+  }
+
+  .sm\:hover\:p-06:hover {
+    padding: 1.5rem;
+  }
+
+  .sm\:hover\:p-08:hover {
+    padding: 2rem;
+  }
+
+  .sm\:hover\:py-10:hover {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .sm\:hover\:px-10:hover {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .sm\:hover\:py-12:hover {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .sm\:hover\:px-12:hover {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .sm\:hover\:py-16:hover {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .sm\:hover\:px-16:hover {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .sm\:hover\:py-20:hover {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .sm\:hover\:px-20:hover {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .sm\:hover\:py-24:hover {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .sm\:hover\:px-24:hover {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .sm\:hover\:py-32:hover {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .sm\:hover\:px-32:hover {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .sm\:hover\:py-40:hover {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .sm\:hover\:px-40:hover {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .sm\:hover\:py-48:hover {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .sm\:hover\:px-48:hover {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .sm\:hover\:py-56:hover {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .sm\:hover\:px-56:hover {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .sm\:hover\:py-64:hover {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .sm\:hover\:px-64:hover {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .sm\:hover\:py-px:hover {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .sm\:hover\:px-px:hover {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .sm\:hover\:py-00:hover {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .sm\:hover\:px-00:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sm\:hover\:py-01:hover {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .sm\:hover\:px-01:hover {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .sm\:hover\:py-02:hover {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .sm\:hover\:px-02:hover {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .sm\:hover\:py-03:hover {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .sm\:hover\:px-03:hover {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .sm\:hover\:py-04:hover {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .sm\:hover\:px-04:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sm\:hover\:py-05:hover {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .sm\:hover\:px-05:hover {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .sm\:hover\:py-06:hover {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .sm\:hover\:px-06:hover {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:hover\:py-08:hover {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .sm\:hover\:px-08:hover {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .sm\:hover\:pt-10:hover {
+    padding-top: 2.5rem;
+  }
+
+  .sm\:hover\:pr-10:hover {
+    padding-right: 2.5rem;
+  }
+
+  .sm\:hover\:pb-10:hover {
+    padding-bottom: 2.5rem;
+  }
+
+  .sm\:hover\:pl-10:hover {
+    padding-left: 2.5rem;
+  }
+
+  .sm\:hover\:pt-12:hover {
+    padding-top: 3rem;
+  }
+
+  .sm\:hover\:pr-12:hover {
+    padding-right: 3rem;
+  }
+
+  .sm\:hover\:pb-12:hover {
+    padding-bottom: 3rem;
+  }
+
+  .sm\:hover\:pl-12:hover {
+    padding-left: 3rem;
+  }
+
+  .sm\:hover\:pt-16:hover {
+    padding-top: 4rem;
+  }
+
+  .sm\:hover\:pr-16:hover {
+    padding-right: 4rem;
+  }
+
+  .sm\:hover\:pb-16:hover {
+    padding-bottom: 4rem;
+  }
+
+  .sm\:hover\:pl-16:hover {
+    padding-left: 4rem;
+  }
+
+  .sm\:hover\:pt-20:hover {
+    padding-top: 5rem;
+  }
+
+  .sm\:hover\:pr-20:hover {
+    padding-right: 5rem;
+  }
+
+  .sm\:hover\:pb-20:hover {
+    padding-bottom: 5rem;
+  }
+
+  .sm\:hover\:pl-20:hover {
+    padding-left: 5rem;
+  }
+
+  .sm\:hover\:pt-24:hover {
+    padding-top: 6rem;
+  }
+
+  .sm\:hover\:pr-24:hover {
+    padding-right: 6rem;
+  }
+
+  .sm\:hover\:pb-24:hover {
+    padding-bottom: 6rem;
+  }
+
+  .sm\:hover\:pl-24:hover {
+    padding-left: 6rem;
+  }
+
+  .sm\:hover\:pt-32:hover {
+    padding-top: 8rem;
+  }
+
+  .sm\:hover\:pr-32:hover {
+    padding-right: 8rem;
+  }
+
+  .sm\:hover\:pb-32:hover {
+    padding-bottom: 8rem;
+  }
+
+  .sm\:hover\:pl-32:hover {
+    padding-left: 8rem;
+  }
+
+  .sm\:hover\:pt-40:hover {
+    padding-top: 10rem;
+  }
+
+  .sm\:hover\:pr-40:hover {
+    padding-right: 10rem;
+  }
+
+  .sm\:hover\:pb-40:hover {
+    padding-bottom: 10rem;
+  }
+
+  .sm\:hover\:pl-40:hover {
+    padding-left: 10rem;
+  }
+
+  .sm\:hover\:pt-48:hover {
+    padding-top: 12rem;
+  }
+
+  .sm\:hover\:pr-48:hover {
+    padding-right: 12rem;
+  }
+
+  .sm\:hover\:pb-48:hover {
+    padding-bottom: 12rem;
+  }
+
+  .sm\:hover\:pl-48:hover {
+    padding-left: 12rem;
+  }
+
+  .sm\:hover\:pt-56:hover {
+    padding-top: 14rem;
+  }
+
+  .sm\:hover\:pr-56:hover {
+    padding-right: 14rem;
+  }
+
+  .sm\:hover\:pb-56:hover {
+    padding-bottom: 14rem;
+  }
+
+  .sm\:hover\:pl-56:hover {
+    padding-left: 14rem;
+  }
+
+  .sm\:hover\:pt-64:hover {
+    padding-top: 16rem;
+  }
+
+  .sm\:hover\:pr-64:hover {
+    padding-right: 16rem;
+  }
+
+  .sm\:hover\:pb-64:hover {
+    padding-bottom: 16rem;
+  }
+
+  .sm\:hover\:pl-64:hover {
+    padding-left: 16rem;
+  }
+
+  .sm\:hover\:pt-px:hover {
+    padding-top: 1px;
+  }
+
+  .sm\:hover\:pr-px:hover {
+    padding-right: 1px;
+  }
+
+  .sm\:hover\:pb-px:hover {
+    padding-bottom: 1px;
+  }
+
+  .sm\:hover\:pl-px:hover {
+    padding-left: 1px;
+  }
+
+  .sm\:hover\:pt-00:hover {
+    padding-top: 0;
+  }
+
+  .sm\:hover\:pr-00:hover {
+    padding-right: 0;
+  }
+
+  .sm\:hover\:pb-00:hover {
+    padding-bottom: 0;
+  }
+
+  .sm\:hover\:pl-00:hover {
+    padding-left: 0;
+  }
+
+  .sm\:hover\:pt-01:hover {
+    padding-top: 0.25rem;
+  }
+
+  .sm\:hover\:pr-01:hover {
+    padding-right: 0.25rem;
+  }
+
+  .sm\:hover\:pb-01:hover {
+    padding-bottom: 0.25rem;
+  }
+
+  .sm\:hover\:pl-01:hover {
+    padding-left: 0.25rem;
+  }
+
+  .sm\:hover\:pt-02:hover {
+    padding-top: 0.5rem;
+  }
+
+  .sm\:hover\:pr-02:hover {
+    padding-right: 0.5rem;
+  }
+
+  .sm\:hover\:pb-02:hover {
+    padding-bottom: 0.5rem;
+  }
+
+  .sm\:hover\:pl-02:hover {
+    padding-left: 0.5rem;
+  }
+
+  .sm\:hover\:pt-03:hover {
+    padding-top: 0.75rem;
+  }
+
+  .sm\:hover\:pr-03:hover {
+    padding-right: 0.75rem;
+  }
+
+  .sm\:hover\:pb-03:hover {
+    padding-bottom: 0.75rem;
+  }
+
+  .sm\:hover\:pl-03:hover {
+    padding-left: 0.75rem;
+  }
+
+  .sm\:hover\:pt-04:hover {
+    padding-top: 1rem;
+  }
+
+  .sm\:hover\:pr-04:hover {
+    padding-right: 1rem;
+  }
+
+  .sm\:hover\:pb-04:hover {
+    padding-bottom: 1rem;
+  }
+
+  .sm\:hover\:pl-04:hover {
+    padding-left: 1rem;
+  }
+
+  .sm\:hover\:pt-05:hover {
+    padding-top: 1.25rem;
+  }
+
+  .sm\:hover\:pr-05:hover {
+    padding-right: 1.25rem;
+  }
+
+  .sm\:hover\:pb-05:hover {
+    padding-bottom: 1.25rem;
+  }
+
+  .sm\:hover\:pl-05:hover {
+    padding-left: 1.25rem;
+  }
+
+  .sm\:hover\:pt-06:hover {
+    padding-top: 1.5rem;
+  }
+
+  .sm\:hover\:pr-06:hover {
+    padding-right: 1.5rem;
+  }
+
+  .sm\:hover\:pb-06:hover {
+    padding-bottom: 1.5rem;
+  }
+
+  .sm\:hover\:pl-06:hover {
+    padding-left: 1.5rem;
+  }
+
+  .sm\:hover\:pt-08:hover {
+    padding-top: 2rem;
+  }
+
+  .sm\:hover\:pr-08:hover {
+    padding-right: 2rem;
+  }
+
+  .sm\:hover\:pb-08:hover {
+    padding-bottom: 2rem;
+  }
+
+  .sm\:hover\:pl-08:hover {
+    padding-left: 2rem;
+  }
+
+  .sm\:focus\:p-10:focus {
+    padding: 2.5rem;
+  }
+
+  .sm\:focus\:p-12:focus {
+    padding: 3rem;
+  }
+
+  .sm\:focus\:p-16:focus {
+    padding: 4rem;
+  }
+
+  .sm\:focus\:p-20:focus {
+    padding: 5rem;
+  }
+
+  .sm\:focus\:p-24:focus {
+    padding: 6rem;
+  }
+
+  .sm\:focus\:p-32:focus {
+    padding: 8rem;
+  }
+
+  .sm\:focus\:p-40:focus {
+    padding: 10rem;
+  }
+
+  .sm\:focus\:p-48:focus {
+    padding: 12rem;
+  }
+
+  .sm\:focus\:p-56:focus {
+    padding: 14rem;
+  }
+
+  .sm\:focus\:p-64:focus {
+    padding: 16rem;
+  }
+
+  .sm\:focus\:p-px:focus {
+    padding: 1px;
+  }
+
+  .sm\:focus\:p-00:focus {
+    padding: 0;
+  }
+
+  .sm\:focus\:p-01:focus {
+    padding: 0.25rem;
+  }
+
+  .sm\:focus\:p-02:focus {
+    padding: 0.5rem;
+  }
+
+  .sm\:focus\:p-03:focus {
+    padding: 0.75rem;
+  }
+
+  .sm\:focus\:p-04:focus {
+    padding: 1rem;
+  }
+
+  .sm\:focus\:p-05:focus {
+    padding: 1.25rem;
+  }
+
+  .sm\:focus\:p-06:focus {
+    padding: 1.5rem;
+  }
+
+  .sm\:focus\:p-08:focus {
+    padding: 2rem;
+  }
+
+  .sm\:focus\:py-10:focus {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .sm\:focus\:px-10:focus {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .sm\:focus\:py-12:focus {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .sm\:focus\:px-12:focus {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .sm\:focus\:py-16:focus {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .sm\:focus\:px-16:focus {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .sm\:focus\:py-20:focus {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .sm\:focus\:px-20:focus {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .sm\:focus\:py-24:focus {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .sm\:focus\:px-24:focus {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .sm\:focus\:py-32:focus {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .sm\:focus\:px-32:focus {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .sm\:focus\:py-40:focus {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .sm\:focus\:px-40:focus {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .sm\:focus\:py-48:focus {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .sm\:focus\:px-48:focus {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .sm\:focus\:py-56:focus {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .sm\:focus\:px-56:focus {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .sm\:focus\:py-64:focus {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .sm\:focus\:px-64:focus {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .sm\:focus\:py-px:focus {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .sm\:focus\:px-px:focus {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .sm\:focus\:py-00:focus {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .sm\:focus\:px-00:focus {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sm\:focus\:py-01:focus {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .sm\:focus\:px-01:focus {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .sm\:focus\:py-02:focus {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .sm\:focus\:px-02:focus {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .sm\:focus\:py-03:focus {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .sm\:focus\:px-03:focus {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .sm\:focus\:py-04:focus {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .sm\:focus\:px-04:focus {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sm\:focus\:py-05:focus {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .sm\:focus\:px-05:focus {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .sm\:focus\:py-06:focus {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .sm\:focus\:px-06:focus {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:focus\:py-08:focus {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .sm\:focus\:px-08:focus {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .sm\:focus\:pt-10:focus {
+    padding-top: 2.5rem;
+  }
+
+  .sm\:focus\:pr-10:focus {
+    padding-right: 2.5rem;
+  }
+
+  .sm\:focus\:pb-10:focus {
+    padding-bottom: 2.5rem;
+  }
+
+  .sm\:focus\:pl-10:focus {
+    padding-left: 2.5rem;
+  }
+
+  .sm\:focus\:pt-12:focus {
+    padding-top: 3rem;
+  }
+
+  .sm\:focus\:pr-12:focus {
+    padding-right: 3rem;
+  }
+
+  .sm\:focus\:pb-12:focus {
+    padding-bottom: 3rem;
+  }
+
+  .sm\:focus\:pl-12:focus {
+    padding-left: 3rem;
+  }
+
+  .sm\:focus\:pt-16:focus {
+    padding-top: 4rem;
+  }
+
+  .sm\:focus\:pr-16:focus {
+    padding-right: 4rem;
+  }
+
+  .sm\:focus\:pb-16:focus {
+    padding-bottom: 4rem;
+  }
+
+  .sm\:focus\:pl-16:focus {
+    padding-left: 4rem;
+  }
+
+  .sm\:focus\:pt-20:focus {
+    padding-top: 5rem;
+  }
+
+  .sm\:focus\:pr-20:focus {
+    padding-right: 5rem;
+  }
+
+  .sm\:focus\:pb-20:focus {
+    padding-bottom: 5rem;
+  }
+
+  .sm\:focus\:pl-20:focus {
+    padding-left: 5rem;
+  }
+
+  .sm\:focus\:pt-24:focus {
+    padding-top: 6rem;
+  }
+
+  .sm\:focus\:pr-24:focus {
+    padding-right: 6rem;
+  }
+
+  .sm\:focus\:pb-24:focus {
+    padding-bottom: 6rem;
+  }
+
+  .sm\:focus\:pl-24:focus {
+    padding-left: 6rem;
+  }
+
+  .sm\:focus\:pt-32:focus {
+    padding-top: 8rem;
+  }
+
+  .sm\:focus\:pr-32:focus {
+    padding-right: 8rem;
+  }
+
+  .sm\:focus\:pb-32:focus {
+    padding-bottom: 8rem;
+  }
+
+  .sm\:focus\:pl-32:focus {
+    padding-left: 8rem;
+  }
+
+  .sm\:focus\:pt-40:focus {
+    padding-top: 10rem;
+  }
+
+  .sm\:focus\:pr-40:focus {
+    padding-right: 10rem;
+  }
+
+  .sm\:focus\:pb-40:focus {
+    padding-bottom: 10rem;
+  }
+
+  .sm\:focus\:pl-40:focus {
+    padding-left: 10rem;
+  }
+
+  .sm\:focus\:pt-48:focus {
+    padding-top: 12rem;
+  }
+
+  .sm\:focus\:pr-48:focus {
+    padding-right: 12rem;
+  }
+
+  .sm\:focus\:pb-48:focus {
+    padding-bottom: 12rem;
+  }
+
+  .sm\:focus\:pl-48:focus {
+    padding-left: 12rem;
+  }
+
+  .sm\:focus\:pt-56:focus {
+    padding-top: 14rem;
+  }
+
+  .sm\:focus\:pr-56:focus {
+    padding-right: 14rem;
+  }
+
+  .sm\:focus\:pb-56:focus {
+    padding-bottom: 14rem;
+  }
+
+  .sm\:focus\:pl-56:focus {
+    padding-left: 14rem;
+  }
+
+  .sm\:focus\:pt-64:focus {
+    padding-top: 16rem;
+  }
+
+  .sm\:focus\:pr-64:focus {
+    padding-right: 16rem;
+  }
+
+  .sm\:focus\:pb-64:focus {
+    padding-bottom: 16rem;
+  }
+
+  .sm\:focus\:pl-64:focus {
+    padding-left: 16rem;
+  }
+
+  .sm\:focus\:pt-px:focus {
+    padding-top: 1px;
+  }
+
+  .sm\:focus\:pr-px:focus {
+    padding-right: 1px;
+  }
+
+  .sm\:focus\:pb-px:focus {
+    padding-bottom: 1px;
+  }
+
+  .sm\:focus\:pl-px:focus {
+    padding-left: 1px;
+  }
+
+  .sm\:focus\:pt-00:focus {
+    padding-top: 0;
+  }
+
+  .sm\:focus\:pr-00:focus {
+    padding-right: 0;
+  }
+
+  .sm\:focus\:pb-00:focus {
+    padding-bottom: 0;
+  }
+
+  .sm\:focus\:pl-00:focus {
+    padding-left: 0;
+  }
+
+  .sm\:focus\:pt-01:focus {
+    padding-top: 0.25rem;
+  }
+
+  .sm\:focus\:pr-01:focus {
+    padding-right: 0.25rem;
+  }
+
+  .sm\:focus\:pb-01:focus {
+    padding-bottom: 0.25rem;
+  }
+
+  .sm\:focus\:pl-01:focus {
+    padding-left: 0.25rem;
+  }
+
+  .sm\:focus\:pt-02:focus {
+    padding-top: 0.5rem;
+  }
+
+  .sm\:focus\:pr-02:focus {
+    padding-right: 0.5rem;
+  }
+
+  .sm\:focus\:pb-02:focus {
+    padding-bottom: 0.5rem;
+  }
+
+  .sm\:focus\:pl-02:focus {
+    padding-left: 0.5rem;
+  }
+
+  .sm\:focus\:pt-03:focus {
+    padding-top: 0.75rem;
+  }
+
+  .sm\:focus\:pr-03:focus {
+    padding-right: 0.75rem;
+  }
+
+  .sm\:focus\:pb-03:focus {
+    padding-bottom: 0.75rem;
+  }
+
+  .sm\:focus\:pl-03:focus {
+    padding-left: 0.75rem;
+  }
+
+  .sm\:focus\:pt-04:focus {
+    padding-top: 1rem;
+  }
+
+  .sm\:focus\:pr-04:focus {
+    padding-right: 1rem;
+  }
+
+  .sm\:focus\:pb-04:focus {
+    padding-bottom: 1rem;
+  }
+
+  .sm\:focus\:pl-04:focus {
+    padding-left: 1rem;
+  }
+
+  .sm\:focus\:pt-05:focus {
+    padding-top: 1.25rem;
+  }
+
+  .sm\:focus\:pr-05:focus {
+    padding-right: 1.25rem;
+  }
+
+  .sm\:focus\:pb-05:focus {
+    padding-bottom: 1.25rem;
+  }
+
+  .sm\:focus\:pl-05:focus {
+    padding-left: 1.25rem;
+  }
+
+  .sm\:focus\:pt-06:focus {
+    padding-top: 1.5rem;
+  }
+
+  .sm\:focus\:pr-06:focus {
+    padding-right: 1.5rem;
+  }
+
+  .sm\:focus\:pb-06:focus {
+    padding-bottom: 1.5rem;
+  }
+
+  .sm\:focus\:pl-06:focus {
+    padding-left: 1.5rem;
+  }
+
+  .sm\:focus\:pt-08:focus {
+    padding-top: 2rem;
+  }
+
+  .sm\:focus\:pr-08:focus {
+    padding-right: 2rem;
+  }
+
+  .sm\:focus\:pb-08:focus {
+    padding-bottom: 2rem;
+  }
+
+  .sm\:focus\:pl-08:focus {
     padding-left: 2rem;
   }
 
@@ -27333,6 +29613,1146 @@ video {
     padding-left: 2rem;
   }
 
+  .md\:hover\:p-10:hover {
+    padding: 2.5rem;
+  }
+
+  .md\:hover\:p-12:hover {
+    padding: 3rem;
+  }
+
+  .md\:hover\:p-16:hover {
+    padding: 4rem;
+  }
+
+  .md\:hover\:p-20:hover {
+    padding: 5rem;
+  }
+
+  .md\:hover\:p-24:hover {
+    padding: 6rem;
+  }
+
+  .md\:hover\:p-32:hover {
+    padding: 8rem;
+  }
+
+  .md\:hover\:p-40:hover {
+    padding: 10rem;
+  }
+
+  .md\:hover\:p-48:hover {
+    padding: 12rem;
+  }
+
+  .md\:hover\:p-56:hover {
+    padding: 14rem;
+  }
+
+  .md\:hover\:p-64:hover {
+    padding: 16rem;
+  }
+
+  .md\:hover\:p-px:hover {
+    padding: 1px;
+  }
+
+  .md\:hover\:p-00:hover {
+    padding: 0;
+  }
+
+  .md\:hover\:p-01:hover {
+    padding: 0.25rem;
+  }
+
+  .md\:hover\:p-02:hover {
+    padding: 0.5rem;
+  }
+
+  .md\:hover\:p-03:hover {
+    padding: 0.75rem;
+  }
+
+  .md\:hover\:p-04:hover {
+    padding: 1rem;
+  }
+
+  .md\:hover\:p-05:hover {
+    padding: 1.25rem;
+  }
+
+  .md\:hover\:p-06:hover {
+    padding: 1.5rem;
+  }
+
+  .md\:hover\:p-08:hover {
+    padding: 2rem;
+  }
+
+  .md\:hover\:py-10:hover {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .md\:hover\:px-10:hover {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .md\:hover\:py-12:hover {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .md\:hover\:px-12:hover {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .md\:hover\:py-16:hover {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .md\:hover\:px-16:hover {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .md\:hover\:py-20:hover {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .md\:hover\:px-20:hover {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .md\:hover\:py-24:hover {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .md\:hover\:px-24:hover {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .md\:hover\:py-32:hover {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .md\:hover\:px-32:hover {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .md\:hover\:py-40:hover {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .md\:hover\:px-40:hover {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .md\:hover\:py-48:hover {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .md\:hover\:px-48:hover {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .md\:hover\:py-56:hover {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .md\:hover\:px-56:hover {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .md\:hover\:py-64:hover {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .md\:hover\:px-64:hover {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .md\:hover\:py-px:hover {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .md\:hover\:px-px:hover {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .md\:hover\:py-00:hover {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .md\:hover\:px-00:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .md\:hover\:py-01:hover {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .md\:hover\:px-01:hover {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .md\:hover\:py-02:hover {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .md\:hover\:px-02:hover {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .md\:hover\:py-03:hover {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .md\:hover\:px-03:hover {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .md\:hover\:py-04:hover {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .md\:hover\:px-04:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .md\:hover\:py-05:hover {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .md\:hover\:px-05:hover {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .md\:hover\:py-06:hover {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .md\:hover\:px-06:hover {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .md\:hover\:py-08:hover {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .md\:hover\:px-08:hover {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .md\:hover\:pt-10:hover {
+    padding-top: 2.5rem;
+  }
+
+  .md\:hover\:pr-10:hover {
+    padding-right: 2.5rem;
+  }
+
+  .md\:hover\:pb-10:hover {
+    padding-bottom: 2.5rem;
+  }
+
+  .md\:hover\:pl-10:hover {
+    padding-left: 2.5rem;
+  }
+
+  .md\:hover\:pt-12:hover {
+    padding-top: 3rem;
+  }
+
+  .md\:hover\:pr-12:hover {
+    padding-right: 3rem;
+  }
+
+  .md\:hover\:pb-12:hover {
+    padding-bottom: 3rem;
+  }
+
+  .md\:hover\:pl-12:hover {
+    padding-left: 3rem;
+  }
+
+  .md\:hover\:pt-16:hover {
+    padding-top: 4rem;
+  }
+
+  .md\:hover\:pr-16:hover {
+    padding-right: 4rem;
+  }
+
+  .md\:hover\:pb-16:hover {
+    padding-bottom: 4rem;
+  }
+
+  .md\:hover\:pl-16:hover {
+    padding-left: 4rem;
+  }
+
+  .md\:hover\:pt-20:hover {
+    padding-top: 5rem;
+  }
+
+  .md\:hover\:pr-20:hover {
+    padding-right: 5rem;
+  }
+
+  .md\:hover\:pb-20:hover {
+    padding-bottom: 5rem;
+  }
+
+  .md\:hover\:pl-20:hover {
+    padding-left: 5rem;
+  }
+
+  .md\:hover\:pt-24:hover {
+    padding-top: 6rem;
+  }
+
+  .md\:hover\:pr-24:hover {
+    padding-right: 6rem;
+  }
+
+  .md\:hover\:pb-24:hover {
+    padding-bottom: 6rem;
+  }
+
+  .md\:hover\:pl-24:hover {
+    padding-left: 6rem;
+  }
+
+  .md\:hover\:pt-32:hover {
+    padding-top: 8rem;
+  }
+
+  .md\:hover\:pr-32:hover {
+    padding-right: 8rem;
+  }
+
+  .md\:hover\:pb-32:hover {
+    padding-bottom: 8rem;
+  }
+
+  .md\:hover\:pl-32:hover {
+    padding-left: 8rem;
+  }
+
+  .md\:hover\:pt-40:hover {
+    padding-top: 10rem;
+  }
+
+  .md\:hover\:pr-40:hover {
+    padding-right: 10rem;
+  }
+
+  .md\:hover\:pb-40:hover {
+    padding-bottom: 10rem;
+  }
+
+  .md\:hover\:pl-40:hover {
+    padding-left: 10rem;
+  }
+
+  .md\:hover\:pt-48:hover {
+    padding-top: 12rem;
+  }
+
+  .md\:hover\:pr-48:hover {
+    padding-right: 12rem;
+  }
+
+  .md\:hover\:pb-48:hover {
+    padding-bottom: 12rem;
+  }
+
+  .md\:hover\:pl-48:hover {
+    padding-left: 12rem;
+  }
+
+  .md\:hover\:pt-56:hover {
+    padding-top: 14rem;
+  }
+
+  .md\:hover\:pr-56:hover {
+    padding-right: 14rem;
+  }
+
+  .md\:hover\:pb-56:hover {
+    padding-bottom: 14rem;
+  }
+
+  .md\:hover\:pl-56:hover {
+    padding-left: 14rem;
+  }
+
+  .md\:hover\:pt-64:hover {
+    padding-top: 16rem;
+  }
+
+  .md\:hover\:pr-64:hover {
+    padding-right: 16rem;
+  }
+
+  .md\:hover\:pb-64:hover {
+    padding-bottom: 16rem;
+  }
+
+  .md\:hover\:pl-64:hover {
+    padding-left: 16rem;
+  }
+
+  .md\:hover\:pt-px:hover {
+    padding-top: 1px;
+  }
+
+  .md\:hover\:pr-px:hover {
+    padding-right: 1px;
+  }
+
+  .md\:hover\:pb-px:hover {
+    padding-bottom: 1px;
+  }
+
+  .md\:hover\:pl-px:hover {
+    padding-left: 1px;
+  }
+
+  .md\:hover\:pt-00:hover {
+    padding-top: 0;
+  }
+
+  .md\:hover\:pr-00:hover {
+    padding-right: 0;
+  }
+
+  .md\:hover\:pb-00:hover {
+    padding-bottom: 0;
+  }
+
+  .md\:hover\:pl-00:hover {
+    padding-left: 0;
+  }
+
+  .md\:hover\:pt-01:hover {
+    padding-top: 0.25rem;
+  }
+
+  .md\:hover\:pr-01:hover {
+    padding-right: 0.25rem;
+  }
+
+  .md\:hover\:pb-01:hover {
+    padding-bottom: 0.25rem;
+  }
+
+  .md\:hover\:pl-01:hover {
+    padding-left: 0.25rem;
+  }
+
+  .md\:hover\:pt-02:hover {
+    padding-top: 0.5rem;
+  }
+
+  .md\:hover\:pr-02:hover {
+    padding-right: 0.5rem;
+  }
+
+  .md\:hover\:pb-02:hover {
+    padding-bottom: 0.5rem;
+  }
+
+  .md\:hover\:pl-02:hover {
+    padding-left: 0.5rem;
+  }
+
+  .md\:hover\:pt-03:hover {
+    padding-top: 0.75rem;
+  }
+
+  .md\:hover\:pr-03:hover {
+    padding-right: 0.75rem;
+  }
+
+  .md\:hover\:pb-03:hover {
+    padding-bottom: 0.75rem;
+  }
+
+  .md\:hover\:pl-03:hover {
+    padding-left: 0.75rem;
+  }
+
+  .md\:hover\:pt-04:hover {
+    padding-top: 1rem;
+  }
+
+  .md\:hover\:pr-04:hover {
+    padding-right: 1rem;
+  }
+
+  .md\:hover\:pb-04:hover {
+    padding-bottom: 1rem;
+  }
+
+  .md\:hover\:pl-04:hover {
+    padding-left: 1rem;
+  }
+
+  .md\:hover\:pt-05:hover {
+    padding-top: 1.25rem;
+  }
+
+  .md\:hover\:pr-05:hover {
+    padding-right: 1.25rem;
+  }
+
+  .md\:hover\:pb-05:hover {
+    padding-bottom: 1.25rem;
+  }
+
+  .md\:hover\:pl-05:hover {
+    padding-left: 1.25rem;
+  }
+
+  .md\:hover\:pt-06:hover {
+    padding-top: 1.5rem;
+  }
+
+  .md\:hover\:pr-06:hover {
+    padding-right: 1.5rem;
+  }
+
+  .md\:hover\:pb-06:hover {
+    padding-bottom: 1.5rem;
+  }
+
+  .md\:hover\:pl-06:hover {
+    padding-left: 1.5rem;
+  }
+
+  .md\:hover\:pt-08:hover {
+    padding-top: 2rem;
+  }
+
+  .md\:hover\:pr-08:hover {
+    padding-right: 2rem;
+  }
+
+  .md\:hover\:pb-08:hover {
+    padding-bottom: 2rem;
+  }
+
+  .md\:hover\:pl-08:hover {
+    padding-left: 2rem;
+  }
+
+  .md\:focus\:p-10:focus {
+    padding: 2.5rem;
+  }
+
+  .md\:focus\:p-12:focus {
+    padding: 3rem;
+  }
+
+  .md\:focus\:p-16:focus {
+    padding: 4rem;
+  }
+
+  .md\:focus\:p-20:focus {
+    padding: 5rem;
+  }
+
+  .md\:focus\:p-24:focus {
+    padding: 6rem;
+  }
+
+  .md\:focus\:p-32:focus {
+    padding: 8rem;
+  }
+
+  .md\:focus\:p-40:focus {
+    padding: 10rem;
+  }
+
+  .md\:focus\:p-48:focus {
+    padding: 12rem;
+  }
+
+  .md\:focus\:p-56:focus {
+    padding: 14rem;
+  }
+
+  .md\:focus\:p-64:focus {
+    padding: 16rem;
+  }
+
+  .md\:focus\:p-px:focus {
+    padding: 1px;
+  }
+
+  .md\:focus\:p-00:focus {
+    padding: 0;
+  }
+
+  .md\:focus\:p-01:focus {
+    padding: 0.25rem;
+  }
+
+  .md\:focus\:p-02:focus {
+    padding: 0.5rem;
+  }
+
+  .md\:focus\:p-03:focus {
+    padding: 0.75rem;
+  }
+
+  .md\:focus\:p-04:focus {
+    padding: 1rem;
+  }
+
+  .md\:focus\:p-05:focus {
+    padding: 1.25rem;
+  }
+
+  .md\:focus\:p-06:focus {
+    padding: 1.5rem;
+  }
+
+  .md\:focus\:p-08:focus {
+    padding: 2rem;
+  }
+
+  .md\:focus\:py-10:focus {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .md\:focus\:px-10:focus {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .md\:focus\:py-12:focus {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .md\:focus\:px-12:focus {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .md\:focus\:py-16:focus {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .md\:focus\:px-16:focus {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .md\:focus\:py-20:focus {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .md\:focus\:px-20:focus {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .md\:focus\:py-24:focus {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .md\:focus\:px-24:focus {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .md\:focus\:py-32:focus {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .md\:focus\:px-32:focus {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .md\:focus\:py-40:focus {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .md\:focus\:px-40:focus {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .md\:focus\:py-48:focus {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .md\:focus\:px-48:focus {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .md\:focus\:py-56:focus {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .md\:focus\:px-56:focus {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .md\:focus\:py-64:focus {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .md\:focus\:px-64:focus {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .md\:focus\:py-px:focus {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .md\:focus\:px-px:focus {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .md\:focus\:py-00:focus {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .md\:focus\:px-00:focus {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .md\:focus\:py-01:focus {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .md\:focus\:px-01:focus {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .md\:focus\:py-02:focus {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .md\:focus\:px-02:focus {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .md\:focus\:py-03:focus {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .md\:focus\:px-03:focus {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .md\:focus\:py-04:focus {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .md\:focus\:px-04:focus {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .md\:focus\:py-05:focus {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .md\:focus\:px-05:focus {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .md\:focus\:py-06:focus {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .md\:focus\:px-06:focus {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .md\:focus\:py-08:focus {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .md\:focus\:px-08:focus {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .md\:focus\:pt-10:focus {
+    padding-top: 2.5rem;
+  }
+
+  .md\:focus\:pr-10:focus {
+    padding-right: 2.5rem;
+  }
+
+  .md\:focus\:pb-10:focus {
+    padding-bottom: 2.5rem;
+  }
+
+  .md\:focus\:pl-10:focus {
+    padding-left: 2.5rem;
+  }
+
+  .md\:focus\:pt-12:focus {
+    padding-top: 3rem;
+  }
+
+  .md\:focus\:pr-12:focus {
+    padding-right: 3rem;
+  }
+
+  .md\:focus\:pb-12:focus {
+    padding-bottom: 3rem;
+  }
+
+  .md\:focus\:pl-12:focus {
+    padding-left: 3rem;
+  }
+
+  .md\:focus\:pt-16:focus {
+    padding-top: 4rem;
+  }
+
+  .md\:focus\:pr-16:focus {
+    padding-right: 4rem;
+  }
+
+  .md\:focus\:pb-16:focus {
+    padding-bottom: 4rem;
+  }
+
+  .md\:focus\:pl-16:focus {
+    padding-left: 4rem;
+  }
+
+  .md\:focus\:pt-20:focus {
+    padding-top: 5rem;
+  }
+
+  .md\:focus\:pr-20:focus {
+    padding-right: 5rem;
+  }
+
+  .md\:focus\:pb-20:focus {
+    padding-bottom: 5rem;
+  }
+
+  .md\:focus\:pl-20:focus {
+    padding-left: 5rem;
+  }
+
+  .md\:focus\:pt-24:focus {
+    padding-top: 6rem;
+  }
+
+  .md\:focus\:pr-24:focus {
+    padding-right: 6rem;
+  }
+
+  .md\:focus\:pb-24:focus {
+    padding-bottom: 6rem;
+  }
+
+  .md\:focus\:pl-24:focus {
+    padding-left: 6rem;
+  }
+
+  .md\:focus\:pt-32:focus {
+    padding-top: 8rem;
+  }
+
+  .md\:focus\:pr-32:focus {
+    padding-right: 8rem;
+  }
+
+  .md\:focus\:pb-32:focus {
+    padding-bottom: 8rem;
+  }
+
+  .md\:focus\:pl-32:focus {
+    padding-left: 8rem;
+  }
+
+  .md\:focus\:pt-40:focus {
+    padding-top: 10rem;
+  }
+
+  .md\:focus\:pr-40:focus {
+    padding-right: 10rem;
+  }
+
+  .md\:focus\:pb-40:focus {
+    padding-bottom: 10rem;
+  }
+
+  .md\:focus\:pl-40:focus {
+    padding-left: 10rem;
+  }
+
+  .md\:focus\:pt-48:focus {
+    padding-top: 12rem;
+  }
+
+  .md\:focus\:pr-48:focus {
+    padding-right: 12rem;
+  }
+
+  .md\:focus\:pb-48:focus {
+    padding-bottom: 12rem;
+  }
+
+  .md\:focus\:pl-48:focus {
+    padding-left: 12rem;
+  }
+
+  .md\:focus\:pt-56:focus {
+    padding-top: 14rem;
+  }
+
+  .md\:focus\:pr-56:focus {
+    padding-right: 14rem;
+  }
+
+  .md\:focus\:pb-56:focus {
+    padding-bottom: 14rem;
+  }
+
+  .md\:focus\:pl-56:focus {
+    padding-left: 14rem;
+  }
+
+  .md\:focus\:pt-64:focus {
+    padding-top: 16rem;
+  }
+
+  .md\:focus\:pr-64:focus {
+    padding-right: 16rem;
+  }
+
+  .md\:focus\:pb-64:focus {
+    padding-bottom: 16rem;
+  }
+
+  .md\:focus\:pl-64:focus {
+    padding-left: 16rem;
+  }
+
+  .md\:focus\:pt-px:focus {
+    padding-top: 1px;
+  }
+
+  .md\:focus\:pr-px:focus {
+    padding-right: 1px;
+  }
+
+  .md\:focus\:pb-px:focus {
+    padding-bottom: 1px;
+  }
+
+  .md\:focus\:pl-px:focus {
+    padding-left: 1px;
+  }
+
+  .md\:focus\:pt-00:focus {
+    padding-top: 0;
+  }
+
+  .md\:focus\:pr-00:focus {
+    padding-right: 0;
+  }
+
+  .md\:focus\:pb-00:focus {
+    padding-bottom: 0;
+  }
+
+  .md\:focus\:pl-00:focus {
+    padding-left: 0;
+  }
+
+  .md\:focus\:pt-01:focus {
+    padding-top: 0.25rem;
+  }
+
+  .md\:focus\:pr-01:focus {
+    padding-right: 0.25rem;
+  }
+
+  .md\:focus\:pb-01:focus {
+    padding-bottom: 0.25rem;
+  }
+
+  .md\:focus\:pl-01:focus {
+    padding-left: 0.25rem;
+  }
+
+  .md\:focus\:pt-02:focus {
+    padding-top: 0.5rem;
+  }
+
+  .md\:focus\:pr-02:focus {
+    padding-right: 0.5rem;
+  }
+
+  .md\:focus\:pb-02:focus {
+    padding-bottom: 0.5rem;
+  }
+
+  .md\:focus\:pl-02:focus {
+    padding-left: 0.5rem;
+  }
+
+  .md\:focus\:pt-03:focus {
+    padding-top: 0.75rem;
+  }
+
+  .md\:focus\:pr-03:focus {
+    padding-right: 0.75rem;
+  }
+
+  .md\:focus\:pb-03:focus {
+    padding-bottom: 0.75rem;
+  }
+
+  .md\:focus\:pl-03:focus {
+    padding-left: 0.75rem;
+  }
+
+  .md\:focus\:pt-04:focus {
+    padding-top: 1rem;
+  }
+
+  .md\:focus\:pr-04:focus {
+    padding-right: 1rem;
+  }
+
+  .md\:focus\:pb-04:focus {
+    padding-bottom: 1rem;
+  }
+
+  .md\:focus\:pl-04:focus {
+    padding-left: 1rem;
+  }
+
+  .md\:focus\:pt-05:focus {
+    padding-top: 1.25rem;
+  }
+
+  .md\:focus\:pr-05:focus {
+    padding-right: 1.25rem;
+  }
+
+  .md\:focus\:pb-05:focus {
+    padding-bottom: 1.25rem;
+  }
+
+  .md\:focus\:pl-05:focus {
+    padding-left: 1.25rem;
+  }
+
+  .md\:focus\:pt-06:focus {
+    padding-top: 1.5rem;
+  }
+
+  .md\:focus\:pr-06:focus {
+    padding-right: 1.5rem;
+  }
+
+  .md\:focus\:pb-06:focus {
+    padding-bottom: 1.5rem;
+  }
+
+  .md\:focus\:pl-06:focus {
+    padding-left: 1.5rem;
+  }
+
+  .md\:focus\:pt-08:focus {
+    padding-top: 2rem;
+  }
+
+  .md\:focus\:pr-08:focus {
+    padding-right: 2rem;
+  }
+
+  .md\:focus\:pb-08:focus {
+    padding-bottom: 2rem;
+  }
+
+  .md\:focus\:pl-08:focus {
+    padding-left: 2rem;
+  }
+
   .md\:placeholder-transparent::-webkit-input-placeholder {
     color: transparent;
   }
@@ -38069,6 +41489,1146 @@ video {
     padding-left: 2rem;
   }
 
+  .lg\:hover\:p-10:hover {
+    padding: 2.5rem;
+  }
+
+  .lg\:hover\:p-12:hover {
+    padding: 3rem;
+  }
+
+  .lg\:hover\:p-16:hover {
+    padding: 4rem;
+  }
+
+  .lg\:hover\:p-20:hover {
+    padding: 5rem;
+  }
+
+  .lg\:hover\:p-24:hover {
+    padding: 6rem;
+  }
+
+  .lg\:hover\:p-32:hover {
+    padding: 8rem;
+  }
+
+  .lg\:hover\:p-40:hover {
+    padding: 10rem;
+  }
+
+  .lg\:hover\:p-48:hover {
+    padding: 12rem;
+  }
+
+  .lg\:hover\:p-56:hover {
+    padding: 14rem;
+  }
+
+  .lg\:hover\:p-64:hover {
+    padding: 16rem;
+  }
+
+  .lg\:hover\:p-px:hover {
+    padding: 1px;
+  }
+
+  .lg\:hover\:p-00:hover {
+    padding: 0;
+  }
+
+  .lg\:hover\:p-01:hover {
+    padding: 0.25rem;
+  }
+
+  .lg\:hover\:p-02:hover {
+    padding: 0.5rem;
+  }
+
+  .lg\:hover\:p-03:hover {
+    padding: 0.75rem;
+  }
+
+  .lg\:hover\:p-04:hover {
+    padding: 1rem;
+  }
+
+  .lg\:hover\:p-05:hover {
+    padding: 1.25rem;
+  }
+
+  .lg\:hover\:p-06:hover {
+    padding: 1.5rem;
+  }
+
+  .lg\:hover\:p-08:hover {
+    padding: 2rem;
+  }
+
+  .lg\:hover\:py-10:hover {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .lg\:hover\:px-10:hover {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .lg\:hover\:py-12:hover {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .lg\:hover\:px-12:hover {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .lg\:hover\:py-16:hover {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .lg\:hover\:px-16:hover {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .lg\:hover\:py-20:hover {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .lg\:hover\:px-20:hover {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .lg\:hover\:py-24:hover {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .lg\:hover\:px-24:hover {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .lg\:hover\:py-32:hover {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .lg\:hover\:px-32:hover {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .lg\:hover\:py-40:hover {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .lg\:hover\:px-40:hover {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .lg\:hover\:py-48:hover {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .lg\:hover\:px-48:hover {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .lg\:hover\:py-56:hover {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .lg\:hover\:px-56:hover {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .lg\:hover\:py-64:hover {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .lg\:hover\:px-64:hover {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .lg\:hover\:py-px:hover {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .lg\:hover\:px-px:hover {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .lg\:hover\:py-00:hover {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .lg\:hover\:px-00:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .lg\:hover\:py-01:hover {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .lg\:hover\:px-01:hover {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .lg\:hover\:py-02:hover {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:hover\:px-02:hover {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .lg\:hover\:py-03:hover {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .lg\:hover\:px-03:hover {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .lg\:hover\:py-04:hover {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .lg\:hover\:px-04:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .lg\:hover\:py-05:hover {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .lg\:hover\:px-05:hover {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .lg\:hover\:py-06:hover {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .lg\:hover\:px-06:hover {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .lg\:hover\:py-08:hover {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .lg\:hover\:px-08:hover {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .lg\:hover\:pt-10:hover {
+    padding-top: 2.5rem;
+  }
+
+  .lg\:hover\:pr-10:hover {
+    padding-right: 2.5rem;
+  }
+
+  .lg\:hover\:pb-10:hover {
+    padding-bottom: 2.5rem;
+  }
+
+  .lg\:hover\:pl-10:hover {
+    padding-left: 2.5rem;
+  }
+
+  .lg\:hover\:pt-12:hover {
+    padding-top: 3rem;
+  }
+
+  .lg\:hover\:pr-12:hover {
+    padding-right: 3rem;
+  }
+
+  .lg\:hover\:pb-12:hover {
+    padding-bottom: 3rem;
+  }
+
+  .lg\:hover\:pl-12:hover {
+    padding-left: 3rem;
+  }
+
+  .lg\:hover\:pt-16:hover {
+    padding-top: 4rem;
+  }
+
+  .lg\:hover\:pr-16:hover {
+    padding-right: 4rem;
+  }
+
+  .lg\:hover\:pb-16:hover {
+    padding-bottom: 4rem;
+  }
+
+  .lg\:hover\:pl-16:hover {
+    padding-left: 4rem;
+  }
+
+  .lg\:hover\:pt-20:hover {
+    padding-top: 5rem;
+  }
+
+  .lg\:hover\:pr-20:hover {
+    padding-right: 5rem;
+  }
+
+  .lg\:hover\:pb-20:hover {
+    padding-bottom: 5rem;
+  }
+
+  .lg\:hover\:pl-20:hover {
+    padding-left: 5rem;
+  }
+
+  .lg\:hover\:pt-24:hover {
+    padding-top: 6rem;
+  }
+
+  .lg\:hover\:pr-24:hover {
+    padding-right: 6rem;
+  }
+
+  .lg\:hover\:pb-24:hover {
+    padding-bottom: 6rem;
+  }
+
+  .lg\:hover\:pl-24:hover {
+    padding-left: 6rem;
+  }
+
+  .lg\:hover\:pt-32:hover {
+    padding-top: 8rem;
+  }
+
+  .lg\:hover\:pr-32:hover {
+    padding-right: 8rem;
+  }
+
+  .lg\:hover\:pb-32:hover {
+    padding-bottom: 8rem;
+  }
+
+  .lg\:hover\:pl-32:hover {
+    padding-left: 8rem;
+  }
+
+  .lg\:hover\:pt-40:hover {
+    padding-top: 10rem;
+  }
+
+  .lg\:hover\:pr-40:hover {
+    padding-right: 10rem;
+  }
+
+  .lg\:hover\:pb-40:hover {
+    padding-bottom: 10rem;
+  }
+
+  .lg\:hover\:pl-40:hover {
+    padding-left: 10rem;
+  }
+
+  .lg\:hover\:pt-48:hover {
+    padding-top: 12rem;
+  }
+
+  .lg\:hover\:pr-48:hover {
+    padding-right: 12rem;
+  }
+
+  .lg\:hover\:pb-48:hover {
+    padding-bottom: 12rem;
+  }
+
+  .lg\:hover\:pl-48:hover {
+    padding-left: 12rem;
+  }
+
+  .lg\:hover\:pt-56:hover {
+    padding-top: 14rem;
+  }
+
+  .lg\:hover\:pr-56:hover {
+    padding-right: 14rem;
+  }
+
+  .lg\:hover\:pb-56:hover {
+    padding-bottom: 14rem;
+  }
+
+  .lg\:hover\:pl-56:hover {
+    padding-left: 14rem;
+  }
+
+  .lg\:hover\:pt-64:hover {
+    padding-top: 16rem;
+  }
+
+  .lg\:hover\:pr-64:hover {
+    padding-right: 16rem;
+  }
+
+  .lg\:hover\:pb-64:hover {
+    padding-bottom: 16rem;
+  }
+
+  .lg\:hover\:pl-64:hover {
+    padding-left: 16rem;
+  }
+
+  .lg\:hover\:pt-px:hover {
+    padding-top: 1px;
+  }
+
+  .lg\:hover\:pr-px:hover {
+    padding-right: 1px;
+  }
+
+  .lg\:hover\:pb-px:hover {
+    padding-bottom: 1px;
+  }
+
+  .lg\:hover\:pl-px:hover {
+    padding-left: 1px;
+  }
+
+  .lg\:hover\:pt-00:hover {
+    padding-top: 0;
+  }
+
+  .lg\:hover\:pr-00:hover {
+    padding-right: 0;
+  }
+
+  .lg\:hover\:pb-00:hover {
+    padding-bottom: 0;
+  }
+
+  .lg\:hover\:pl-00:hover {
+    padding-left: 0;
+  }
+
+  .lg\:hover\:pt-01:hover {
+    padding-top: 0.25rem;
+  }
+
+  .lg\:hover\:pr-01:hover {
+    padding-right: 0.25rem;
+  }
+
+  .lg\:hover\:pb-01:hover {
+    padding-bottom: 0.25rem;
+  }
+
+  .lg\:hover\:pl-01:hover {
+    padding-left: 0.25rem;
+  }
+
+  .lg\:hover\:pt-02:hover {
+    padding-top: 0.5rem;
+  }
+
+  .lg\:hover\:pr-02:hover {
+    padding-right: 0.5rem;
+  }
+
+  .lg\:hover\:pb-02:hover {
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:hover\:pl-02:hover {
+    padding-left: 0.5rem;
+  }
+
+  .lg\:hover\:pt-03:hover {
+    padding-top: 0.75rem;
+  }
+
+  .lg\:hover\:pr-03:hover {
+    padding-right: 0.75rem;
+  }
+
+  .lg\:hover\:pb-03:hover {
+    padding-bottom: 0.75rem;
+  }
+
+  .lg\:hover\:pl-03:hover {
+    padding-left: 0.75rem;
+  }
+
+  .lg\:hover\:pt-04:hover {
+    padding-top: 1rem;
+  }
+
+  .lg\:hover\:pr-04:hover {
+    padding-right: 1rem;
+  }
+
+  .lg\:hover\:pb-04:hover {
+    padding-bottom: 1rem;
+  }
+
+  .lg\:hover\:pl-04:hover {
+    padding-left: 1rem;
+  }
+
+  .lg\:hover\:pt-05:hover {
+    padding-top: 1.25rem;
+  }
+
+  .lg\:hover\:pr-05:hover {
+    padding-right: 1.25rem;
+  }
+
+  .lg\:hover\:pb-05:hover {
+    padding-bottom: 1.25rem;
+  }
+
+  .lg\:hover\:pl-05:hover {
+    padding-left: 1.25rem;
+  }
+
+  .lg\:hover\:pt-06:hover {
+    padding-top: 1.5rem;
+  }
+
+  .lg\:hover\:pr-06:hover {
+    padding-right: 1.5rem;
+  }
+
+  .lg\:hover\:pb-06:hover {
+    padding-bottom: 1.5rem;
+  }
+
+  .lg\:hover\:pl-06:hover {
+    padding-left: 1.5rem;
+  }
+
+  .lg\:hover\:pt-08:hover {
+    padding-top: 2rem;
+  }
+
+  .lg\:hover\:pr-08:hover {
+    padding-right: 2rem;
+  }
+
+  .lg\:hover\:pb-08:hover {
+    padding-bottom: 2rem;
+  }
+
+  .lg\:hover\:pl-08:hover {
+    padding-left: 2rem;
+  }
+
+  .lg\:focus\:p-10:focus {
+    padding: 2.5rem;
+  }
+
+  .lg\:focus\:p-12:focus {
+    padding: 3rem;
+  }
+
+  .lg\:focus\:p-16:focus {
+    padding: 4rem;
+  }
+
+  .lg\:focus\:p-20:focus {
+    padding: 5rem;
+  }
+
+  .lg\:focus\:p-24:focus {
+    padding: 6rem;
+  }
+
+  .lg\:focus\:p-32:focus {
+    padding: 8rem;
+  }
+
+  .lg\:focus\:p-40:focus {
+    padding: 10rem;
+  }
+
+  .lg\:focus\:p-48:focus {
+    padding: 12rem;
+  }
+
+  .lg\:focus\:p-56:focus {
+    padding: 14rem;
+  }
+
+  .lg\:focus\:p-64:focus {
+    padding: 16rem;
+  }
+
+  .lg\:focus\:p-px:focus {
+    padding: 1px;
+  }
+
+  .lg\:focus\:p-00:focus {
+    padding: 0;
+  }
+
+  .lg\:focus\:p-01:focus {
+    padding: 0.25rem;
+  }
+
+  .lg\:focus\:p-02:focus {
+    padding: 0.5rem;
+  }
+
+  .lg\:focus\:p-03:focus {
+    padding: 0.75rem;
+  }
+
+  .lg\:focus\:p-04:focus {
+    padding: 1rem;
+  }
+
+  .lg\:focus\:p-05:focus {
+    padding: 1.25rem;
+  }
+
+  .lg\:focus\:p-06:focus {
+    padding: 1.5rem;
+  }
+
+  .lg\:focus\:p-08:focus {
+    padding: 2rem;
+  }
+
+  .lg\:focus\:py-10:focus {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .lg\:focus\:px-10:focus {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .lg\:focus\:py-12:focus {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .lg\:focus\:px-12:focus {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .lg\:focus\:py-16:focus {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .lg\:focus\:px-16:focus {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .lg\:focus\:py-20:focus {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .lg\:focus\:px-20:focus {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .lg\:focus\:py-24:focus {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .lg\:focus\:px-24:focus {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .lg\:focus\:py-32:focus {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .lg\:focus\:px-32:focus {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .lg\:focus\:py-40:focus {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .lg\:focus\:px-40:focus {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .lg\:focus\:py-48:focus {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .lg\:focus\:px-48:focus {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .lg\:focus\:py-56:focus {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .lg\:focus\:px-56:focus {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .lg\:focus\:py-64:focus {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .lg\:focus\:px-64:focus {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .lg\:focus\:py-px:focus {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .lg\:focus\:px-px:focus {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .lg\:focus\:py-00:focus {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .lg\:focus\:px-00:focus {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .lg\:focus\:py-01:focus {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .lg\:focus\:px-01:focus {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .lg\:focus\:py-02:focus {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:focus\:px-02:focus {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .lg\:focus\:py-03:focus {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .lg\:focus\:px-03:focus {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .lg\:focus\:py-04:focus {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .lg\:focus\:px-04:focus {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .lg\:focus\:py-05:focus {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .lg\:focus\:px-05:focus {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .lg\:focus\:py-06:focus {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .lg\:focus\:px-06:focus {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .lg\:focus\:py-08:focus {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .lg\:focus\:px-08:focus {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .lg\:focus\:pt-10:focus {
+    padding-top: 2.5rem;
+  }
+
+  .lg\:focus\:pr-10:focus {
+    padding-right: 2.5rem;
+  }
+
+  .lg\:focus\:pb-10:focus {
+    padding-bottom: 2.5rem;
+  }
+
+  .lg\:focus\:pl-10:focus {
+    padding-left: 2.5rem;
+  }
+
+  .lg\:focus\:pt-12:focus {
+    padding-top: 3rem;
+  }
+
+  .lg\:focus\:pr-12:focus {
+    padding-right: 3rem;
+  }
+
+  .lg\:focus\:pb-12:focus {
+    padding-bottom: 3rem;
+  }
+
+  .lg\:focus\:pl-12:focus {
+    padding-left: 3rem;
+  }
+
+  .lg\:focus\:pt-16:focus {
+    padding-top: 4rem;
+  }
+
+  .lg\:focus\:pr-16:focus {
+    padding-right: 4rem;
+  }
+
+  .lg\:focus\:pb-16:focus {
+    padding-bottom: 4rem;
+  }
+
+  .lg\:focus\:pl-16:focus {
+    padding-left: 4rem;
+  }
+
+  .lg\:focus\:pt-20:focus {
+    padding-top: 5rem;
+  }
+
+  .lg\:focus\:pr-20:focus {
+    padding-right: 5rem;
+  }
+
+  .lg\:focus\:pb-20:focus {
+    padding-bottom: 5rem;
+  }
+
+  .lg\:focus\:pl-20:focus {
+    padding-left: 5rem;
+  }
+
+  .lg\:focus\:pt-24:focus {
+    padding-top: 6rem;
+  }
+
+  .lg\:focus\:pr-24:focus {
+    padding-right: 6rem;
+  }
+
+  .lg\:focus\:pb-24:focus {
+    padding-bottom: 6rem;
+  }
+
+  .lg\:focus\:pl-24:focus {
+    padding-left: 6rem;
+  }
+
+  .lg\:focus\:pt-32:focus {
+    padding-top: 8rem;
+  }
+
+  .lg\:focus\:pr-32:focus {
+    padding-right: 8rem;
+  }
+
+  .lg\:focus\:pb-32:focus {
+    padding-bottom: 8rem;
+  }
+
+  .lg\:focus\:pl-32:focus {
+    padding-left: 8rem;
+  }
+
+  .lg\:focus\:pt-40:focus {
+    padding-top: 10rem;
+  }
+
+  .lg\:focus\:pr-40:focus {
+    padding-right: 10rem;
+  }
+
+  .lg\:focus\:pb-40:focus {
+    padding-bottom: 10rem;
+  }
+
+  .lg\:focus\:pl-40:focus {
+    padding-left: 10rem;
+  }
+
+  .lg\:focus\:pt-48:focus {
+    padding-top: 12rem;
+  }
+
+  .lg\:focus\:pr-48:focus {
+    padding-right: 12rem;
+  }
+
+  .lg\:focus\:pb-48:focus {
+    padding-bottom: 12rem;
+  }
+
+  .lg\:focus\:pl-48:focus {
+    padding-left: 12rem;
+  }
+
+  .lg\:focus\:pt-56:focus {
+    padding-top: 14rem;
+  }
+
+  .lg\:focus\:pr-56:focus {
+    padding-right: 14rem;
+  }
+
+  .lg\:focus\:pb-56:focus {
+    padding-bottom: 14rem;
+  }
+
+  .lg\:focus\:pl-56:focus {
+    padding-left: 14rem;
+  }
+
+  .lg\:focus\:pt-64:focus {
+    padding-top: 16rem;
+  }
+
+  .lg\:focus\:pr-64:focus {
+    padding-right: 16rem;
+  }
+
+  .lg\:focus\:pb-64:focus {
+    padding-bottom: 16rem;
+  }
+
+  .lg\:focus\:pl-64:focus {
+    padding-left: 16rem;
+  }
+
+  .lg\:focus\:pt-px:focus {
+    padding-top: 1px;
+  }
+
+  .lg\:focus\:pr-px:focus {
+    padding-right: 1px;
+  }
+
+  .lg\:focus\:pb-px:focus {
+    padding-bottom: 1px;
+  }
+
+  .lg\:focus\:pl-px:focus {
+    padding-left: 1px;
+  }
+
+  .lg\:focus\:pt-00:focus {
+    padding-top: 0;
+  }
+
+  .lg\:focus\:pr-00:focus {
+    padding-right: 0;
+  }
+
+  .lg\:focus\:pb-00:focus {
+    padding-bottom: 0;
+  }
+
+  .lg\:focus\:pl-00:focus {
+    padding-left: 0;
+  }
+
+  .lg\:focus\:pt-01:focus {
+    padding-top: 0.25rem;
+  }
+
+  .lg\:focus\:pr-01:focus {
+    padding-right: 0.25rem;
+  }
+
+  .lg\:focus\:pb-01:focus {
+    padding-bottom: 0.25rem;
+  }
+
+  .lg\:focus\:pl-01:focus {
+    padding-left: 0.25rem;
+  }
+
+  .lg\:focus\:pt-02:focus {
+    padding-top: 0.5rem;
+  }
+
+  .lg\:focus\:pr-02:focus {
+    padding-right: 0.5rem;
+  }
+
+  .lg\:focus\:pb-02:focus {
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:focus\:pl-02:focus {
+    padding-left: 0.5rem;
+  }
+
+  .lg\:focus\:pt-03:focus {
+    padding-top: 0.75rem;
+  }
+
+  .lg\:focus\:pr-03:focus {
+    padding-right: 0.75rem;
+  }
+
+  .lg\:focus\:pb-03:focus {
+    padding-bottom: 0.75rem;
+  }
+
+  .lg\:focus\:pl-03:focus {
+    padding-left: 0.75rem;
+  }
+
+  .lg\:focus\:pt-04:focus {
+    padding-top: 1rem;
+  }
+
+  .lg\:focus\:pr-04:focus {
+    padding-right: 1rem;
+  }
+
+  .lg\:focus\:pb-04:focus {
+    padding-bottom: 1rem;
+  }
+
+  .lg\:focus\:pl-04:focus {
+    padding-left: 1rem;
+  }
+
+  .lg\:focus\:pt-05:focus {
+    padding-top: 1.25rem;
+  }
+
+  .lg\:focus\:pr-05:focus {
+    padding-right: 1.25rem;
+  }
+
+  .lg\:focus\:pb-05:focus {
+    padding-bottom: 1.25rem;
+  }
+
+  .lg\:focus\:pl-05:focus {
+    padding-left: 1.25rem;
+  }
+
+  .lg\:focus\:pt-06:focus {
+    padding-top: 1.5rem;
+  }
+
+  .lg\:focus\:pr-06:focus {
+    padding-right: 1.5rem;
+  }
+
+  .lg\:focus\:pb-06:focus {
+    padding-bottom: 1.5rem;
+  }
+
+  .lg\:focus\:pl-06:focus {
+    padding-left: 1.5rem;
+  }
+
+  .lg\:focus\:pt-08:focus {
+    padding-top: 2rem;
+  }
+
+  .lg\:focus\:pr-08:focus {
+    padding-right: 2rem;
+  }
+
+  .lg\:focus\:pb-08:focus {
+    padding-bottom: 2rem;
+  }
+
+  .lg\:focus\:pl-08:focus {
+    padding-left: 2rem;
+  }
+
   .lg\:placeholder-transparent::-webkit-input-placeholder {
     color: transparent;
   }
@@ -48802,6 +53362,1146 @@ video {
   }
 
   .xl\:pl-08 {
+    padding-left: 2rem;
+  }
+
+  .xl\:hover\:p-10:hover {
+    padding: 2.5rem;
+  }
+
+  .xl\:hover\:p-12:hover {
+    padding: 3rem;
+  }
+
+  .xl\:hover\:p-16:hover {
+    padding: 4rem;
+  }
+
+  .xl\:hover\:p-20:hover {
+    padding: 5rem;
+  }
+
+  .xl\:hover\:p-24:hover {
+    padding: 6rem;
+  }
+
+  .xl\:hover\:p-32:hover {
+    padding: 8rem;
+  }
+
+  .xl\:hover\:p-40:hover {
+    padding: 10rem;
+  }
+
+  .xl\:hover\:p-48:hover {
+    padding: 12rem;
+  }
+
+  .xl\:hover\:p-56:hover {
+    padding: 14rem;
+  }
+
+  .xl\:hover\:p-64:hover {
+    padding: 16rem;
+  }
+
+  .xl\:hover\:p-px:hover {
+    padding: 1px;
+  }
+
+  .xl\:hover\:p-00:hover {
+    padding: 0;
+  }
+
+  .xl\:hover\:p-01:hover {
+    padding: 0.25rem;
+  }
+
+  .xl\:hover\:p-02:hover {
+    padding: 0.5rem;
+  }
+
+  .xl\:hover\:p-03:hover {
+    padding: 0.75rem;
+  }
+
+  .xl\:hover\:p-04:hover {
+    padding: 1rem;
+  }
+
+  .xl\:hover\:p-05:hover {
+    padding: 1.25rem;
+  }
+
+  .xl\:hover\:p-06:hover {
+    padding: 1.5rem;
+  }
+
+  .xl\:hover\:p-08:hover {
+    padding: 2rem;
+  }
+
+  .xl\:hover\:py-10:hover {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .xl\:hover\:px-10:hover {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .xl\:hover\:py-12:hover {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .xl\:hover\:px-12:hover {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .xl\:hover\:py-16:hover {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .xl\:hover\:px-16:hover {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .xl\:hover\:py-20:hover {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .xl\:hover\:px-20:hover {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .xl\:hover\:py-24:hover {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .xl\:hover\:px-24:hover {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .xl\:hover\:py-32:hover {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .xl\:hover\:px-32:hover {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .xl\:hover\:py-40:hover {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .xl\:hover\:px-40:hover {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .xl\:hover\:py-48:hover {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .xl\:hover\:px-48:hover {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .xl\:hover\:py-56:hover {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .xl\:hover\:px-56:hover {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .xl\:hover\:py-64:hover {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .xl\:hover\:px-64:hover {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .xl\:hover\:py-px:hover {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .xl\:hover\:px-px:hover {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .xl\:hover\:py-00:hover {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .xl\:hover\:px-00:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .xl\:hover\:py-01:hover {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .xl\:hover\:px-01:hover {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .xl\:hover\:py-02:hover {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .xl\:hover\:px-02:hover {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .xl\:hover\:py-03:hover {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .xl\:hover\:px-03:hover {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .xl\:hover\:py-04:hover {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .xl\:hover\:px-04:hover {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .xl\:hover\:py-05:hover {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .xl\:hover\:px-05:hover {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .xl\:hover\:py-06:hover {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .xl\:hover\:px-06:hover {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .xl\:hover\:py-08:hover {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .xl\:hover\:px-08:hover {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .xl\:hover\:pt-10:hover {
+    padding-top: 2.5rem;
+  }
+
+  .xl\:hover\:pr-10:hover {
+    padding-right: 2.5rem;
+  }
+
+  .xl\:hover\:pb-10:hover {
+    padding-bottom: 2.5rem;
+  }
+
+  .xl\:hover\:pl-10:hover {
+    padding-left: 2.5rem;
+  }
+
+  .xl\:hover\:pt-12:hover {
+    padding-top: 3rem;
+  }
+
+  .xl\:hover\:pr-12:hover {
+    padding-right: 3rem;
+  }
+
+  .xl\:hover\:pb-12:hover {
+    padding-bottom: 3rem;
+  }
+
+  .xl\:hover\:pl-12:hover {
+    padding-left: 3rem;
+  }
+
+  .xl\:hover\:pt-16:hover {
+    padding-top: 4rem;
+  }
+
+  .xl\:hover\:pr-16:hover {
+    padding-right: 4rem;
+  }
+
+  .xl\:hover\:pb-16:hover {
+    padding-bottom: 4rem;
+  }
+
+  .xl\:hover\:pl-16:hover {
+    padding-left: 4rem;
+  }
+
+  .xl\:hover\:pt-20:hover {
+    padding-top: 5rem;
+  }
+
+  .xl\:hover\:pr-20:hover {
+    padding-right: 5rem;
+  }
+
+  .xl\:hover\:pb-20:hover {
+    padding-bottom: 5rem;
+  }
+
+  .xl\:hover\:pl-20:hover {
+    padding-left: 5rem;
+  }
+
+  .xl\:hover\:pt-24:hover {
+    padding-top: 6rem;
+  }
+
+  .xl\:hover\:pr-24:hover {
+    padding-right: 6rem;
+  }
+
+  .xl\:hover\:pb-24:hover {
+    padding-bottom: 6rem;
+  }
+
+  .xl\:hover\:pl-24:hover {
+    padding-left: 6rem;
+  }
+
+  .xl\:hover\:pt-32:hover {
+    padding-top: 8rem;
+  }
+
+  .xl\:hover\:pr-32:hover {
+    padding-right: 8rem;
+  }
+
+  .xl\:hover\:pb-32:hover {
+    padding-bottom: 8rem;
+  }
+
+  .xl\:hover\:pl-32:hover {
+    padding-left: 8rem;
+  }
+
+  .xl\:hover\:pt-40:hover {
+    padding-top: 10rem;
+  }
+
+  .xl\:hover\:pr-40:hover {
+    padding-right: 10rem;
+  }
+
+  .xl\:hover\:pb-40:hover {
+    padding-bottom: 10rem;
+  }
+
+  .xl\:hover\:pl-40:hover {
+    padding-left: 10rem;
+  }
+
+  .xl\:hover\:pt-48:hover {
+    padding-top: 12rem;
+  }
+
+  .xl\:hover\:pr-48:hover {
+    padding-right: 12rem;
+  }
+
+  .xl\:hover\:pb-48:hover {
+    padding-bottom: 12rem;
+  }
+
+  .xl\:hover\:pl-48:hover {
+    padding-left: 12rem;
+  }
+
+  .xl\:hover\:pt-56:hover {
+    padding-top: 14rem;
+  }
+
+  .xl\:hover\:pr-56:hover {
+    padding-right: 14rem;
+  }
+
+  .xl\:hover\:pb-56:hover {
+    padding-bottom: 14rem;
+  }
+
+  .xl\:hover\:pl-56:hover {
+    padding-left: 14rem;
+  }
+
+  .xl\:hover\:pt-64:hover {
+    padding-top: 16rem;
+  }
+
+  .xl\:hover\:pr-64:hover {
+    padding-right: 16rem;
+  }
+
+  .xl\:hover\:pb-64:hover {
+    padding-bottom: 16rem;
+  }
+
+  .xl\:hover\:pl-64:hover {
+    padding-left: 16rem;
+  }
+
+  .xl\:hover\:pt-px:hover {
+    padding-top: 1px;
+  }
+
+  .xl\:hover\:pr-px:hover {
+    padding-right: 1px;
+  }
+
+  .xl\:hover\:pb-px:hover {
+    padding-bottom: 1px;
+  }
+
+  .xl\:hover\:pl-px:hover {
+    padding-left: 1px;
+  }
+
+  .xl\:hover\:pt-00:hover {
+    padding-top: 0;
+  }
+
+  .xl\:hover\:pr-00:hover {
+    padding-right: 0;
+  }
+
+  .xl\:hover\:pb-00:hover {
+    padding-bottom: 0;
+  }
+
+  .xl\:hover\:pl-00:hover {
+    padding-left: 0;
+  }
+
+  .xl\:hover\:pt-01:hover {
+    padding-top: 0.25rem;
+  }
+
+  .xl\:hover\:pr-01:hover {
+    padding-right: 0.25rem;
+  }
+
+  .xl\:hover\:pb-01:hover {
+    padding-bottom: 0.25rem;
+  }
+
+  .xl\:hover\:pl-01:hover {
+    padding-left: 0.25rem;
+  }
+
+  .xl\:hover\:pt-02:hover {
+    padding-top: 0.5rem;
+  }
+
+  .xl\:hover\:pr-02:hover {
+    padding-right: 0.5rem;
+  }
+
+  .xl\:hover\:pb-02:hover {
+    padding-bottom: 0.5rem;
+  }
+
+  .xl\:hover\:pl-02:hover {
+    padding-left: 0.5rem;
+  }
+
+  .xl\:hover\:pt-03:hover {
+    padding-top: 0.75rem;
+  }
+
+  .xl\:hover\:pr-03:hover {
+    padding-right: 0.75rem;
+  }
+
+  .xl\:hover\:pb-03:hover {
+    padding-bottom: 0.75rem;
+  }
+
+  .xl\:hover\:pl-03:hover {
+    padding-left: 0.75rem;
+  }
+
+  .xl\:hover\:pt-04:hover {
+    padding-top: 1rem;
+  }
+
+  .xl\:hover\:pr-04:hover {
+    padding-right: 1rem;
+  }
+
+  .xl\:hover\:pb-04:hover {
+    padding-bottom: 1rem;
+  }
+
+  .xl\:hover\:pl-04:hover {
+    padding-left: 1rem;
+  }
+
+  .xl\:hover\:pt-05:hover {
+    padding-top: 1.25rem;
+  }
+
+  .xl\:hover\:pr-05:hover {
+    padding-right: 1.25rem;
+  }
+
+  .xl\:hover\:pb-05:hover {
+    padding-bottom: 1.25rem;
+  }
+
+  .xl\:hover\:pl-05:hover {
+    padding-left: 1.25rem;
+  }
+
+  .xl\:hover\:pt-06:hover {
+    padding-top: 1.5rem;
+  }
+
+  .xl\:hover\:pr-06:hover {
+    padding-right: 1.5rem;
+  }
+
+  .xl\:hover\:pb-06:hover {
+    padding-bottom: 1.5rem;
+  }
+
+  .xl\:hover\:pl-06:hover {
+    padding-left: 1.5rem;
+  }
+
+  .xl\:hover\:pt-08:hover {
+    padding-top: 2rem;
+  }
+
+  .xl\:hover\:pr-08:hover {
+    padding-right: 2rem;
+  }
+
+  .xl\:hover\:pb-08:hover {
+    padding-bottom: 2rem;
+  }
+
+  .xl\:hover\:pl-08:hover {
+    padding-left: 2rem;
+  }
+
+  .xl\:focus\:p-10:focus {
+    padding: 2.5rem;
+  }
+
+  .xl\:focus\:p-12:focus {
+    padding: 3rem;
+  }
+
+  .xl\:focus\:p-16:focus {
+    padding: 4rem;
+  }
+
+  .xl\:focus\:p-20:focus {
+    padding: 5rem;
+  }
+
+  .xl\:focus\:p-24:focus {
+    padding: 6rem;
+  }
+
+  .xl\:focus\:p-32:focus {
+    padding: 8rem;
+  }
+
+  .xl\:focus\:p-40:focus {
+    padding: 10rem;
+  }
+
+  .xl\:focus\:p-48:focus {
+    padding: 12rem;
+  }
+
+  .xl\:focus\:p-56:focus {
+    padding: 14rem;
+  }
+
+  .xl\:focus\:p-64:focus {
+    padding: 16rem;
+  }
+
+  .xl\:focus\:p-px:focus {
+    padding: 1px;
+  }
+
+  .xl\:focus\:p-00:focus {
+    padding: 0;
+  }
+
+  .xl\:focus\:p-01:focus {
+    padding: 0.25rem;
+  }
+
+  .xl\:focus\:p-02:focus {
+    padding: 0.5rem;
+  }
+
+  .xl\:focus\:p-03:focus {
+    padding: 0.75rem;
+  }
+
+  .xl\:focus\:p-04:focus {
+    padding: 1rem;
+  }
+
+  .xl\:focus\:p-05:focus {
+    padding: 1.25rem;
+  }
+
+  .xl\:focus\:p-06:focus {
+    padding: 1.5rem;
+  }
+
+  .xl\:focus\:p-08:focus {
+    padding: 2rem;
+  }
+
+  .xl\:focus\:py-10:focus {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .xl\:focus\:px-10:focus {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .xl\:focus\:py-12:focus {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .xl\:focus\:px-12:focus {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .xl\:focus\:py-16:focus {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .xl\:focus\:px-16:focus {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  .xl\:focus\:py-20:focus {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .xl\:focus\:px-20:focus {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .xl\:focus\:py-24:focus {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .xl\:focus\:px-24:focus {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .xl\:focus\:py-32:focus {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .xl\:focus\:px-32:focus {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .xl\:focus\:py-40:focus {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+
+  .xl\:focus\:px-40:focus {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+
+  .xl\:focus\:py-48:focus {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+
+  .xl\:focus\:px-48:focus {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  .xl\:focus\:py-56:focus {
+    padding-top: 14rem;
+    padding-bottom: 14rem;
+  }
+
+  .xl\:focus\:px-56:focus {
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+
+  .xl\:focus\:py-64:focus {
+    padding-top: 16rem;
+    padding-bottom: 16rem;
+  }
+
+  .xl\:focus\:px-64:focus {
+    padding-left: 16rem;
+    padding-right: 16rem;
+  }
+
+  .xl\:focus\:py-px:focus {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .xl\:focus\:px-px:focus {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .xl\:focus\:py-00:focus {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .xl\:focus\:px-00:focus {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .xl\:focus\:py-01:focus {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .xl\:focus\:px-01:focus {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .xl\:focus\:py-02:focus {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .xl\:focus\:px-02:focus {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .xl\:focus\:py-03:focus {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .xl\:focus\:px-03:focus {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .xl\:focus\:py-04:focus {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .xl\:focus\:px-04:focus {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .xl\:focus\:py-05:focus {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .xl\:focus\:px-05:focus {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .xl\:focus\:py-06:focus {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .xl\:focus\:px-06:focus {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .xl\:focus\:py-08:focus {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .xl\:focus\:px-08:focus {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .xl\:focus\:pt-10:focus {
+    padding-top: 2.5rem;
+  }
+
+  .xl\:focus\:pr-10:focus {
+    padding-right: 2.5rem;
+  }
+
+  .xl\:focus\:pb-10:focus {
+    padding-bottom: 2.5rem;
+  }
+
+  .xl\:focus\:pl-10:focus {
+    padding-left: 2.5rem;
+  }
+
+  .xl\:focus\:pt-12:focus {
+    padding-top: 3rem;
+  }
+
+  .xl\:focus\:pr-12:focus {
+    padding-right: 3rem;
+  }
+
+  .xl\:focus\:pb-12:focus {
+    padding-bottom: 3rem;
+  }
+
+  .xl\:focus\:pl-12:focus {
+    padding-left: 3rem;
+  }
+
+  .xl\:focus\:pt-16:focus {
+    padding-top: 4rem;
+  }
+
+  .xl\:focus\:pr-16:focus {
+    padding-right: 4rem;
+  }
+
+  .xl\:focus\:pb-16:focus {
+    padding-bottom: 4rem;
+  }
+
+  .xl\:focus\:pl-16:focus {
+    padding-left: 4rem;
+  }
+
+  .xl\:focus\:pt-20:focus {
+    padding-top: 5rem;
+  }
+
+  .xl\:focus\:pr-20:focus {
+    padding-right: 5rem;
+  }
+
+  .xl\:focus\:pb-20:focus {
+    padding-bottom: 5rem;
+  }
+
+  .xl\:focus\:pl-20:focus {
+    padding-left: 5rem;
+  }
+
+  .xl\:focus\:pt-24:focus {
+    padding-top: 6rem;
+  }
+
+  .xl\:focus\:pr-24:focus {
+    padding-right: 6rem;
+  }
+
+  .xl\:focus\:pb-24:focus {
+    padding-bottom: 6rem;
+  }
+
+  .xl\:focus\:pl-24:focus {
+    padding-left: 6rem;
+  }
+
+  .xl\:focus\:pt-32:focus {
+    padding-top: 8rem;
+  }
+
+  .xl\:focus\:pr-32:focus {
+    padding-right: 8rem;
+  }
+
+  .xl\:focus\:pb-32:focus {
+    padding-bottom: 8rem;
+  }
+
+  .xl\:focus\:pl-32:focus {
+    padding-left: 8rem;
+  }
+
+  .xl\:focus\:pt-40:focus {
+    padding-top: 10rem;
+  }
+
+  .xl\:focus\:pr-40:focus {
+    padding-right: 10rem;
+  }
+
+  .xl\:focus\:pb-40:focus {
+    padding-bottom: 10rem;
+  }
+
+  .xl\:focus\:pl-40:focus {
+    padding-left: 10rem;
+  }
+
+  .xl\:focus\:pt-48:focus {
+    padding-top: 12rem;
+  }
+
+  .xl\:focus\:pr-48:focus {
+    padding-right: 12rem;
+  }
+
+  .xl\:focus\:pb-48:focus {
+    padding-bottom: 12rem;
+  }
+
+  .xl\:focus\:pl-48:focus {
+    padding-left: 12rem;
+  }
+
+  .xl\:focus\:pt-56:focus {
+    padding-top: 14rem;
+  }
+
+  .xl\:focus\:pr-56:focus {
+    padding-right: 14rem;
+  }
+
+  .xl\:focus\:pb-56:focus {
+    padding-bottom: 14rem;
+  }
+
+  .xl\:focus\:pl-56:focus {
+    padding-left: 14rem;
+  }
+
+  .xl\:focus\:pt-64:focus {
+    padding-top: 16rem;
+  }
+
+  .xl\:focus\:pr-64:focus {
+    padding-right: 16rem;
+  }
+
+  .xl\:focus\:pb-64:focus {
+    padding-bottom: 16rem;
+  }
+
+  .xl\:focus\:pl-64:focus {
+    padding-left: 16rem;
+  }
+
+  .xl\:focus\:pt-px:focus {
+    padding-top: 1px;
+  }
+
+  .xl\:focus\:pr-px:focus {
+    padding-right: 1px;
+  }
+
+  .xl\:focus\:pb-px:focus {
+    padding-bottom: 1px;
+  }
+
+  .xl\:focus\:pl-px:focus {
+    padding-left: 1px;
+  }
+
+  .xl\:focus\:pt-00:focus {
+    padding-top: 0;
+  }
+
+  .xl\:focus\:pr-00:focus {
+    padding-right: 0;
+  }
+
+  .xl\:focus\:pb-00:focus {
+    padding-bottom: 0;
+  }
+
+  .xl\:focus\:pl-00:focus {
+    padding-left: 0;
+  }
+
+  .xl\:focus\:pt-01:focus {
+    padding-top: 0.25rem;
+  }
+
+  .xl\:focus\:pr-01:focus {
+    padding-right: 0.25rem;
+  }
+
+  .xl\:focus\:pb-01:focus {
+    padding-bottom: 0.25rem;
+  }
+
+  .xl\:focus\:pl-01:focus {
+    padding-left: 0.25rem;
+  }
+
+  .xl\:focus\:pt-02:focus {
+    padding-top: 0.5rem;
+  }
+
+  .xl\:focus\:pr-02:focus {
+    padding-right: 0.5rem;
+  }
+
+  .xl\:focus\:pb-02:focus {
+    padding-bottom: 0.5rem;
+  }
+
+  .xl\:focus\:pl-02:focus {
+    padding-left: 0.5rem;
+  }
+
+  .xl\:focus\:pt-03:focus {
+    padding-top: 0.75rem;
+  }
+
+  .xl\:focus\:pr-03:focus {
+    padding-right: 0.75rem;
+  }
+
+  .xl\:focus\:pb-03:focus {
+    padding-bottom: 0.75rem;
+  }
+
+  .xl\:focus\:pl-03:focus {
+    padding-left: 0.75rem;
+  }
+
+  .xl\:focus\:pt-04:focus {
+    padding-top: 1rem;
+  }
+
+  .xl\:focus\:pr-04:focus {
+    padding-right: 1rem;
+  }
+
+  .xl\:focus\:pb-04:focus {
+    padding-bottom: 1rem;
+  }
+
+  .xl\:focus\:pl-04:focus {
+    padding-left: 1rem;
+  }
+
+  .xl\:focus\:pt-05:focus {
+    padding-top: 1.25rem;
+  }
+
+  .xl\:focus\:pr-05:focus {
+    padding-right: 1.25rem;
+  }
+
+  .xl\:focus\:pb-05:focus {
+    padding-bottom: 1.25rem;
+  }
+
+  .xl\:focus\:pl-05:focus {
+    padding-left: 1.25rem;
+  }
+
+  .xl\:focus\:pt-06:focus {
+    padding-top: 1.5rem;
+  }
+
+  .xl\:focus\:pr-06:focus {
+    padding-right: 1.5rem;
+  }
+
+  .xl\:focus\:pb-06:focus {
+    padding-bottom: 1.5rem;
+  }
+
+  .xl\:focus\:pl-06:focus {
+    padding-left: 1.5rem;
+  }
+
+  .xl\:focus\:pt-08:focus {
+    padding-top: 2rem;
+  }
+
+  .xl\:focus\:pr-08:focus {
+    padding-right: 2rem;
+  }
+
+  .xl\:focus\:pb-08:focus {
+    padding-bottom: 2rem;
+  }
+
+  .xl\:focus\:pl-08:focus {
     padding-left: 2rem;
   }
 

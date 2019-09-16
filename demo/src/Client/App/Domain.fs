@@ -23,7 +23,7 @@ type UserProfile =
   { UserName: string
     Password: string
     Birthday: DateTime
-    Roles: string list
+    Roles: int list
     Address: Address }
   static member defaultValue =
     { UserName = "email"

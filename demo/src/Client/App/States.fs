@@ -35,8 +35,8 @@ let init() =
 
 
 let update msg (state: State) =
-    match msg with
-    | UserProfileMsg msg' ->
-        { state with
-            UserProfileForm = LightForm.States.update validators msg' state.UserProfileForm }
-        , Cmd.none
+  match msg with
+  | UserProfileMsg msg' ->
+      { state with
+          UserProfileForm = LightForm.States.update validators msg' state.UserProfileForm }
+      , Cmd.none
