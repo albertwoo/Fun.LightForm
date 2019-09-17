@@ -1,11 +1,12 @@
-module Fun.LightForm.Views
+module Fun.LightForm.FormViews
 
 open System
 open Fable.React
 open Fable.React.Props
 
 
-type FieldRenderer = FormField -> (LightFormMsg -> unit) -> Fable.React.ReactElement
+type FieldRenderer = FieldRenderer<Fable.React.ReactElement>
+
 
 let formElement (state: LightForm) dispatch key (render: FieldRenderer) =
     state
@@ -19,11 +20,11 @@ let formElement (state: LightForm) dispatch key (render: FieldRenderer) =
              [ str (sprintf "Field is not configured for %s" key) ])
 
 
-let formOuter classes children = div [ Class classes ] children
+let fieldOuter classes children = div [ Class classes ] children
 
-let formLabel classes label = div [ Class classes ] [ str label ]
+let fieldLabel classes label = div [ Class classes ] [ str label ]
 
-let formError classes fieldValue =
+let fieldError classes fieldValue =
     match fieldValue with
     | Valid _ -> []
     | Invalid (_, es) ->
@@ -47,10 +48,10 @@ type InputProp =
     Type: InputType
     Label: string }
 
-let formInput (prop: InputProp): FieldRenderer =
+let inputField (prop: InputProp): FieldRenderer =
     fun field dispatch ->
-      formOuter prop.OuterClasses [
-        yield formLabel prop.LabelClasses prop.Label
+      fieldOuter prop.OuterClasses [
+        yield fieldLabel prop.LabelClasses prop.Label
 
         yield input [
           Class prop.InputClasses
@@ -83,7 +84,7 @@ let formInput (prop: InputProp): FieldRenderer =
               |> dispatch)
         ]
 
-        yield! formError prop.ErrorClasses field.Value
+        yield! fieldError prop.ErrorClasses field.Value
       ]
 
 
@@ -96,7 +97,7 @@ type SelectsProp<'id, 'v> =
     SourceList: ('id * 'v) list
     Displayer: 'id * 'v -> ReactElement }
 
-let formSelects (prop: SelectsProp<_, _>): FieldRenderer =
+let selectsField (prop: SelectsProp<_, _>): FieldRenderer =
     fun field disp ->
       let ids =
         try field |> getFormFieldValue :?> 'id seq
@@ -109,8 +110,8 @@ let formSelects (prop: SelectsProp<_, _>): FieldRenderer =
           | [], x -> id::x
           | _, x  -> x
         |> List.toArray
-      formOuter prop.OuterClasses [
-        yield formLabel prop.LabelClasses prop.Label
+      fieldOuter prop.OuterClasses [
+        yield fieldLabel prop.LabelClasses prop.Label
 
         for (id, v) in prop.SourceList do
           yield div [
@@ -125,5 +126,5 @@ let formSelects (prop: SelectsProp<_, _>): FieldRenderer =
               prop.Displayer (id, v)
             ]
 
-        yield! formError prop.ErrorClasses field.Value
+        yield! fieldError prop.ErrorClasses field.Value
       ]

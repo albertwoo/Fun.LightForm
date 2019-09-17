@@ -2,10 +2,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0-beta1</Version>
+    <Company>https://www.slaveoftime.fun</Company>
+    <Copyright>https://www.slaveoftime.fun</Copyright>
+    <PackageProjectUrl>https://github.com/albertwoo/Fun.LightForm</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/albertwoo/Fun.LightForm</RepositoryUrl>
+    <PackageTags>Fabulous, Xamarin, Form, F#</PackageTags>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Fun.LightForm.Fable\Domain.fs" Link="SimpleForm\Domain.fs" />
-    <Compile Include="..\Fun.LightForm.Fable\Validators.fs" Link="SimpleForm\Validators.fs" />
-    <Compile Include="..\Fun.LightForm.Fable\States.fs" Link="SimpleForm\States.fs" />
+    <Compile Include="..\Fun.LightForm.Fable\Domain.fs" Link="Domain.fs" />
+    <Compile Include="..\Fun.LightForm.Fable\Utils.fs" Link="Utils.fs" />
+    <Compile Include="..\Fun.LightForm.Fable\Validators.fs" Link="Validators.fs" />
   </ItemGroup>
 </Project>

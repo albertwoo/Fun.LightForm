@@ -13,7 +13,7 @@ let addValidations key newValidators oldValidators: Map<string, Validator list> 
     Map.add key vs oldValidators
 
 
-let requiredAndNot errorMsg targetValue: Validator =
+let requiredAndNot targetValue errorMsg: Validator =
     fun field ->
         let value = getFormFieldValue field
         if value = null || 
@@ -22,29 +22,29 @@ let requiredAndNot errorMsg targetValue: Validator =
         then Error [ errorMsg ]
         else Ok ()
 
-let required errorMsg = requiredAndNot errorMsg null
+let required errorMsg = requiredAndNot null errorMsg
 
 
-let maxLength errorMsg max: Validator =
+let maxLength max errorMsg: Validator =
     fun field ->
         if getFormFieldValue field <> null && (unbox<string>field.Value).Length > max
         then Error [ errorMsg ] 
         else Ok()
 
-let minLength errorMsg min: Validator =
+let minLength min errorMsg: Validator =
     fun field ->
         if getFormFieldValue field <> null && (unbox<string>field.Value).Length < min
         then Error [ errorMsg ]
         else Ok()
 
 
-let maxNum errorMsg max: Validator =
+let maxNum max errorMsg: Validator =
     fun field ->
         if getFormFieldValue field <> null && unbox<float> field.Value > max
         then Error [ errorMsg ]
         else Ok()
 
-let minNum errorMsg min: Validator =
+let minNum min errorMsg: Validator =
     fun field ->
         if getFormFieldValue field <> null && unbox<float> field.Value < min
         then Error [ errorMsg ]
@@ -61,7 +61,7 @@ let dateValidator errorMsg: Validator =
         | false, _ -> Error [ errorMsg ]
 
 
-let seqMinLen errorMsg min: Validator =
+let seqMinLen min errorMsg: Validator =
   fun field ->
     try
       if getFormFieldValue field |> unbox<_ seq> |> Seq.length < min
@@ -70,7 +70,7 @@ let seqMinLen errorMsg min: Validator =
     with _ ->
       Error [ "Not a sequence" ]
 
-let seqMaxLen errorMsg max: Validator =
+let seqMaxLen max errorMsg: Validator =
   fun field ->
     try
       if getFormFieldValue field |> unbox<_ seq> |> Seq.length > max
