@@ -1,7 +1,7 @@
 module Client.App.States
 
 open Elmish
-open Fun
+open Fun.LightForm
 open Fun.LightForm.Validators
 
 
@@ -17,20 +17,20 @@ let validators =
         required "Password is reuqired"
         maxLength "This field`s max length is 20" 20
         (fun f -> if f.Value.ToString().Contains("password")
-                  then LightForm.Domain.Invalid [ "Cannot use passsord as password" ]
-                  else LightForm.Domain.Valid)
+                  then Error [ "Cannot use passsord as password" ]
+                  else Ok())
       ]
+  |> addValidations "Birthday" [ dateValidator "Not a valid Date" ]
   |> addValidations "Roles"
       [
-        listMinLen "Should at least contains one role" 1
+        seqMinLen "Should at least contains one role" 1
       ]
 
 
 let init() =
   { UserProfileForm =
-      LightForm.Utils.generateFormByValue typeof<UserProfile> UserProfile.defaultValue
-      |> LightForm.States.validateForm validators
-      |> fst }
+      generateFormByValue typeof<UserProfile> UserProfile.defaultValue
+      |> updateFormWithValidators validators }
   , Cmd.none
 
 
@@ -38,5 +38,5 @@ let update msg (state: State) =
   match msg with
   | UserProfileMsg msg' ->
       { state with
-          UserProfileForm = LightForm.States.update validators msg' state.UserProfileForm }
+          UserProfileForm = updateFormWithMsg validators msg' state.UserProfileForm }
       , Cmd.none

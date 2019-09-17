@@ -1,7 +1,7 @@
 module rec Fun.LightForm.Validators
 
 open System
-open Domain
+open Fun.LightForm.Utils
 
 
 let addValidations key newValidators oldValidators: Map<string, Validator list> =
@@ -13,68 +13,68 @@ let addValidations key newValidators oldValidators: Map<string, Validator list> 
     Map.add key vs oldValidators
 
 
-let required errorMsg: Validator =
+let requiredAndNot errorMsg targetValue: Validator =
     fun field ->
-        if field.Value = null || 
-           String.IsNullOrEmpty(field.Value.ToString())
-        then Invalid [ errorMsg ]
-        else Valid
+        let value = getFormFieldValue field
+        if value = null || 
+           String.IsNullOrEmpty(field.Value.ToString()) ||
+           value = targetValue
+        then Error [ errorMsg ]
+        else Ok ()
 
-let requiredAndNot errorMsg value: Validator =
-    fun field ->
-        required errorMsg { field with Value = if field.Value = box value then null else box 1 }
+let required errorMsg = requiredAndNot errorMsg null
 
 
 let maxLength errorMsg max: Validator =
     fun field ->
-        if field.Value <> null && (unbox<string>field.Value).Length > max
-        then Invalid [ errorMsg ] 
-        else Valid
+        if getFormFieldValue field <> null && (unbox<string>field.Value).Length > max
+        then Error [ errorMsg ] 
+        else Ok()
 
-let minLength errorMsg min : Validator =
+let minLength errorMsg min: Validator =
     fun field ->
-        if field.Value <> null && (unbox<string>field.Value).Length < min
-        then Invalid [ errorMsg ]
-        else Valid
+        if getFormFieldValue field <> null && (unbox<string>field.Value).Length < min
+        then Error [ errorMsg ]
+        else Ok()
 
 
 let maxNum errorMsg max: Validator =
     fun field ->
-        if field.Value <> null && unbox<float> field.Value > max
-        then Invalid [ errorMsg ]
-        else Valid
+        if getFormFieldValue field <> null && unbox<float> field.Value > max
+        then Error [ errorMsg ]
+        else Ok()
 
 let minNum errorMsg min: Validator =
     fun field ->
-        if field.Value <> null && unbox<float> field.Value < min
-        then Invalid [ errorMsg ]
-        else Valid
+        if getFormFieldValue field <> null && unbox<float> field.Value < min
+        then Error [ errorMsg ]
+        else Ok()
 
 
 let dateValidator errorMsg: Validator =
-  fun f ->
-    match f.Value with
-    | :? DateTime as d -> Valid
+  fun field ->
+    match getFormFieldValue field with
+    | :? DateTime -> Ok()
     | x ->
         match string x |> DateTime.TryParse with
-        | true, _ -> Valid
-        | false, _ -> Invalid [ errorMsg ]
+        | true, _ -> Ok()
+        | false, _ -> Error [ errorMsg ]
 
 
-let listMinLen errorMsg min: Validator =
-  fun f ->
+let seqMinLen errorMsg min: Validator =
+  fun field ->
     try
-        if f.Value |> unbox<_ seq> |> Seq.length < min
-        then Invalid [ errorMsg ]
-        else Valid
-      with _ ->
-        Valid
+      if getFormFieldValue field |> unbox<_ seq> |> Seq.length < min
+      then Error [ errorMsg ]
+      else Ok()
+    with _ ->
+      Error [ "Not a sequence" ]
 
-let listMaxLen errorMsg max: Validator =
-  fun f ->
+let seqMaxLen errorMsg max: Validator =
+  fun field ->
     try
-        if f.Value |> unbox<_ seq> |> Seq.length > max
-        then Invalid [ errorMsg ]
-        else Valid
-      with _ ->
-        Valid
+      if getFormFieldValue field |> unbox<_ seq> |> Seq.length > max
+      then Error [ errorMsg ]
+      else Ok()
+    with _ ->
+      Error [ "Not a sequence" ]

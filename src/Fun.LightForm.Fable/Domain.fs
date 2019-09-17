@@ -1,17 +1,19 @@
-module rec Fun.LightForm.Domain
+namespace rec Fun.LightForm
+
+type LightForm = FormField list
+
+type LightFormMsg =
+    | ChangeField of FieldKey * value: obj
 
 
-type Model = FormField list
-
-type Msg =
-    | OnChangeField of key: string * value: obj
-
+type FieldKey = string
 
 type FormField =
-  { Name : string
-    Value : obj
-    ValidationState : ValidationState }
+  { Name: FieldKey
+    Value: FieldValue }
 
-type ValidationState = Valid | Invalid of string list
+type FieldValue =
+  | Valid of obj
+  | Invalid of obj * string list
 
-type Validator = FormField -> ValidationState
+type Validator = FormField -> Result<unit, string list>

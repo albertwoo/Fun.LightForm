@@ -1,37 +1,34 @@
+[<AutoOpen>]
 module rec Fun.LightForm.Utils
 
 open Fable.Core.JsInterop
 open Microsoft.FSharp.Reflection
-open Thoth
-open Domain
 
 
-let getValidationMsgs (translations: Map<string, string>) =
-    translations
-    |> Map.partition (fun k v -> k.StartsWith("Validation.")) 
-    |> fst
-
-
-let generateFieldBuilder(name, defaultValue) =
-  { Name = name
-    Value = defaultValue
-    ValidationState = Valid }
-
-
-
-let inline getField (fieldName: string) (o: Json.JsonValue) = o?(fieldName)
+let inline private getRecordFieldValue (fieldName: string) (o: obj) = o?(fieldName)
 
 let rec generateFormByValue ty value =
     FSharpType.GetRecordFields ty
     |> Seq.toList
     |> List.map (fun p ->
         if FSharpType.IsRecord p.PropertyType then
-          getField p.Name value
+          getRecordFieldValue p.Name value
           |> generateFormByValue p.PropertyType 
           |> List.map (fun f -> { f with Name = sprintf "%s:%s" p.Name f.Name })
         else
-          [ generateFieldBuilder (p.Name, getField p.Name value) ])
+          [
+            {
+              Name = p.Name
+              Value = Valid (getRecordFieldValue p.Name value)
+            }
+          ])
     |> List.concat
+
+
+let getFormFieldValue field =
+    match field.Value with
+    | Valid value
+    | Invalid (value, _) -> value
 
 
 //let rec toJsonForFrom ty (model: Model) =

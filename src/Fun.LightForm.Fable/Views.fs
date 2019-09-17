@@ -3,12 +3,11 @@ module Fun.LightForm.Views
 open System
 open Fable.React
 open Fable.React.Props
-open Domain
 
 
-type FieldRenderer = FormField -> (Msg -> unit) -> Fable.React.ReactElement
+type FieldRenderer = FormField -> (LightFormMsg -> unit) -> Fable.React.ReactElement
 
-let formElement (state: Model) dispatch key (render: FieldRenderer) =
+let formElement (state: LightForm) dispatch key (render: FieldRenderer) =
     state
     |> List.tryFind (fun x -> x.Name = key)
     |> Option.map (fun field ->
@@ -24,13 +23,13 @@ let formOuter classes children = div [ Class classes ] children
 
 let formLabel classes label = div [ Class classes ] [ str label ]
 
-let formError classes state =
-  match state with
-  | Valid -> [ ]
-  | Invalid es ->
-       [
-          for e in es -> div [ Class classes ] [ str e ]
-       ]
+let formError classes fieldValue =
+    match fieldValue with
+    | Valid _ -> []
+    | Invalid (_, es) ->
+         [
+            for e in es -> div [ Class classes ] [ str e ]
+         ]
 
 
 type InputType =
@@ -64,25 +63,27 @@ let formInput (prop: InputProp): FieldRenderer =
                | Password -> "password"
                )
           DefaultValue (
+              let value = field |> getFormFieldValue
               match prop.Type with
               | Email
               | Text
               | Password
-              | Number -> string field.Value
-              | DateTime f -> (field.Value :?> DateTime).ToString(f)
+              | Number -> string value
+              | DateTime f ->
+                  try (value :?> DateTime).ToString(f)
+                  with _ -> string value
               )
           OnChange (fun e ->
               match prop.Type with
               | Email
               | Text
               | Password
-              | Number -> e.Value |> box
-              | DateTime _ -> DateTime.Parse e.Value |> box
-              |> fun v -> OnChangeField (field.Name, v)
+              | Number
+              | DateTime _ -> ChangeField (field.Name, e.Value)
               |> dispatch)
         ]
 
-        yield! formError prop.ErrorClasses field.ValidationState
+        yield! formError prop.ErrorClasses field.Value
       ]
 
 
@@ -96,33 +97,33 @@ type SelectsProp<'id, 'v> =
     Displayer: 'id * 'v -> ReactElement }
 
 let formSelects (prop: SelectsProp<_, _>): FieldRenderer =
-  fun f disp ->
-    let ids =
-      try f.Value :?> 'id seq
-      with _ -> [||] :> 'id seq
-    let createNewValue id =
-      ids
-      |> List.ofSeq
-      |> List.partition (fun id' -> id = id')
-      |> function
-        | [], x -> id::x
-        | _, x  -> x
-      |> List.toArray
-    formOuter prop.OuterClasses [
-      yield formLabel prop.LabelClasses prop.Label
+    fun field disp ->
+      let ids =
+        try field |> getFormFieldValue :?> 'id seq
+        with _ -> [||] :> 'id seq
+      let createNewValue id =
+        ids
+        |> List.ofSeq
+        |> List.partition (fun id' -> id = id')
+        |> function
+          | [], x -> id::x
+          | _, x  -> x
+        |> List.toArray
+      formOuter prop.OuterClasses [
+        yield formLabel prop.LabelClasses prop.Label
 
-      for (id, v) in prop.SourceList do
-        yield div [
-            Class prop.InputClasses
-          ] [
-            input [
-              Type "checkbox"
-              Value (ids |> Seq.exists ((=) id))
-              OnChange (fun _ -> OnChangeField (f.Name, box (createNewValue id)) |> disp)
+        for (id, v) in prop.SourceList do
+          yield div [
               Class prop.InputClasses
+            ] [
+              input [
+                Type "checkbox"
+                Value (ids |> Seq.exists ((=) id))
+                OnChange (fun _ -> ChangeField (field.Name, box (createNewValue id)) |> disp)
+                Class prop.InputClasses
+              ]
+              prop.Displayer (id, v)
             ]
-            prop.Displayer (id, v)
-          ]
 
-      yield! formError prop.ErrorClasses f.ValidationState
-    ]
+        yield! formError prop.ErrorClasses field.Value
+      ]

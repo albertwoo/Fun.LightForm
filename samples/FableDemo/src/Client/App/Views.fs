@@ -92,7 +92,7 @@ let app state dispatch =
         Classes [
           tailwind.``sm:w-full``
           tailwind.``md:w-01/04``
-          tailwind.``shadow-xl``
+          tailwind.``shadow-lg``
         ]
       ] [
         formEl "UserName"         (formInput InputType.Email "Email")

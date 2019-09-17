@@ -2,13 +2,13 @@
 module rec Client.App.Domain
 
 open System
-open Fun
+open Fun.LightForm
 
 type State =
-  { UserProfileForm: LightForm.Domain.Model }
+  { UserProfileForm: LightForm }
 
 type Msg =
-  | UserProfileMsg of LightForm.Domain.Msg
+  | UserProfileMsg of LightFormMsg
 
 
 type Page =

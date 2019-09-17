@@ -1,45 +1,54 @@
-module rec Fun.LightForm.States
+[<AutoOpen>]
+module rec Fun.LightForm.LightFormState
 
-open Domain
-
-
-let private validate validators field =
-    { field with 
-        ValidationState =
-            validators
-            |> Map.tryFind field.Name
-            |> Option.defaultValue []
-            |> List.fold (fun s v ->
-                try match v field with
-                    | Valid     -> s
-                    | Invalid x -> s@x
-                with ex -> s@[ex.Message])
-                []
-            |> function
-                | [] -> Valid
-                | x -> Invalid x }
+open Fun.LightForm.Utils
 
 
-let update validators msg model =
+let private validateValue (validators: Map<FieldKey, Validator list>) field value =
+    validators
+    |> Map.filter (fun k _ -> k = field.Name)
+    |> Map.toList
+    |> List.map snd
+    |> List.concat
+    |> List.fold
+        (fun s validate ->
+            try match validate { field with Value = Valid value } with
+                | Ok _    -> s
+                | Error x -> s@x
+            with ex -> s@[ex.Message])
+        []
+
+
+let updateFormWithValidators validators (form: LightForm) =
+    form
+    |> List.map (fun field ->
+        { field with
+            Value =
+              let value = getFormFieldValue field
+              match validateValue validators field value with
+              | [] -> Valid value
+              | es -> Invalid (value, es) })
+
+
+let updateFormWithMsg (validators: Map<FieldKey, Validator list>) (msg: LightFormMsg) (form: LightForm): LightForm =
     match msg with
-    | OnChangeField (key, value) ->
-        let newModel =
-            model
-            |> List.map (fun state -> 
-                if state.Name = key then
-                    { state with Value = value }
-                    |> validate validators
-                else state)
-        newModel
+    | ChangeField (key, value) ->
+        form
+        |> List.map (fun field -> 
+            if field.Name = key then
+                { field with
+                    Value =
+                      match validateValue validators field value with
+                      | [] -> Valid value
+                      | es -> Invalid (value, es) }
+            else field)
 
 
-let validateForm validators model =
-    let newModel = model |> List.map (validate validators)
-    let errors =
-        newModel
-        |> List.choose (fun x -> 
-            match x.ValidationState with
-            | Valid -> None
-            | Invalid es -> Some es)
-        |> List.concat
-    newModel, errors
+
+let getFormErrors (form: LightForm) =
+    form
+    |> List.map (fun field ->
+        match field.Value with
+        | Valid _ -> []
+        | Invalid (_, es) -> es)
+    |> List.concat
