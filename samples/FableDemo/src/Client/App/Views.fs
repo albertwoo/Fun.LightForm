@@ -16,77 +16,79 @@ let Classes = classes >> Class
 
 let emptyView = div [ Style [ Display DisplayOptions.None ] ] []
 
-let formOuterClasses =
-  classes [
-    tailwind.border
-    tailwind.``border-gray-200``
-    tailwind.``border-2``
-    tailwind.``p-02``
-    tailwind.``m-02``
-    tailwind.rounded
-  ]
 
-let formLabelClasses =
-  classes [
-    tailwind.``text-gray-600``
-    tailwind.``text-sm``
-    tailwind.``pb-01``
-  ]
-
-let formErrorClasses =
-  classes [
-    tailwind.``text-red-400``
-    tailwind.``mt-01``
-    tailwind.``text-sm``
-  ]
-
-let formInput ty label =
-  inputField
-    { OuterClasses = formOuterClasses
-      LabelClasses = formLabelClasses
-      ErrorClasses = formErrorClasses
-      InputClasses =
-        classes [
-          tailwind.``outline-none``
-          tailwind.``bg-gray-200``
-          tailwind.``py-01``
-          tailwind.``px-03``
-          tailwind.``w-full``
-          tailwind.``focus:border-blue-400``
-          tailwind.``focus:bg-blue-100``
-          tailwind.``text-gray-700``
-        ]
-      Label = label
-      Type = ty }
-
-let formSelects label sourceList displayer =
-  selectsField
-    { OuterClasses = formOuterClasses
-      LabelClasses = formLabelClasses
-      ErrorClasses = formErrorClasses
-      InputClasses =
-        classes [
-          tailwind.flex
-          tailwind.``items-center``
-          tailwind.``text-gray-700``
-          tailwind.``ml-01``
-        ]
-      Label = label
-      SourceList = sourceList
-      Displayer = displayer }
-
-
-let errorSummary form =
-  div [
-    Classes [
-      tailwind.``text-red-500``
-      tailwind.``text-sm``
-      tailwind.``text-center``
+module MyLightForm =
+  let formOuterClasses =
+    classes [
+      tailwind.border
+      tailwind.``border-gray-200``
+      tailwind.``border-2``
       tailwind.``p-02``
+      tailwind.``m-02``
+      tailwind.rounded
     ]
-  ] [
-    for e in getFormErrors form -> div [] [ sprintf "* %s" e |> str ]
-  ]
+
+  let formLabelClasses =
+    classes [
+      tailwind.``text-gray-600``
+      tailwind.``text-sm``
+      tailwind.``pb-01``
+    ]
+
+  let formErrorClasses =
+    classes [
+      tailwind.``text-red-400``
+      tailwind.``mt-01``
+      tailwind.``text-sm``
+    ]
+
+  let formInput ty label =
+    inputField
+      { OuterClasses = formOuterClasses
+        LabelClasses = formLabelClasses
+        ErrorClasses = formErrorClasses
+        InputClasses =
+          classes [
+            tailwind.``outline-none``
+            tailwind.``bg-gray-200``
+            tailwind.``py-01``
+            tailwind.``px-03``
+            tailwind.``w-full``
+            tailwind.``focus:border-blue-400``
+            tailwind.``focus:bg-blue-100``
+            tailwind.``text-gray-700``
+          ]
+        Label = label
+        Type = ty }
+
+  let formSelects label sourceList displayer =
+    selectsField
+      { OuterClasses = formOuterClasses
+        LabelClasses = formLabelClasses
+        ErrorClasses = formErrorClasses
+        InputClasses =
+          classes [
+            tailwind.flex
+            tailwind.``items-center``
+            tailwind.``text-gray-700``
+            tailwind.``ml-01``
+          ]
+        Label = label
+        SourceList = sourceList
+        Displayer = displayer }
+
+
+  let errorSummary form =
+    div [
+      Classes [
+        tailwind.``text-red-500``
+        tailwind.``text-sm``
+        tailwind.``text-center``
+        tailwind.``p-02``
+      ]
+    ] [
+      for e in getFormErrors form -> div [] [ sprintf "* %s" e |> str ]
+    ]
 
 
 module Buttons =
@@ -117,7 +119,10 @@ module Buttons =
         tailwind.border
         tailwind.``hover:bg-gray-200``
       ]
-        
+
+
+open MyLightForm
+
 
 let app state dispatch =
     let formEl = formElement state.UserProfileForm (UserProfileMsg >> dispatch)
