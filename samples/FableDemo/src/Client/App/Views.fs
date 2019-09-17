@@ -4,6 +4,7 @@ open System
 open Fable.React
 open Fable.React.Props
 open Zanaptak.TypedCssClasses
+open Fun.LightForm
 open Fun.LightForm.Views
 
 type tailwind = CssClasses<"./public/css/tailwind-generated.css", Naming.Verbatim>
@@ -75,6 +76,49 @@ let formSelects label sourceList displayer =
       Displayer = displayer }
 
 
+let errorSummary form =
+  div [
+    Classes [
+      tailwind.``text-red-500``
+      tailwind.``text-sm``
+      tailwind.``text-center``
+      tailwind.``p-02``
+    ]
+  ] [
+    for e in getFormErrors form -> div [] [ sprintf "* %s" e |> str ]
+  ]
+
+
+module Buttons =
+  let button classes label onClick =
+      button [
+        OnClick onClick
+        Classes [
+          yield tailwind.``m-02``
+          yield tailwind.``py-01``
+          yield tailwind.``px-02``
+          yield tailwind.rounded
+          yield! classes
+        ]
+      ] [
+        str label
+      ]
+
+  let primaryButton =
+      button [
+        tailwind.``text-white``
+        tailwind.``bg-green-400``
+        tailwind.``hover:bg-green-500``
+      ]
+
+  let secondayButton =
+      button [
+        tailwind.``text-gray-700``
+        tailwind.border
+        tailwind.``hover:bg-gray-200``
+      ]
+        
+
 let app state dispatch =
     let formEl = formElement state.UserProfileForm (UserProfileMsg >> dispatch)
 
@@ -101,18 +145,16 @@ let app state dispatch =
         formEl "Roles"            (formSelects "Roles" [ 1, "R1"; 2, "R2" ] (fun (_,v) -> span [ Classes [ tailwind.``ml-01`` ] ] [ str v ]))
         formEl "Address:Country"  (formInput InputType.Text "Country")
 
-        button [
+        errorSummary state.UserProfileForm
+
+        div [
           Classes [
-            tailwind.``m-02``
-            tailwind.``py-01``
-            tailwind.``px-02``
-            tailwind.rounded
-            tailwind.``text-white``
-            tailwind.``bg-green-400``
-            tailwind.``hover:bg-green-500``
+            tailwind.``text-center``
+            tailwind.``mb-02``
           ]
         ] [
-          str "Submit"
+          Buttons.primaryButton  "Submit" ignore
+          Buttons.secondayButton "Cancel" ignore
         ]
       ]
 
@@ -123,4 +165,5 @@ let app state dispatch =
       ] [
         str (sprintf "%A" state.UserProfileForm)
       ]
+
     ]

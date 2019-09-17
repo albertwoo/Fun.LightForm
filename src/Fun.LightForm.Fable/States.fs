@@ -44,7 +44,6 @@ let updateFormWithMsg (validators: Map<FieldKey, Validator list>) (msg: LightFor
             else field)
 
 
-
 let getFormErrors (form: LightForm) =
     form
     |> List.map (fun field ->
