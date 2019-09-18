@@ -16,79 +16,7 @@ let Classes = classes >> Class
 
 let emptyView = div [ Style [ Display DisplayOptions.None ] ] []
 
-
-module MyLightForm =
-  let formOuterClasses =
-    classes [
-      tailwind.border
-      tailwind.``border-gray-200``
-      tailwind.``border-2``
-      tailwind.``p-02``
-      tailwind.``m-02``
-      tailwind.rounded
-    ]
-
-  let formLabelClasses =
-    classes [
-      tailwind.``text-gray-600``
-      tailwind.``text-sm``
-      tailwind.``pb-01``
-    ]
-
-  let formErrorClasses =
-    classes [
-      tailwind.``text-red-400``
-      tailwind.``mt-01``
-      tailwind.``text-sm``
-    ]
-
-  let formInput ty label =
-    inputField
-      { OuterClasses = formOuterClasses
-        LabelClasses = formLabelClasses
-        ErrorClasses = formErrorClasses
-        InputClasses =
-          classes [
-            tailwind.``outline-none``
-            tailwind.``bg-gray-200``
-            tailwind.``py-01``
-            tailwind.``px-03``
-            tailwind.``w-full``
-            tailwind.``focus:border-blue-400``
-            tailwind.``focus:bg-blue-100``
-            tailwind.``text-gray-700``
-          ]
-        Label = label
-        Type = ty }
-
-  let formSelects label sourceList displayer =
-    selectsField
-      { OuterClasses = formOuterClasses
-        LabelClasses = formLabelClasses
-        ErrorClasses = formErrorClasses
-        InputClasses =
-          classes [
-            tailwind.flex
-            tailwind.``items-center``
-            tailwind.``text-gray-700``
-            tailwind.``ml-01``
-          ]
-        Label = label
-        SourceList = sourceList
-        Displayer = displayer }
-
-
-  let errorSummary form =
-    div [
-      Classes [
-        tailwind.``text-red-500``
-        tailwind.``text-sm``
-        tailwind.``text-center``
-        tailwind.``p-02``
-      ]
-    ] [
-      for e in getFormErrors form -> div [] [ sprintf "* %s" e |> str ]
-    ]
+let icon cs = span [ Classes cs ] []
 
 
 module Buttons =
@@ -121,11 +49,119 @@ module Buttons =
       ]
 
 
-open MyLightForm
+type MyLightForm() =
+  static member formOuterClasses =
+    classes [
+      tailwind.border
+      tailwind.``border-gray-200``
+      tailwind.``border-2``
+      tailwind.``p-02``
+      tailwind.``m-02``
+      tailwind.rounded
+    ]
+
+  static member formLabelClasses =
+    classes [
+      tailwind.``text-gray-600``
+      tailwind.``text-sm``
+      tailwind.``pb-01``
+    ]
+
+  static member formErrorClasses =
+    classes [
+      tailwind.``text-red-400``
+      tailwind.``mt-01``
+      tailwind.``text-sm``
+    ]
+
+  static member input(label, ty, ?leftIconClasses, ?rightIconClasses, ?inputClasses) =
+    let iconView iconClasses =
+      icon
+        [
+          yield tailwind.block
+          yield tailwind.``bg-gray-300``
+          yield tailwind.``py-02``
+          yield tailwind.``px-02``
+          yield tailwind.``text-center``
+          yield! iconClasses
+        ]
+
+    Fields.input
+      (ty
+      ,label = label
+      ,outerClasses = MyLightForm.formOuterClasses
+      ,inputClasses =
+          classes [
+            yield tailwind.``outline-none``
+            yield tailwind.``bg-gray-200``
+            yield tailwind.``py-01``
+            yield tailwind.``px-03``
+            yield tailwind.``w-full``
+            yield tailwind.``focus:border-blue-400``
+            yield tailwind.``focus:bg-blue-100``
+            yield tailwind.``hover:bg-blue-200``
+            yield tailwind.``text-gray-700``
+            yield tailwind.``rounded-none``
+            if leftIconClasses.IsNone then
+              yield tailwind.``rounded-l``
+            if rightIconClasses.IsNone then
+              yield tailwind.``rounded-r``
+            if inputClasses.IsSome then
+              yield! inputClasses.Value
+          ]
+      ,labelClasses = MyLightForm.formLabelClasses
+      ,errorClasses = MyLightForm.formErrorClasses
+      ,inputViewWrapper = fun v ->
+          div
+            [
+              Classes
+                [
+                  tailwind.flex
+                ]
+            ]
+            [
+              if leftIconClasses.IsSome then
+                yield iconView [ yield tailwind.``rounded-l``; yield! leftIconClasses.Value ]
+
+              yield v
+
+              if rightIconClasses.IsSome then
+                yield iconView [ yield tailwind.``rounded-r``; yield! rightIconClasses.Value ]
+            ])
+
+
+  static member selects(label, sourceList, displayer) =
+    Fields.selector
+      (sourceList
+      ,label = label
+      ,displayer = displayer
+      ,outerClasses = MyLightForm.formOuterClasses
+      ,inputClasses =
+          classes [
+            tailwind.flex
+            tailwind.``items-center``
+            tailwind.``text-gray-700``
+            tailwind.``ml-01``
+          ]
+      ,labelClasses = MyLightForm.formLabelClasses
+      ,errorClasses = MyLightForm.formErrorClasses)
+
+
+  static member errorSummary form =
+    div [
+      Classes [
+        tailwind.``text-red-500``
+        tailwind.``text-sm``
+        tailwind.``text-center``
+        tailwind.``p-02``
+      ]
+    ] [
+      for e in getFormErrors form -> div [] [ sprintf "* %s" e |> str ]
+    ]
 
 
 let app state dispatch =
-    let formEl = formElement state.UserProfileForm (UserProfileMsg >> dispatch)
+    let field = Fields.field state.UserProfileForm (UserProfileMsg >> dispatch)
 
     div
       [
@@ -150,14 +186,50 @@ let app state dispatch =
               ]
           ]
           [
-            formEl "UserName"         (formInput InputType.Email "Email")
-            formEl "Password"         (formInput InputType.Password "Password")
-            formEl "Birthday"         (formInput (InputType.DateTime "yyyy/MM/dd") "Birthday")
-            formEl "Roles"            (formSelects "Roles" [ 1, "R1"; 2, "R2" ] (fun (_,v) -> span [ Classes [ tailwind.``ml-01`` ] ] [ str v ]))
-            formEl "Address:Country"  (formInput InputType.Text "Country")
-            formEl "Address:Street"   (formInput InputType.Text "Street")
+            field "UserName"
+              (MyLightForm.input
+                ("Email"
+                ,InputType.Email
+                ,leftIconClasses = [ fontAwsome.fa; fontAwsome.``fa-mail-bulk`` ]))
 
-            errorSummary state.UserProfileForm
+            field "Password"
+              (MyLightForm.input
+                ("Password"
+                ,InputType.Password
+                ,leftIconClasses = [ fontAwsome.fa; fontAwsome.``fa-lock``; tailwind.``text-green-500`` ]
+                ,inputClasses = [ tailwind.``text-green-400`` ]))
+
+            field "Birthday"
+              (MyLightForm.input
+                ("Birthday"
+                ,InputType.Date "yyyy/MM/dd"
+                ,inputClasses = [ tailwind.``text-purple-500`` ]))
+
+            field "Roles"
+              (MyLightForm.selects
+                ("Roles"
+                ,[ 1, "R1"; 2, "R2" ]
+                ,fun (_,v) -> span [ Classes [ tailwind.``ml-01`` ] ] [ str v ]))
+
+            field "Address:Country"
+              (MyLightForm.input
+                ("Country"
+                ,InputType.Text
+                ,rightIconClasses = [ fontAwsome.fa; fontAwsome.``fa-map-marked`` ]))
+
+            field "Address:Street"
+              (MyLightForm.input
+                ("Street"
+                ,InputType.Text
+                ,leftIconClasses = [ fontAwsome.fa; fontAwsome.``fa-funnel-dollar``; tailwind.``text-orange-400`` ]
+                ,rightIconClasses = [ fontAwsome.fa; fontAwsome.``fa-passport``; tailwind.``text-red-500`` ]))
+
+            field "Address:ZipCode"
+              (MyLightForm.input
+                ("ZipCode"
+                ,InputType.Number))
+
+            MyLightForm.errorSummary state.UserProfileForm
 
             div
               [
@@ -170,6 +242,16 @@ let app state dispatch =
               [
                 Buttons.primaryButton  "Submit" ignore
                 Buttons.secondayButton "Cancel" ignore
+              ]
+            icon
+              [
+                fontAwsome.fab
+                fontAwsome.``fa-github``
+                tailwind.block
+                tailwind.``bg-blue-200``
+                tailwind.``py-02``
+                tailwind.``text-center``
+                tailwind.``text-green-800``
               ]
           ]
 

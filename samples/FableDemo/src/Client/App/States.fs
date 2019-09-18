@@ -17,7 +17,7 @@ let validators =
         required "Password is reuqired"
         maxLength 20 "This field`s max length is 20"
         (fun f -> if f.Value.ToString().Contains("password")
-                  then Error [ "Cannot use passsord as password" ]
+                  then Error [ "Passsord cannot contain password" ]
                   else Ok())
       ]
   |> addValidations "Birthday" [ dateValidator "Not a valid Date" ]
