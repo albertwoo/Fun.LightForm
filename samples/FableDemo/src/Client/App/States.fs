@@ -7,12 +7,12 @@ open Fun.LightForm.Validators
 
 let validators =
   Map.empty
-  |> addValidations "UserName"
+  |> addValidators "UserName"
       [
         required "This field is reuqired"
         maxLength 30 "This field`s max length is 30"
       ]
-  |> addValidations "Password"
+  |> addValidators "Password"
       [
         required "Password is reuqired"
         maxLength 20 "This field`s max length is 20"
@@ -20,8 +20,8 @@ let validators =
                   then Error [ "Passsord cannot contain password" ]
                   else Ok())
       ]
-  |> addValidations "Birthday" [ dateValidator "Not a valid Date" ]
-  |> addValidations "Roles"
+  |> addValidators "Birthday" [ dateValidator "Not a valid Date" ]
+  |> addValidators "Roles"
       [
         seqMinLen 1 "Should at least contains one role"
       ]

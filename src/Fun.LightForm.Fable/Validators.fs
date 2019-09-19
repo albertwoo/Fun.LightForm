@@ -4,13 +4,13 @@ open System
 open Fun.LightForm.Utils
 
 
-let addValidations key newValidators oldValidators: Map<string, Validator list> =
+let addValidators key newValidators validators: Map<string, Validator list> =
     let vs =
-        oldValidators
+        validators
         |> Map.tryFind key
         |> Option.map (fun v -> v@newValidators)
         |> Option.defaultValue newValidators
-    Map.add key vs oldValidators
+    Map.add key vs validators
 
 
 let requiredAndNot targetValue errorMsg: Validator =

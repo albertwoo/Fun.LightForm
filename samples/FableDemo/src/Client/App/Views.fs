@@ -43,7 +43,6 @@ let app state dispatch =
           Tw.``sm:w-full``
           Tw.``lg:w-02/04``
           Tw.``shadow-lg``
-          Tw.``m-01``
         ]
       ] [
         field "UserName" input [
@@ -103,17 +102,13 @@ let app state dispatch =
 
         errorSummary state.UserProfileForm
 
-        div [
-          Classes [
-            Tw.``text-center``
-            Tw.``mb-02``
-          ]
-        ] [
+        Layout.level [] [
           Button.primaryButton  "Submit" ignore
           Button.secondayButton "Cancel" ignore
         ]
 
         Icon.brand [
+          Fa.``fa-github``
           Tw.block
           Tw.``bg-blue-200``
           Tw.``py-02``
