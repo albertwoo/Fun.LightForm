@@ -37,8 +37,8 @@ type FormInputProp =
   | RightIconClasses of string list
 
 let input props =
-  let leftIconClasses  = props |> UnionCase.caseValues (FormInputProp.LeftIconClasses []) |> UnionCase.concatValues
-  let rightIconClasses = props |> UnionCase.caseValues (FormInputProp.RightIconClasses []) |> UnionCase.concatValues
+  let leftIconClasses  = props |> UnionProps.concat (function FormInputProp.LeftIconClasses x -> Some x | _ -> None)
+  let rightIconClasses = props |> UnionProps.concat (function FormInputProp.RightIconClasses x -> Some x | _ -> None)
 
   let iconView iconClasses =
     Icon.icon [
@@ -54,12 +54,12 @@ let input props =
     div [
       Classes [ Tw.flex ]
     ] [
-      if List.isEmpty leftIconClasses |> not then
+      if Seq.isEmpty leftIconClasses |> not then
         yield iconView [ yield Tw.``rounded-l``; yield! leftIconClasses ]
 
       yield v
 
-      if List.isEmpty rightIconClasses |> not then
+      if Seq.isEmpty rightIconClasses |> not then
         yield iconView [ yield Tw.``rounded-r``; yield! rightIconClasses ]
     ]
 
@@ -76,13 +76,13 @@ let input props =
       yield Tw.``hover:bg-blue-200``
       yield Tw.``text-gray-700``
       yield Tw.``rounded-none``
-      if List.isEmpty leftIconClasses then yield Tw.``rounded-l``
-      if List.isEmpty rightIconClasses then yield Tw.``rounded-r``
+      if Seq.isEmpty leftIconClasses then yield Tw.``rounded-l``
+      if Seq.isEmpty rightIconClasses then yield Tw.``rounded-r``
     ]
     yield InputProp.LabelClasses formLabelClasses
     yield InputProp.ErrorClasses formErrorClasses
     yield InputProp.InputViewWrapper inputWrapper
-    yield! (props |> UnionCase.caseValues (FormInputProp.InputProps []) |> UnionCase.concatValues)
+    yield! (props |> UnionProps.concat (function FormInputProp.InputProps x -> Some x | _ -> None))
   ]
 
 

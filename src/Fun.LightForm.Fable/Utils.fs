@@ -25,54 +25,13 @@ let inline private setRecordFieldValue (fieldName: string) (o: obj) value =
 #endif
 
 
-type UnionCaseValue<'T> =
-  | DefaultValue of 'T
-  | Values of 'T list
-module UnionCase =
-  let inline unboxCaseValue<'T> (value: obj[]) =
-      match FSharpType.IsTuple typeof<'T> with
-      | true  -> value |> unbox<'T>
-      | false -> value |> Seq.head |> unbox<'T>
+[<RequireQualifiedAccess>]
+module UnionProps =
+  let values f props = props |> List.choose f
 
-  /// Get all the mached cases by some case with defualt value.
-  /// If nothing find then a list with default value will be returned
-  let inline caseValues<'T, 'U> (targetCase: 'U) (cases: 'U seq) =
-      let caseInfo, caseValue = FSharpValue.GetUnionFields(targetCase, targetCase.GetType())
-      cases
-      |> Seq.choose (fun c ->
-          match FSharpValue.GetUnionFields(c, targetCase.GetType()) with
-          | (info, v) when caseInfo.Name = info.Name -> Some v
-          | _ -> None)
-      |> Seq.toList
-      |> function
-        | [] -> UnionCaseValue.DefaultValue (unboxCaseValue<'T> caseValue)
-        | x  -> UnionCaseValue.Values (x |> List.map unboxCaseValue<'T>)
+  let concat f props = props |> values f |> List.concat
 
-  /// Will return default value or the last value in the Values
-  let value (caseValue: UnionCaseValue<_>) =
-      match caseValue with
-      | DefaultValue v -> v
-      | Values vs -> vs |> List.last
-
-  /// Will return default value or the last value in the Values
-  let values (caseValue: UnionCaseValue<_>) =
-      match caseValue with
-      | DefaultValue v -> [ v ]
-      | Values vs      -> vs
-
-  let concatValues (caseValue: UnionCaseValue<_>) = values caseValue |> List.concat
-
-  /// Default value will be considered as None, for Values case will return the last value
-  let toOption (caseValue: UnionCaseValue<_>) =
-      match caseValue with
-      | DefaultValue _ -> None
-      | Values vs -> vs |> List.tryLast
-      
-  /// Default value will be considered as None, for Values will be put into Some
-  let toOptions (caseValue: UnionCaseValue<_>) =
-      match caseValue with
-      | DefaultValue _ -> None
-      | Values vs      -> Some vs
+  let tryLast f props = props |> List.rev |> List.tryPick f
 
 
 let getFormFieldValue field =
