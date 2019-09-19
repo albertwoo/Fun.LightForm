@@ -1,0 +1,114 @@
+module Client.Controls.Form
+
+open Fable.React
+open Fable.React.Props
+open Fun.LightForm
+open Fun.LightForm.FormViews
+
+
+let formOuterClasses =
+  [
+    Tw.border
+    Tw.``border-gray-200``
+    Tw.``border-2``
+    Tw.``p-02``
+    Tw.``m-02``
+    Tw.rounded
+  ]
+
+let formLabelClasses =
+  [
+    Tw.``text-gray-600``
+    Tw.``text-sm``
+    Tw.``pb-01``
+  ]
+
+let formErrorClasses =
+  [
+    Tw.``text-red-400``
+    Tw.``mt-01``
+    Tw.``text-sm``
+  ]
+
+
+type FormInputProp =
+  | InputProps of InputProp list
+  | LeftIconClasses of string list
+  | RightIconClasses of string list
+
+let input props =
+  let leftIconClasses  = props |> UnionCase.caseValues (FormInputProp.LeftIconClasses []) |> UnionCase.concatValues
+  let rightIconClasses = props |> UnionCase.caseValues (FormInputProp.RightIconClasses []) |> UnionCase.concatValues
+
+  let iconView iconClasses =
+    Icon.icon [
+      yield Tw.block
+      yield Tw.``bg-gray-300``
+      yield Tw.``py-02``
+      yield Tw.``px-02``
+      yield Tw.``text-center``
+      yield! iconClasses
+    ]
+
+  let inputWrapper v =
+    div [
+      Classes [ Tw.flex ]
+    ] [
+      if List.isEmpty leftIconClasses |> not then
+        yield iconView [ yield Tw.``rounded-l``; yield! leftIconClasses ]
+
+      yield v
+
+      if List.isEmpty rightIconClasses |> not then
+        yield iconView [ yield Tw.``rounded-r``; yield! rightIconClasses ]
+    ]
+
+  inputField [
+    yield InputProp.OuterClasses formOuterClasses
+    yield InputProp.InputClasses [
+      yield Tw.``outline-none``
+      yield Tw.``bg-gray-200``
+      yield Tw.``py-01``
+      yield Tw.``px-03``
+      yield Tw.``w-full``
+      yield Tw.``focus:border-blue-400``
+      yield Tw.``focus:bg-blue-100``
+      yield Tw.``hover:bg-blue-200``
+      yield Tw.``text-gray-700``
+      yield Tw.``rounded-none``
+      if List.isEmpty leftIconClasses then yield Tw.``rounded-l``
+      if List.isEmpty rightIconClasses then yield Tw.``rounded-r``
+    ]
+    yield InputProp.LabelClasses formLabelClasses
+    yield InputProp.ErrorClasses formErrorClasses
+    yield InputProp.InputViewWrapper inputWrapper
+    yield! (props |> UnionCase.caseValues (FormInputProp.InputProps []) |> UnionCase.concatValues)
+  ]
+
+
+let inline selector props =
+  selectorField [
+    yield SelectorProp.OuterClasses formOuterClasses
+    yield SelectorProp.InputClasses [
+      Tw.flex
+      Tw.``items-center``
+      Tw.``text-gray-700``
+      Tw.``ml-01``
+    ]
+    yield SelectorProp.LabelClasses formLabelClasses
+    yield SelectorProp.ErrorClasses formErrorClasses
+    yield! props
+  ]
+
+
+let errorSummary form =
+  div [
+    Classes [
+      Tw.``text-red-500``
+      Tw.``text-sm``
+      Tw.``text-center``
+      Tw.``p-02``
+    ]
+  ] [
+    for e in getFormErrors form -> div [] [ sprintf "* %s" e |> str ]
+  ]

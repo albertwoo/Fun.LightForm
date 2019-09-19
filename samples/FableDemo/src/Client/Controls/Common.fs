@@ -7,12 +7,12 @@ open Fable.React.Props
 open Zanaptak.TypedCssClasses
 
 
-type tailwind = CssClasses<"./public/css/tailwind-generated.css", Naming.Verbatim>
-type fontAwsome = CssClasses<"./public/css/font-awesome-v5-10-2.min.css", Naming.Verbatim>
+type Tw = CssClasses<"./public/css/tailwind-generated.css", Naming.Verbatim>
+type Fa = CssClasses<"./public/css/font-awesome-v5-10-2.min.css", Naming.Verbatim>
 
 
-let Classes str = str |> List.filter (String.IsNullOrEmpty >> not) |> String.concat " " |> Class
-
+let classes str = str |> List.filter (String.IsNullOrEmpty >> not) |> String.concat " "
+let Classes = classes >> Class
 
 let emptyView = div [ Style [ Display DisplayOptions.None ] ] []
 
@@ -22,8 +22,8 @@ module Heading =
   let h1 classes (txt: string) =
     div [
       Classes [
-        yield tailwind.``text-3xl``
-        yield tailwind.``font-bold``
+        yield Tw.``text-3xl``
+        yield Tw.``font-bold``
         yield! classes
       ]
     ] [
@@ -33,8 +33,8 @@ module Heading =
   let h2 classes (txt: string) =
     div [
       Classes [
-        yield tailwind.``text-2xl``
-        yield tailwind.``font-semibold``
+        yield Tw.``text-2xl``
+        yield Tw.``font-semibold``
         yield! classes
       ]
     ] [
@@ -48,31 +48,33 @@ module Layout =
     div [
       Classes [
         yield! classes
-        yield tailwind.``mx-auto``
-        yield tailwind.flex
-        yield tailwind.``flex-no-wrap``
-        yield tailwind.``items-center``
-        yield tailwind.``justify-center``
+        yield Tw.``mx-auto``
+        yield Tw.flex
+        yield Tw.``flex-no-wrap``
+        yield Tw.``items-center``
+        yield Tw.``justify-center``
       ]
     ] childs
 
   let spacer classes =
     span [
       Classes [
-        yield tailwind.``px-02``
+        yield Tw.``px-02``
         yield! classes
       ]
-    ]
+    ] []
 
 
 [<RequireQualifiedAccess>]
-module Icons =
+module Icon =
+  let icon cs = span [ Classes cs ] []
+  
   let brand classes =
     span [
       Classes [
         yield! classes
-        yield fontAwsome.fab
-        yield tailwind.``text-gray-800``
+        yield Fa.fab
+        yield Tw.``text-gray-800``
       ]
     ] []
 
@@ -80,18 +82,49 @@ module Icons =
     span [
       Classes [
         yield! classes
-        yield fontAwsome.fas
-        yield tailwind.``text-gray-800``
+        yield Fa.fas
+        yield Tw.``text-gray-800``
       ]
     ] []
 
   let urlIcon url icon =
     match url with
-    | Some url ->
-      a [
-        Href url
-      ] [
-        icon
+      | Some url ->
+          a [
+            Href url
+          ] [
+            icon
+          ]
+      | None ->
+          emptyView
+
+
+[<RequireQualifiedAccess>]
+module Button =
+  let button classes label onClick =
+    button [
+      OnClick onClick
+      Classes [
+        yield Tw.``m-02``
+        yield Tw.``py-01``
+        yield Tw.``px-02``
+        yield Tw.rounded
+        yield! classes
       ]
-    | None ->
-      emptyView
+    ] [
+      str label
+    ]
+
+  let primaryButton =
+    button [
+      Tw.``text-white``
+      Tw.``bg-green-400``
+      Tw.``hover:bg-green-500``
+    ]
+
+  let secondayButton =
+    button [
+      Tw.``text-gray-700``
+      Tw.border
+      Tw.``hover:bg-gray-200``
+    ]

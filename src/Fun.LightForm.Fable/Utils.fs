@@ -60,6 +60,8 @@ module UnionCase =
       | DefaultValue v -> [ v ]
       | Values vs      -> vs
 
+  let concatValues (caseValue: UnionCaseValue<_>) = values caseValue |> List.concat
+
   /// Default value will be considered as None, for Values case will return the last value
   let toOption (caseValue: UnionCaseValue<_>) =
       match caseValue with
