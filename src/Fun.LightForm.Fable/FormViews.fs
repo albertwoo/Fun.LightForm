@@ -139,9 +139,9 @@ let inputField (props: InputProp list): FieldRenderer =
         ]
 
 
-type SelectorProp<'id, 'v> =
-  | SourceList of ('id * 'v) list
-  | Displayer of ('id * 'v -> ReactElement)
+type SelectorProp<'Id, 'Value> =
+  | SourceList of ('Id * 'Value) list
+  | Displayer of ('Id * 'Value -> ReactElement)
   | Label of string
   | OuterClasses of string list
   | LabelClasses of string list
