@@ -3,8 +3,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Common\Common.fs" />
-    <Compile Include="Common\Json.fs" />
     <Compile Include="Controls\Common.fs" />
     <Compile Include="Controls\Form.fs" />
     <Compile Include="App\Domain.fs" />
