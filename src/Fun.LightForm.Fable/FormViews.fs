@@ -39,7 +39,7 @@ let selectorF (props: SelectorProp<_, _> list): FieldRenderer =
     fun field dispatch ->
       selectorField [
         yield! props
-        yield SelectorProp.Ids (unbox field.Value)
+        yield SelectorProp.SelectedIds (field |> getFormFieldValue |> unbox |> Seq.toList)
         yield SelectorProp.OnIdsChange (fun x -> ChangeField (field.Name, x) |> dispatch)
         yield SelectorProp.SimpleFieldProps [
           match field.Value with
