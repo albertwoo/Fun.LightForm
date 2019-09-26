@@ -77,7 +77,7 @@ let app state dispatch =
           SelectorProp.Displayer (fun (_,v) -> span [ Classes [ Tw.``ml-01`` ] ] [ str v ])
         ]
 
-        field "Address:Country" input [
+        field "Address.Country" input [
           FormInputProp.InputProps [
             InputProp.Label "Country"
             InputProp.ConvertTo InputValue.Text
@@ -85,7 +85,7 @@ let app state dispatch =
           FormInputProp.RightIconClasses [ Fa.fa; Fa.``fa-map-marked`` ]
         ]
 
-        field "Address:Street" input [
+        field "Address.Street" input [
           FormInputProp.InputProps [
             InputProp.Label "Street"
             InputProp.ConvertTo InputValue.Text
@@ -94,7 +94,7 @@ let app state dispatch =
           FormInputProp.RightIconClasses [ Fa.fa; Fa.``fa-passport``; Tw.``text-red-500`` ]
         ]
 
-        field "Address:ZipCode" input [
+        field "Address.ZipCode" input [
           FormInputProp.InputProps [
             InputProp.Label "ZipCode"
             InputProp.ConvertTo InputValue.Number

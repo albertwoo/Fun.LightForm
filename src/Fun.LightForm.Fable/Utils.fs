@@ -48,7 +48,7 @@ let rec generateFormByValue ty value =
         if FSharpType.IsRecord p.PropertyType then
           getRecordFieldValue p.Name value
           |> generateFormByValue p.PropertyType 
-          |> List.map (fun f -> { f with Name = sprintf "%s:%s" p.Name f.Name })
+          |> List.map (fun f -> { f with Name = sprintf "%s.%s" p.Name f.Name })
         else
           [
             {
@@ -65,7 +65,7 @@ let rec generateValueByForm ty defaultValue (form: LightForm) =
     |> Seq.toList
     |> List.iter (fun p ->
         if FSharpType.IsRecord p.PropertyType then
-            let prefix = sprintf "%s:" p.Name
+            let prefix = sprintf "%s." p.Name
             form
             |> List.choose (fun x ->
                 if x.Name.StartsWith prefix then Some { x with Name = x.Name.Substring(prefix.Length) }

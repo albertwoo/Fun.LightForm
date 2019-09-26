@@ -17,7 +17,7 @@ let requiredAndNot targetValue errorMsg: Validator =
     fun field ->
         let value = getFormFieldValue field
         if value = null || 
-           String.IsNullOrEmpty(field.Value.ToString()) ||
+           String.IsNullOrEmpty(value.ToString()) ||
            value = targetValue
         then Error [ errorMsg ]
         else Ok ()
@@ -27,26 +27,30 @@ let required errorMsg = requiredAndNot null errorMsg
 
 let maxLength max errorMsg: Validator =
     fun field ->
-        if getFormFieldValue field <> null && (unbox<string>field.Value).Length > max
+        let value = getFormFieldValue field
+        if value <> null && (unbox<string>value).Length > max
         then Error [ errorMsg ] 
         else Ok()
 
 let minLength min errorMsg: Validator =
     fun field ->
-        if getFormFieldValue field <> null && (unbox<string>field.Value).Length < min
+        let value = getFormFieldValue field
+        if value <> null && (unbox<string>value).Length < min
         then Error [ errorMsg ]
         else Ok()
 
 
 let maxNum max errorMsg: Validator =
     fun field ->
-        if getFormFieldValue field <> null && unbox<float> field.Value > max
+        let value = getFormFieldValue field
+        if value <> null && unbox<float> value > max
         then Error [ errorMsg ]
         else Ok()
 
 let minNum min errorMsg: Validator =
     fun field ->
-        if getFormFieldValue field <> null && unbox<float> field.Value < min
+        let value = getFormFieldValue field
+        if value <> null && unbox<float> value < min
         then Error [ errorMsg ]
         else Ok()
 
