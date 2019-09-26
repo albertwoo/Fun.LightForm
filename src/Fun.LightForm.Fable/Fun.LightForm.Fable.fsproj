@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description></Description>
     <PackageProjectUrl>https://github.com/albertwoo/Fun.LightForm</PackageProjectUrl>
     <RepositoryUrl>https://github.com/albertwoo/Fun.LightForm</RepositoryUrl>
-    <Version>1.0.0-beta3</Version>
+    <Version>1.0.0-beta4</Version>
     <Authors>slaveoftime</Authors>
     <Company>https://www.slaveoftime.fun</Company>
     <PackageReleaseNotes></PackageReleaseNotes>
@@ -24,5 +24,7 @@
     <PackageReference Include="Fable.Core" Version="3.1.1" />
     <PackageReference Include="Fable.React" Version="5.3.2" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="*.fsproj; **\*.fs" PackagePath="fable\" />
+  </ItemGroup>
 </Project>
