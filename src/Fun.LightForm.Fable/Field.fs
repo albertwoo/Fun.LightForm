@@ -147,7 +147,7 @@ type SelectorProp<'Id, 'Value> =
   | Label of string
   | Source of ('Id * 'Value) list
   | Displayer of ('Id * 'Value -> ReactElement)
-  | Ids of 'Id list
+  | SelectedIds of 'Id list
   | OnIdsChange of ('Id list -> unit)
   | InputClasses of string list
   | InputAttrs of IHTMLProp list
@@ -167,7 +167,7 @@ let inline selectorField (props: SelectorProp<_, _> list) =
         ]
 
       let switchType    = props |> UnionProps.tryLast (function SelectorProp.SwitchType x -> Some x | _ -> None) |> Option.defaultValue SwitchType.CheckBox
-      let ids           = props |> UnionProps.tryLast (function SelectorProp.Ids x -> Some x | _ -> None) |> Option.defaultValue []
+      let ids           = props |> UnionProps.tryLast (function SelectorProp.SelectedIds x -> Some x | _ -> None) |> Option.defaultValue []
       let sourceList    = props |> UnionProps.tryLast (function SelectorProp.Source x -> Some x | _ -> None) |> Option.defaultValue []
       let displayer     = props |> UnionProps.tryLast (function SelectorProp.Displayer x -> Some x | _ -> None) |> Option.defaultValue defaultDisplayer
       let onlyOne       = props |> UnionProps.tryLast (function SelectorProp.OnlyOne x -> Some x | _ -> None) |> Option.defaultValue false
