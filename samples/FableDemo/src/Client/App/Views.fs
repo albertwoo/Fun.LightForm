@@ -4,6 +4,7 @@ open System
 open Fable.React
 open Fable.React.Props
 open Fun.LightForm
+open Fun.LightForm.Field
 open Fun.LightForm.FormViews
 open Client.Controls
 open Client.Controls.Form
@@ -48,7 +49,7 @@ let app state dispatch =
         field "UserName" input [
           FormInputProp.InputProps [
             InputProp.Label "Email"
-            InputProp.InputType InputType.Email
+            InputProp.ConvertTo InputValue.Text
           ]
           FormInputProp.LeftIconClasses [ Fa.fa; Fa.``fa-mail-bulk`` ]
         ]
@@ -56,7 +57,7 @@ let app state dispatch =
         field "Password" input [
           FormInputProp.InputProps [
             InputProp.Label "Password"
-            InputProp.InputType InputType.Password
+            InputProp.ConvertTo InputValue.Password
           ]
           FormInputProp.LeftIconClasses [ Fa.fa; Fa.``fa-lock``; Tw.``text-green-500`` ]
           FormInputProp.RightIconClasses [ Tw.``text-green-400`` ]
@@ -65,21 +66,21 @@ let app state dispatch =
         field "Birthday" input [
           FormInputProp.InputProps [
             InputProp.Label "Birthday"
-            InputProp.InputType (InputType.Date "yyyy-MM-dd")
+            InputProp.ConvertTo InputValue.Date
             InputProp.InputClasses [ Tw.``text-purple-500`` ]
           ]
         ]
 
         field "Roles" selector [
           SelectorProp.Label "Roles"
-          SelectorProp.SourceList [ 1, "R1"; 2, "R2" ]
+          SelectorProp.Source [ 1, "R1"; 2, "R2" ]
           SelectorProp.Displayer (fun (_,v) -> span [ Classes [ Tw.``ml-01`` ] ] [ str v ])
         ]
 
         field "Address:Country" input [
           FormInputProp.InputProps [
             InputProp.Label "Country"
-            InputProp.InputType InputType.Text
+            InputProp.ConvertTo InputValue.Text
           ]
           FormInputProp.RightIconClasses [ Fa.fa; Fa.``fa-map-marked`` ]
         ]
@@ -87,7 +88,7 @@ let app state dispatch =
         field "Address:Street" input [
           FormInputProp.InputProps [
             InputProp.Label "Street"
-            InputProp.InputType InputType.Text
+            InputProp.ConvertTo InputValue.Text
           ]
           FormInputProp.LeftIconClasses [ Fa.fa; Fa.``fa-funnel-dollar``; Tw.``text-orange-400`` ]
           FormInputProp.RightIconClasses [ Fa.fa; Fa.``fa-passport``; Tw.``text-red-500`` ]
@@ -96,7 +97,7 @@ let app state dispatch =
         field "Address:ZipCode" input [
           FormInputProp.InputProps [
             InputProp.Label "ZipCode"
-            InputProp.InputType InputType.Number
+            InputProp.ConvertTo InputValue.Number
           ]
         ]
 

@@ -4,6 +4,7 @@ open Fable.React
 open Fable.React.Props
 open Fun.LightForm
 open Fun.LightForm.FormViews
+open Fun.LightForm.Field
 
 
 let formOuterClasses =
@@ -31,8 +32,8 @@ let formErrorClasses =
   ]
 
 
-type FormInputProp =
-  | InputProps of InputProp list
+type FormInputProp<'T> =
+  | InputProps of InputProp<'T> list
   | LeftIconClasses of string list
   | RightIconClasses of string list
 
@@ -63,8 +64,7 @@ let input props =
         yield iconView [ yield Tw.``rounded-r``; yield! rightIconClasses ]
     ]
 
-  inputField [
-    yield InputProp.OuterClasses formOuterClasses
+  inputF [
     yield InputProp.InputClasses [
       yield Tw.``outline-none``
       yield Tw.``bg-gray-200``
@@ -79,24 +79,29 @@ let input props =
       if Seq.isEmpty leftIconClasses then yield Tw.``rounded-l``
       if Seq.isEmpty rightIconClasses then yield Tw.``rounded-r``
     ]
-    yield InputProp.LabelClasses formLabelClasses
-    yield InputProp.ErrorClasses formErrorClasses
     yield InputProp.InputViewWrapper inputWrapper
+    yield InputProp.SimpleFieldProps [
+      SimpleFieldProp.OuterClasses formOuterClasses
+      SimpleFieldProp.LabelClasses formLabelClasses
+      SimpleFieldProp.ErrorClasses formErrorClasses
+    ]
     yield! (props |> UnionProps.concat (function FormInputProp.InputProps x -> Some x | _ -> None))
   ]
 
 
 let inline selector props =
-  selectorField [
-    yield SelectorProp.OuterClasses formOuterClasses
+  selectorF [
     yield SelectorProp.InputClasses [
       Tw.flex
       Tw.``items-center``
       Tw.``text-gray-700``
       Tw.``ml-01``
     ]
-    yield SelectorProp.LabelClasses formLabelClasses
-    yield SelectorProp.ErrorClasses formErrorClasses
+    yield SelectorProp.SimpleFieldProps [
+      SimpleFieldProp.OuterClasses formOuterClasses
+      SimpleFieldProp.LabelClasses formLabelClasses
+      SimpleFieldProp.ErrorClasses formErrorClasses
+    ]
     yield! props
   ]
 
