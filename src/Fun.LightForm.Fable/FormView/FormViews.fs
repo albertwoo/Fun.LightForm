@@ -4,7 +4,6 @@ module Fun.LightForm.FormView.Form
 open Fable.React
 open Fable.React.Props
 open Fun.LightForm
-open System.Linq
 
 
 type FieldRenderer = FieldRenderer<Fable.React.ReactElement>
@@ -38,6 +37,7 @@ let input (props: InputProp<_> list): FieldRenderer =
       ]
 
 
+/// If OnlyOne is not true, then Field.Value must a a squence
 let selector (props: SelectorProp<_, _> list): FieldRenderer =
     fun field dispatch ->
       let onlyOne = props |> UnionProps.tryLast (function SelectorProp.OnlyOne x -> Some x | _ -> None) |> Option.defaultValue true
@@ -54,7 +54,7 @@ let selector (props: SelectorProp<_, _> list): FieldRenderer =
       selectorField [
         yield! props
         SelectorProp.SelectedIds selectedIds
-        SelectorProp.OnIdsChange (fun x ->
+        SelectorProp.OnSelect (fun x ->
           let newValue =
             if onlyOne then x |> Seq.tryHead |> box
             else x |> box

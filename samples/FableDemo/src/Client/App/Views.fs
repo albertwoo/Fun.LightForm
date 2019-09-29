@@ -36,6 +36,7 @@ let app state dispatch =
         Tw.``items-center``
         Tw.``justify-center``
         Tw.``overflow-auto``
+        Tw.``py-04``
       ]
       Children [
         form </> [
@@ -47,28 +48,21 @@ let app state dispatch =
           ]
           Children [
             field "UserName" input [
-              FormInputProp.InputProps [
-                InputProp.Label "Email"
-                InputProp.ConvertTo InputValue.Text
-              ]
-              FormInputProp.LeftIconClasses [ Fa.fa; Fa.``fa-mail-bulk`` ]
+              InputProp.Label "Email"
+              InputProp.ConvertTo InputValue.Text
+              InputProp.LeftView (Icon.simpleIcon [ Fa.fa; Fa.``fa-mail-bulk`` ])
             ]
 
             field "Password" input [
-              FormInputProp.InputProps [
-                InputProp.Label "Password"
-                InputProp.ConvertTo InputValue.Password
-              ]
-              FormInputProp.LeftIconClasses [ Fa.fa; Fa.``fa-lock``; Tw.``text-green-500`` ]
-              FormInputProp.RightIconClasses [ Tw.``text-green-400`` ]
+              InputProp.Label "Password"
+              InputProp.ConvertTo InputValue.Password
+              InputProp.LeftView (Icon.simpleIcon [ Fa.fa; Fa.``fa-lock``; Tw.``text-green-500`` ])
             ]
 
             field "Birthday" input [
-              FormInputProp.InputProps [
-                InputProp.Label "Birthday"
-                InputProp.ConvertTo InputValue.Date
-                InputProp.InputClasses [ Tw.``text-purple-500`` ]
-              ]
+              InputProp.Label "Birthday"
+              InputProp.ConvertTo InputValue.Date
+              InputProp.InputClasses [ Tw.``text-purple-500`` ]
             ]
 
             field "Roles" selector [
@@ -87,33 +81,32 @@ let app state dispatch =
               SelectorProp.Label "Selected Country"
               SelectorProp.OnlyOne true
               SelectorProp.Source [
-                1, "China"
-                2, "US"
+                for i in 1..100 -> i, sprintf "Country %d" i
+              ]
+              SelectorProp.ContainerAttrs [
+                Style [
+                  MaxHeight "100px"
+                  OverflowY OverflowOptions.Auto
+                ]
               ]
             ]
 
             field "Address.Country" input [
-              FormInputProp.InputProps [
-                InputProp.Label "Country"
-                InputProp.ConvertTo InputValue.Text
-              ]
-              FormInputProp.RightIconClasses [ Fa.fa; Fa.``fa-map-marked`` ]
+              InputProp.Label "Country"
+              InputProp.ConvertTo InputValue.Text
+              InputProp.RightView (Icon.simpleIcon [ Fa.fa; Fa.``fa-map-marked`` ])
             ]
 
             field "Address.Street" input [
-              FormInputProp.InputProps [
-                InputProp.Label "Street"
-                InputProp.ConvertTo InputValue.Text
-              ]
-              FormInputProp.LeftIconClasses [ Fa.fa; Fa.``fa-funnel-dollar``; Tw.``text-orange-400`` ]
-              FormInputProp.RightIconClasses [ Fa.fa; Fa.``fa-passport``; Tw.``text-red-500`` ]
+              InputProp.Label "Street"
+              InputProp.ConvertTo InputValue.Text
+              InputProp.LeftView (Icon.simpleIcon [ Fa.fa; Fa.``fa-funnel-dollar``; Tw.``text-orange-400`` ])
+              InputProp.RightView (Icon.simpleIcon [ Fa.fa; Fa.``fa-passport``; Tw.``text-red-500`` ])
             ]
 
             field "Address.ZipCode" input [
-              FormInputProp.InputProps [
-                InputProp.Label "ZipCode"
-                InputProp.ConvertTo InputValue.Number
-              ]
+              InputProp.Label "ZipCode"
+              InputProp.ConvertTo InputValue.Number
             ]
 
             errorSummary state.UserProfileForm

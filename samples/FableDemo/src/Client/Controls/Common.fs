@@ -57,7 +57,9 @@ module Layout =
 [<RequireQualifiedAccess>]
 module Icon =
   let icon props = span </> props
-  
+
+  let simpleIcon cs = icon [ Classes cs ]
+
   let brand props =
     icon [
       Classes [

@@ -31,39 +31,19 @@ let formErrorClasses =
   ]
 
 
-type FormInputProp<'T> =
-  | InputProps of InputProp<'T> list
-  | LeftIconClasses of string list
-  | RightIconClasses of string list
-
 let input props =
-  let leftIconClasses  = props |> UnionProps.concat (function FormInputProp.LeftIconClasses x -> Some x | _ -> None)
-  let rightIconClasses = props |> UnionProps.concat (function FormInputProp.RightIconClasses x -> Some x | _ -> None)
+  let leftView  = props |> UnionProps.tryLast (function InputProp.LeftView x -> Some x | _ -> None)
+  let rightView = props |> UnionProps.tryLast (function InputProp.RightView x -> Some x | _ -> None)
 
-  let iconView iconClasses =
-    Icon.icon [
+  let iconView props =
+    div </> [
       Classes [
-        Tw.block
         Tw.``bg-gray-300``
         Tw.``py-02``
         Tw.``px-02``
         Tw.``text-center``
-        yield! iconClasses
       ]
-    ]
-
-  let inputWrapper (v: ReactElement) =
-    div </> [
-      Classes [ Tw.flex ]
-      Children [
-        if Seq.isEmpty leftIconClasses |> not then
-          iconView [ Tw.``rounded-l``; yield! leftIconClasses ]
-
-        v
-
-        if Seq.isEmpty rightIconClasses |> not then
-          iconView [ Tw.``rounded-r``; yield! rightIconClasses ]
-      ]
+      yield! props
     ]
 
   Form.input [
@@ -78,16 +58,34 @@ let input props =
       Tw.``hover:bg-blue-200``
       Tw.``text-gray-700``
       Tw.``rounded-none``
-      if Seq.isEmpty leftIconClasses then Tw.``rounded-l``
-      if Seq.isEmpty rightIconClasses then Tw.``rounded-r``
+      if leftView.IsNone then Tw.``rounded-l``
+      if rightView.IsNone then Tw.``rounded-r``
     ]
-    InputProp.InputViewWrapper inputWrapper
     InputProp.SimpleFieldProps [
       SimpleFieldProp.OuterClasses formOuterClasses
       SimpleFieldProp.LabelClasses formLabelClasses
       SimpleFieldProp.ErrorClasses formErrorClasses
     ]
-    yield! (props |> UnionProps.concat (function FormInputProp.InputProps x -> Some x | _ -> None))
+    match leftView with
+      | None   -> ()
+      | Some v ->
+          InputProp.LeftView (iconView [
+            Classes [ Tw.``rounded-l`` ]
+            Children [ v ]
+          ])
+    match rightView with
+      | None   -> ()
+      | Some v ->
+          InputProp.RightView (iconView [
+            Classes [ Tw.``rounded-r`` ]
+            Children [ v ]
+          ])
+    yield!
+      props
+      |> List.filter (function
+          | InputProp.LeftView _
+          | InputProp.RightView _ -> false
+          | _ -> true)
   ]
 
 
