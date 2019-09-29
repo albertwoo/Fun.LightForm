@@ -3,7 +3,7 @@ module Client.Controls.Form
 open Fable.React
 open Fable.React.Props
 open Fun.LightForm
-open Fun.LightForm.FormViews
+open Fun.LightForm.FormView
 
 
 let formOuterClasses =
@@ -42,44 +42,47 @@ let input props =
 
   let iconView iconClasses =
     Icon.icon [
-      yield Tw.block
-      yield Tw.``bg-gray-300``
-      yield Tw.``py-02``
-      yield Tw.``px-02``
-      yield Tw.``text-center``
-      yield! iconClasses
+      Classes [
+        Tw.block
+        Tw.``bg-gray-300``
+        Tw.``py-02``
+        Tw.``px-02``
+        Tw.``text-center``
+        yield! iconClasses
+      ]
     ]
 
-  let inputWrapper v =
-    div [
+  let inputWrapper (v: ReactElement) =
+    div </> [
       Classes [ Tw.flex ]
-    ] [
-      if Seq.isEmpty leftIconClasses |> not then
-        yield iconView [ yield Tw.``rounded-l``; yield! leftIconClasses ]
+      Children [
+        if Seq.isEmpty leftIconClasses |> not then
+          iconView [ Tw.``rounded-l``; yield! leftIconClasses ]
 
-      yield v
+        v
 
-      if Seq.isEmpty rightIconClasses |> not then
-        yield iconView [ yield Tw.``rounded-r``; yield! rightIconClasses ]
+        if Seq.isEmpty rightIconClasses |> not then
+          iconView [ Tw.``rounded-r``; yield! rightIconClasses ]
+      ]
     ]
 
-  inputF [
-    yield InputProp.InputClasses [
-      yield Tw.``outline-none``
-      yield Tw.``bg-gray-200``
-      yield Tw.``py-01``
-      yield Tw.``px-03``
-      yield Tw.``w-full``
-      yield Tw.``focus:border-blue-400``
-      yield Tw.``focus:bg-blue-100``
-      yield Tw.``hover:bg-blue-200``
-      yield Tw.``text-gray-700``
-      yield Tw.``rounded-none``
-      if Seq.isEmpty leftIconClasses then yield Tw.``rounded-l``
-      if Seq.isEmpty rightIconClasses then yield Tw.``rounded-r``
+  Form.input [
+    InputProp.InputClasses [
+      Tw.``outline-none``
+      Tw.``bg-gray-200``
+      Tw.``py-01``
+      Tw.``px-03``
+      Tw.``w-full``
+      Tw.``focus:border-blue-400``
+      Tw.``focus:bg-blue-100``
+      Tw.``hover:bg-blue-200``
+      Tw.``text-gray-700``
+      Tw.``rounded-none``
+      if Seq.isEmpty leftIconClasses then Tw.``rounded-l``
+      if Seq.isEmpty rightIconClasses then Tw.``rounded-r``
     ]
-    yield InputProp.InputViewWrapper inputWrapper
-    yield InputProp.SimpleFieldProps [
+    InputProp.InputViewWrapper inputWrapper
+    InputProp.SimpleFieldProps [
       SimpleFieldProp.OuterClasses formOuterClasses
       SimpleFieldProp.LabelClasses formLabelClasses
       SimpleFieldProp.ErrorClasses formErrorClasses
@@ -89,14 +92,14 @@ let input props =
 
 
 let inline selector props =
-  selectorF [
-    yield SelectorProp.InputClasses [
+  Form.selector [
+    SelectorProp.InputClasses [
       Tw.flex
       Tw.``items-center``
       Tw.``text-gray-700``
       Tw.``ml-01``
     ]
-    yield SelectorProp.SimpleFieldProps [
+    SelectorProp.SimpleFieldProps [
       SimpleFieldProp.OuterClasses formOuterClasses
       SimpleFieldProp.LabelClasses formLabelClasses
       SimpleFieldProp.ErrorClasses formErrorClasses
@@ -106,13 +109,14 @@ let inline selector props =
 
 
 let errorSummary form =
-  div [
+  div </> [
     Classes [
       Tw.``text-red-500``
       Tw.``text-sm``
       Tw.``text-center``
       Tw.``p-02``
     ]
-  ] [
-    for e in getFormErrors form -> div [] [ sprintf "* %s" e |> str ]
+    Children [
+      for e in getFormErrors form -> div </> [ HTMLPropExtra.Text (sprintf "* %s" e) ]
+    ]
   ]

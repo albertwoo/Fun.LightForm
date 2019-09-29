@@ -25,15 +25,6 @@ let inline private setRecordFieldValue (fieldName: string) (o: obj) value =
 #endif
 
 
-[<RequireQualifiedAccess>]
-module UnionProps =
-  let values f props = props |> List.choose f
-
-  let concat f props = props |> values f |> List.concat
-
-  let tryLast f props = props |> List.rev |> List.tryPick f
-
-
 let getFormFieldValue field =
     match field.Value with
     | Valid value

@@ -1,7 +1,6 @@
 [<AutoOpen>]
 module Client.Controls.Common
 
-open System
 open Fable.React
 open Fable.React.Props
 open Zanaptak.TypedCssClasses
@@ -11,89 +10,78 @@ type Tw = CssClasses<"./public/css/tailwind-generated.css", Naming.Verbatim>
 type Fa = CssClasses<"./public/css/font-awesome-v5-10-2.min.css", Naming.Verbatim>
 
 
-let classes str = str |> List.filter (String.IsNullOrEmpty >> not) |> String.concat " "
-let Classes = classes >> Class
-
-let emptyView = div [ Style [ Display DisplayOptions.None ] ] []
-
-
 [<RequireQualifiedAccess>]
 module Heading =
-  let h1 classes (txt: string) =
-    div [
+  let h1 props =
+    div </> [
       Classes [
-        yield Tw.``text-3xl``
-        yield Tw.``font-bold``
-        yield! classes
+        Tw.``text-3xl``
+        Tw.``font-bold``
       ]
-    ] [
-      str txt 
+      yield! props
     ]
 
-  let h2 classes (txt: string) =
-    div [
+  let h2 props =
+    div </> [
       Classes [
-        yield Tw.``text-2xl``
-        yield Tw.``font-semibold``
-        yield! classes
+        Tw.``text-2xl``
+        Tw.``font-semibold``
       ]
-    ] [
-      str txt 
+      yield! props
     ]
 
 
 [<RequireQualifiedAccess>]
 module Layout =
-  let level classes childs =
-    div [
+  let level props =
+    div </> [
+      yield! props
       Classes [
-        yield! classes
-        yield Tw.``mx-auto``
-        yield Tw.flex
-        yield Tw.``flex-no-wrap``
-        yield Tw.``items-center``
-        yield Tw.``justify-center``
+        Tw.``mx-auto``
+        Tw.flex
+        Tw.``flex-no-wrap``
+        Tw.``items-center``
+        Tw.``justify-center``
       ]
-    ] childs
+    ]
 
   let spacer classes =
-    span [
+    span </> [
       Classes [
-        yield Tw.``px-02``
+        Tw.``px-02``
         yield! classes
       ]
-    ] []
+    ]
 
 
 [<RequireQualifiedAccess>]
 module Icon =
-  let icon cs = span [ Classes cs ] []
+  let icon props = span </> props
   
-  let brand classes =
-    span [
+  let brand props =
+    icon [
       Classes [
-        yield! classes
-        yield Fa.fab
-        yield Tw.``text-gray-800``
+        Fa.fab
+        Tw.``text-gray-800``
       ]
-    ] []
+      yield! props
+    ]
 
-  let solid classes =
-    span [
+  let solid props =
+    icon [
       Classes [
-        yield! classes
-        yield Fa.fas
-        yield Tw.``text-gray-800``
+        Fa.fas
+        Tw.``text-gray-800``
       ]
-    ] []
+      yield! props
+    ]
 
   let urlIcon url icon =
     match url with
       | Some url ->
-          a [
+          a </> [
             Href url
-          ] [
-            icon
+            Children [ icon ]
           ]
       | None ->
           emptyView
@@ -101,30 +89,33 @@ module Icon =
 
 [<RequireQualifiedAccess>]
 module Button =
-  let button classes label onClick =
-    button [
-      OnClick onClick
+  let button props =
+    button </> [
       Classes [
-        yield Tw.``m-02``
-        yield Tw.``py-01``
-        yield Tw.``px-02``
-        yield Tw.rounded
-        yield! classes
+        Tw.``m-02``
+        Tw.``py-01``
+        Tw.``px-02``
+        Tw.rounded
       ]
-    ] [
-      str label
+      yield! props
     ]
 
-  let primaryButton =
+  let primaryButton props =
     button [
-      Tw.``text-white``
-      Tw.``bg-green-400``
-      Tw.``hover:bg-green-500``
+      Classes [
+        Tw.``text-white``
+        Tw.``bg-green-400``
+        Tw.``hover:bg-green-500``
+      ]
+      yield! props
     ]
 
-  let secondayButton =
+  let secondayButton props =
     button [
-      Tw.``text-gray-700``
-      Tw.border
-      Tw.``hover:bg-gray-200``
+      Classes [
+        Tw.``text-gray-700``
+        Tw.border
+        Tw.``hover:bg-gray-200``
+      ]
+      yield! props
     ]

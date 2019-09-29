@@ -1,40 +1,14 @@
 [<AutoOpen>]
-module Fun.LightForm.FormViews.Field
+module Fun.LightForm.FormView.Field
 
 open System
 open Fable.React
 open Fable.React.Props
-open Fun.LightForm
 
 
-let Classes = String.concat " " >> Class
+type ISimpleFieldProp = interface end
 
-
-let fieldOuter classes children =
-  div [
-    match classes with
-      | [] -> yield Style [ Margin "5px"; Padding "5px" ]
-      | cs -> yield Classes cs
-  ] children
-
-let fieldLabel classes label =
-  div [
-    match classes with
-      | [] -> yield Style [ Color "gray"; FontSize "0.9rem" ]
-      | cs -> yield Classes cs
-  ] [ str label ]
-
-let fieldError classes es =
-  [
-    for e in es ->
-      div [
-        match classes with
-          | [] -> yield Style [ Color "red"; FontSize "0.8rem"; Opacity "0.8" ]
-          | cs -> yield Classes cs
-      ] [ str e ]
-  ]
-
-
+[<RequireQualifiedAccess>]
 type SimpleFieldProp =
   | Label of string
   | Errors of string list 
@@ -42,28 +16,10 @@ type SimpleFieldProp =
   | LabelClasses of string list
   | ErrorClasses of string list
   | FieldView of ReactElement
-
-let simpleField props =      
-  let label             = props |> UnionProps.tryLast (function SimpleFieldProp.Label x -> Some x | _ -> None)
-  let errorClasses      = props |> UnionProps.tryLast (function SimpleFieldProp.ErrorClasses x -> Some x | _ -> None) |> Option.defaultValue []
-  let outerClasses      = props |> UnionProps.concat (function SimpleFieldProp.OuterClasses x -> Some x | _ -> None)
-  let labelClasses      = props |> UnionProps.concat (function SimpleFieldProp.LabelClasses x -> Some x | _ -> None)
-
-  fieldOuter outerClasses [
-    if label.IsSome then yield fieldLabel labelClasses label.Value 
-
-    yield
-      props
-      |> UnionProps.tryLast (function SimpleFieldProp.FieldView x -> Some x | _ -> None)
-      |> Option.defaultValue (span [] [])
-
-    yield! 
-      props 
-      |> UnionProps.concat (function SimpleFieldProp.Errors x -> Some x | _ -> None)
-      |> fieldError errorClasses
-  ]
+  interface ISimpleFieldProp
 
 
+[<RequireQualifiedAccess>]
 type InputProp<'T> =
   | Label of string
   | Value of 'T
@@ -75,13 +31,83 @@ type InputProp<'T> =
   | InputClasses of string list
   | InputViewWrapper of (ReactElement -> ReactElement)
   | InputAttrs of IHTMLProp list
-  | SimpleFieldProps of SimpleFieldProp list
-and InputValue =
+  | SimpleFieldProps of ISimpleFieldProp list
+  interface ISimpleFieldProp
+and [<RequireQualifiedAccess>] InputValue =
   | Text of string
   | Email of string
   | Number of float
   | Password of string
   | Date of DateTime
+
+
+[<RequireQualifiedAccess>]
+type SelectorProp<'Id, 'Value> =
+  | Label of string
+  | Source of ('Id * 'Value) list
+  | Displayer of ('Id * 'Value -> ReactElement)
+  | SelectedIds of 'Id list
+  | OnIdsChange of ('Id list -> unit)
+  | InputClasses of string list
+  | InputAttrs of IHTMLProp list
+  | SwitchType of SwitchType
+  | OnlyOne of bool
+  | SimpleFieldProps of ISimpleFieldProp list
+and [<RequireQualifiedAccess>] SwitchType =
+  | CheckBox
+  | Radio
+
+
+
+let fieldOuter cs children =
+  div </> [
+    match cs with
+      | [] -> Style [ Margin "5px"; Padding "5px" ]
+      | cs -> Classes cs
+    Children children
+  ]
+
+let fieldLabel cs label =
+  div </> [
+    match cs with
+      | [] -> Style [ Color "gray"; FontSize "0.9rem" ]
+      | cs -> Classes cs
+    Text label
+  ]
+
+let fieldError cs es =
+  [
+    for e in es ->
+      div </> [
+        match cs with
+          | [] -> Style [ Color "red"; FontSize "0.8rem"; Opacity "0.8" ]
+          | cs -> Classes cs
+        Text e
+      ]
+  ]
+
+
+let simpleField (props: ISimpleFieldProp list) =
+  let props = props |> List.choose (function :? SimpleFieldProp as x -> Some x | _ -> None)
+  let label             = props |> UnionProps.tryLast (function SimpleFieldProp.Label x -> Some x | _ -> None)
+  let errorClasses      = props |> UnionProps.tryLast (function SimpleFieldProp.ErrorClasses x -> Some x | _ -> None) |> Option.defaultValue []
+  let outerClasses      = props |> UnionProps.concat (function SimpleFieldProp.OuterClasses x -> Some x | _ -> None)
+  let labelClasses      = props |> UnionProps.concat (function SimpleFieldProp.LabelClasses x -> Some x | _ -> None)
+
+  fieldOuter outerClasses [
+    if label.IsSome then fieldLabel labelClasses label.Value 
+    
+    props
+    |> UnionProps.tryLast (function SimpleFieldProp.FieldView x -> Some x | _ -> None)
+    |> Option.defaultValue (span [] [])
+
+    yield! 
+      props 
+      |> UnionProps.concat (function SimpleFieldProp.Errors x -> Some x | _ -> None)
+      |> fieldError errorClasses
+  ]
+
+
 
 let inputField (props: InputProp<_> list) =
       let onValueChange     = props |> UnionProps.tryLast (function InputProp.OnValueChange x -> Some x | _ -> None)
@@ -106,28 +132,28 @@ let inputField (props: InputProp<_> list) =
         input [
           yield! inputAttrs
           match inputClasses with
-            | [] -> yield Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
-            | cs -> yield Classes cs
-          yield Type (
+            | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
+            | cs -> classes cs
+          Type (
             match value with
-              | Text _      -> "text"
-              | Email _     -> "email"
-              | Date _      -> "date"
-              | Number _    -> "number"
-              | Password _  -> "password")
-          yield HTMLAttr.Value (
+              | InputValue.Text _      -> "text"
+              | InputValue.Email _     -> "email"
+              | InputValue.Date _      -> "date"
+              | InputValue.Number _    -> "number"
+              | InputValue.Password _  -> "password")
+          Value (
             props
             |> UnionProps.tryLast (function InputProp.DisplayValueConverter x -> Some x | _ -> None)
             |> function
               | Some converter -> converter value
               | None ->
                   match value with
-                    | Text x      -> box x
-                    | Email x     -> box x
-                    | Password x  -> box x
-                    | Number x    -> box x
-                    | Date x      -> box (x.ToString("yyyy-MM-dd")))
-          yield OnChange (fun e ->
+                    | InputValue.Text x      -> box x
+                    | InputValue.Email x     -> box x
+                    | InputValue.Password x  -> box x
+                    | InputValue.Number x    -> box x
+                    | InputValue.Date x      -> box (x.ToString("yyyy-MM-dd")))
+          OnChange (fun e ->
             match onValueChange with
               | Some dispatch ->
                   props 
@@ -142,29 +168,14 @@ let inputField (props: InputProp<_> list) =
       simpleField [
         yield! props |> UnionProps.concat (function InputProp.SimpleFieldProps x -> Some x | _ -> None)
         match props |> UnionProps.tryLast (function InputProp.Label x -> Some x | _ -> None) with
-          | Some x -> yield SimpleFieldProp.Label x
+          | Some x -> SimpleFieldProp.Label x
           | None   -> ()
-        yield SimpleFieldProp.FieldView (
+        SimpleFieldProp.FieldView (
           match inputViewWrapper with
             | Some wrapper -> wrapper inputView
             | None         -> inputView)
       ]
 
-
-type SelectorProp<'Id, 'Value> =
-  | Label of string
-  | Source of ('Id * 'Value) list
-  | Displayer of ('Id * 'Value -> ReactElement)
-  | SelectedIds of 'Id list
-  | OnIdsChange of ('Id list -> unit)
-  | InputClasses of string list
-  | InputAttrs of IHTMLProp list
-  | SwitchType of SwitchType
-  | OnlyOne of bool
-  | SimpleFieldProps of SimpleFieldProp list
-and SwitchType =
-  | CheckBox
-  | Radio
 
 let inline selectorField (props: SelectorProp<_, _> list) =
       let defaultDisplayer x =
@@ -195,19 +206,19 @@ let inline selectorField (props: SelectorProp<_, _> list) =
             | _, x  -> if onlyOne then [] else x
 
       let fieldView =
-        div [] [
+        div <//> [
           for (id, v) in sourceList do
-            yield div [
+            div [
                 Classes inputClasses
               ] [
-                yield input [
+                input [
                   yield! inputAttrs
-                  yield Type (
+                  Type (
                     match switchType with
                       | SwitchType.CheckBox -> "checkbox"
                       | SwitchType.Radio    -> "radio")
-                  yield Checked (ids |> Seq.exists ((=) id))
-                  yield OnChange (fun _ -> 
+                  Checked (ids |> Seq.exists ((=) id))
+                  OnChange (fun _ -> 
                     props
                     |> UnionProps.tryLast (function SelectorProp.OnIdsChange x -> Some x | _ -> None)
                     |> function
@@ -215,14 +226,14 @@ let inline selectorField (props: SelectorProp<_, _> list) =
                       | None -> ())
                 ]
 
-                yield displayer (id, v)
+                displayer (id, v)
               ]
         ]
 
       simpleField [
         yield! props |> UnionProps.concat (function SelectorProp.SimpleFieldProps x -> Some x | _ -> None)
         match props |> UnionProps.tryLast (function SelectorProp.Label x -> Some x | _ -> None) with
-          | Some x -> yield SimpleFieldProp.Label x
+          | Some x -> SimpleFieldProp.Label x
           | None   -> ()
-        yield SimpleFieldProp.FieldView fieldView
+        SimpleFieldProp.FieldView fieldView
       ]
