@@ -39,7 +39,6 @@ let private createReactElement elementF (props: IHTMLProp list) =
 /// Create ReactElement with props which can be HTMLPropExtra
 let (</>) elementF props     = createReactElement elementF props
 /// Create ReactElement with a list of ReactElement to be contained in the parent ReactElement which can be HTMLPropExtra
-let (<//>) elementF children = elementF </> [ HTMLPropExtra.Children children ]
 
 
 /// An empty hidden div
