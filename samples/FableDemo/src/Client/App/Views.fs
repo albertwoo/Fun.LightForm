@@ -35,6 +35,7 @@ let app state dispatch =
         Tw.``flex-col``
         Tw.``items-center``
         Tw.``justify-center``
+        Tw.``overflow-auto``
       ]
       Children [
         form </> [
@@ -42,6 +43,7 @@ let app state dispatch =
             Tw.``sm:w-full``
             Tw.``lg:w-02/04``
             Tw.``shadow-lg``
+            Tw.``overflow-auto``
           ]
           Children [
             field "UserName" input [
@@ -72,7 +74,22 @@ let app state dispatch =
             field "Roles" selector [
               SelectorProp.Label "Roles"
               SelectorProp.Source [ 1, "R1"; 2, "R2" ]
-              SelectorProp.Displayer (fun (_,v) -> span [ Classes [ Tw.``ml-01`` ] ] [ str v ])
+              SelectorProp.OnlyOne false
+            ]
+
+            field "DefaultRole" selector [
+              SelectorProp.Label "Default Role"
+              SelectorProp.Source [ 1, "R1"; 2, "R2" ]
+              SelectorProp.OnlyOne true
+            ]
+
+            field "Country" selector [
+              SelectorProp.Label "Selected Country"
+              SelectorProp.OnlyOne true
+              SelectorProp.Source [
+                1, "China"
+                2, "US"
+              ]
             ]
 
             field "Address.Country" input [

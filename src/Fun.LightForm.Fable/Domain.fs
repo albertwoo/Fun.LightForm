@@ -5,6 +5,7 @@ type LightForm = FormField list
 
 type LightFormMsg =
     | ChangeField of FieldKey * value: obj
+    | OnError of FieldKey * string
 
 
 type FormField =

@@ -106,13 +106,23 @@ let updateFormWithMsg (validators: Map<FieldKey, Validator list>) (msg: LightFor
     | ChangeField (key, value) ->
         form
         |> List.map (fun field -> 
-            if field.Name = key then
-                { field with
-                    Value =
-                      match validateFormValue validators field value with
-                      | [] -> Valid value
-                      | es -> Invalid (value, es) }
-            else field)
+            if field.Name <> key then field
+            else
+              { field with
+                  Value =
+                    match validateFormValue validators field value with
+                    | [] -> Valid value
+                    | es -> Invalid (value, es) })
+    | OnError (k, e) ->
+        form
+        |> List.map (fun field ->
+            if field.Name <> k then field
+            else
+              { field with
+                  Value =
+                    match field.Value with
+                    | Valid x         -> Invalid (x, [e])
+                    | Invalid (x, es) -> Invalid (x, e::es) })
 
 
 let getFormErrors (form: LightForm) =

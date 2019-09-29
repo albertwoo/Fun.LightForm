@@ -22,7 +22,7 @@ let requiredAndNot targetValue errorMsg: Validator =
         then Error [ errorMsg ]
         else Ok ()
 
-let required errorMsg = requiredAndNot null errorMsg
+let required errorMsg = requiredAndNot None errorMsg
 
 
 let maxLength max errorMsg: Validator =

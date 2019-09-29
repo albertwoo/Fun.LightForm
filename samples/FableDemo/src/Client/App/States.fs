@@ -10,7 +10,7 @@ let validators =
   |> addValidators "UserName"
       [
         required "This field is reuqired"
-        maxLength 10 "This field`s max length is 30"
+        maxLength 10 "This field`s max length is 10"
       ]
   |> addValidators "Password"
       [
@@ -25,6 +25,8 @@ let validators =
       [
         seqMinLen 1 "Should at least contains one role"
       ]
+  |> addValidators "DefaultRole" [ required "Default role is required" ]
+  |> addValidators "Country" [ required "Country role is required" ]
   |> addValidators "Address.ZipCode"
       [
         maxNum 12. "Should not bigger than 12"

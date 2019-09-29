@@ -4,6 +4,7 @@ module Fun.LightForm.FormView.Form
 open Fable.React
 open Fable.React.Props
 open Fun.LightForm
+open System.Linq
 
 
 type FieldRenderer = FieldRenderer<Fable.React.ReactElement>
@@ -39,10 +40,25 @@ let input (props: InputProp<_> list): FieldRenderer =
 
 let selector (props: SelectorProp<_, _> list): FieldRenderer =
     fun field dispatch ->
+      let onlyOne = props |> UnionProps.tryLast (function SelectorProp.OnlyOne x -> Some x | _ -> None) |> Option.defaultValue true
+
+      let selectedIds =
+        try
+          let value = field |> getFormFieldValue
+          if onlyOne then [ unbox value ]
+          else value |> unbox |> Seq.toList
+        with ex ->
+          OnError (field.Name, string ex) |> dispatch
+          []
+
       selectorField [
         yield! props
-        SelectorProp.SelectedIds (field |> getFormFieldValue |> unbox |> Seq.toList)
-        SelectorProp.OnIdsChange (fun x -> ChangeField (field.Name, x) |> dispatch)
+        SelectorProp.SelectedIds selectedIds
+        SelectorProp.OnIdsChange (fun x ->
+          let newValue =
+            if onlyOne then x |> Seq.tryHead |> box
+            else x |> box
+          ChangeField (field.Name, newValue) |> dispatch)
         SelectorProp.SimpleFieldProps [
           match field.Value with
             | Invalid (_, es) -> SimpleFieldProp.Errors es

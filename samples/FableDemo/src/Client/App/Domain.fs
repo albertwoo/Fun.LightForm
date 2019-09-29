@@ -24,13 +24,17 @@ type UserProfile =
     Password: string
     Birthday: DateTime
     Roles: int list
+    DefaultRole: int
+    Country: int option
     Address: Address }
   static member defaultValue =
     { UserName = "email"
       Password = "password"
       Birthday = DateTime.Now
       Roles = []
-      Address = Address.defaultValue }
+      DefaultRole = -1
+      Address = Address.defaultValue
+      Country = None }
 and Address =
   { Country: string
     City: string
