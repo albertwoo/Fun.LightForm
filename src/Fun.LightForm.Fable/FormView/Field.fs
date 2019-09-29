@@ -29,7 +29,6 @@ type InputProp<'T> =
   | ConvertTo of ('T -> InputValue)
   | ConvertFrom of (obj -> 'T)
   | OnValueChange of ('T -> unit)
-  | InputClasses of string list
   | InputViewWrapper of (ReactElement -> ReactElement)
   | LeftView of ReactElement
   | RightView of ReactElement
@@ -52,9 +51,9 @@ type SelectorProp<'Id, 'Value> =
   | Displayer of ('Id * 'Value -> ReactElement)
   | SelectedIds of 'Id list
   | OnSelect of ('Id list -> unit)
-  | InputClasses of string list
-  | ContainerAttrs of IHTMLProp list
+  | SelectionsContainerAttrs of IHTMLProp list
   | InputAttrs of IHTMLProp list
+  | SelectionClasses of string list
   | SwitchType of SwitchType
   | OnlyOne of bool
   | SimpleFieldProps of ISimpleFieldProp list
@@ -115,8 +114,12 @@ let inputField (props: InputProp<_> list) =
     let inputViewWrapper  = props |> UnionProps.tryLast (function InputProp.InputViewWrapper x -> Some x | _ -> None)
     let leftView          = props |> UnionProps.tryLast (function InputProp.LeftView x -> Some x | _ -> None)
     let rightView         = props |> UnionProps.tryLast (function InputProp.RightView x -> Some x | _ -> None)
-    let inputAttrs        = props |> UnionProps.concat (function InputProp.InputAttrs x -> Some x | _ -> None)
-    let inputClasses      = props |> UnionProps.concat (function InputProp.InputClasses x -> Some x | _ -> None)
+    let inputExtraProps, inputAttrs =
+      props
+      |> UnionProps.concat (function InputProp.InputAttrs x -> Some x | _ -> None)
+      |> List.partition (function
+        | :? HTMLPropExtra -> true
+        | _ -> false)
 
     let value =
       props
@@ -133,8 +136,7 @@ let inputField (props: InputProp<_> list) =
 
     let inputView = 
       input [
-        yield! inputAttrs
-        match inputClasses with
+        match inputExtraProps |> List.map (fun x -> x :?> HTMLPropExtra) |> UnionProps.concat (function HTMLPropExtra.Classes x -> Some x | _ -> None) with
           | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
           | cs -> classes cs
         Type (
@@ -166,6 +168,7 @@ let inputField (props: InputProp<_> list) =
                   | None    -> e.Value |> unbox |> dispatch
             | None ->
                 ())
+        yield! inputAttrs
       ]
 
     simpleField [
@@ -205,7 +208,6 @@ let inline selectorField (props: SelectorProp<_, _> list) =
     let displayer     = props |> UnionProps.tryLast (function SelectorProp.Displayer x -> Some x | _ -> None) |> Option.defaultValue defaultDisplayer
     let onlyOne       = props |> UnionProps.tryLast (function SelectorProp.OnlyOne x -> Some x | _ -> None) |> Option.defaultValue false
     let inputAttrs    = props |> UnionProps.concat (function SelectorProp.InputAttrs x -> Some x | _ -> None)
-    let inputClasses  = props |> UnionProps.concat (function SelectorProp.InputClasses x -> Some x | _ -> None) |> Seq.toList
       
     let ids =
       match onlyOne, ids with
@@ -221,14 +223,13 @@ let inline selectorField (props: SelectorProp<_, _> list) =
 
     let fieldView =
       div </> [
-        yield! props |> UnionProps.concat (function SelectorProp.ContainerAttrs x -> Some x | _ -> None)
+        yield! props |> UnionProps.concat (function SelectorProp.SelectionsContainerAttrs x -> Some x | _ -> None)
         Children [
           for (id, v) in sourceList do
             div </> [
-              Classes inputClasses
+              Classes (props |> UnionProps.concat (function SelectorProp.SelectionClasses x -> Some x | _ -> None))
               Children [
                 input [
-                  yield! inputAttrs
                   Type (
                     match switchType with
                       | SwitchType.CheckBox -> "checkbox"
@@ -240,6 +241,7 @@ let inline selectorField (props: SelectorProp<_, _> list) =
                     |> function
                       | Some dispatch -> generateValues id |> dispatch
                       | None -> ())
+                  yield! inputAttrs
                 ]
 
                 displayer (id, v)

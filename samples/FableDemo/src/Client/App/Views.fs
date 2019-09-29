@@ -62,7 +62,7 @@ let app state dispatch =
             field "Birthday" input [
               InputProp.Label "Birthday"
               InputProp.ConvertTo InputValue.Date
-              InputProp.InputClasses [ Tw.``text-purple-500`` ]
+              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
             ]
 
             field "Roles" selector [
@@ -83,7 +83,7 @@ let app state dispatch =
               SelectorProp.Source [
                 for i in 1..100 -> i, sprintf "Country %d" i
               ]
-              SelectorProp.ContainerAttrs [
+              SelectorProp.SelectionsContainerAttrs [
                 Style [
                   MaxHeight "100px"
                   OverflowY OverflowOptions.Auto

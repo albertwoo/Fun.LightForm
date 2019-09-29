@@ -47,19 +47,21 @@ let input props =
     ]
 
   Form.input [
-    InputProp.InputClasses [
-      Tw.``outline-none``
-      Tw.``bg-gray-200``
-      Tw.``py-01``
-      Tw.``px-03``
-      Tw.``w-full``
-      Tw.``focus:border-blue-400``
-      Tw.``focus:bg-blue-100``
-      Tw.``hover:bg-blue-200``
-      Tw.``text-gray-700``
-      Tw.``rounded-none``
-      if leftView.IsNone then Tw.``rounded-l``
-      if rightView.IsNone then Tw.``rounded-r``
+    InputProp.InputAttrs [
+      Classes [
+        Tw.``outline-none``
+        Tw.``bg-gray-200``
+        Tw.``py-01``
+        Tw.``px-03``
+        Tw.``w-full``
+        Tw.``focus:border-blue-400``
+        Tw.``focus:bg-blue-100``
+        Tw.``hover:bg-blue-200``
+        Tw.``text-gray-700``
+        Tw.``rounded-none``
+        if leftView.IsNone then Tw.``rounded-l``
+        if rightView.IsNone then Tw.``rounded-r``
+      ]
     ]
     InputProp.SimpleFieldProps [
       SimpleFieldProp.OuterClasses formOuterClasses
@@ -91,7 +93,7 @@ let input props =
 
 let inline selector props =
   Form.selector [
-    SelectorProp.InputClasses [
+    SelectorProp.SelectionClasses [
       Tw.flex
       Tw.``items-center``
       Tw.``text-gray-700``
