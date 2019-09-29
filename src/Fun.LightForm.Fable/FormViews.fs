@@ -1,8 +1,9 @@
-module Fun.LightForm.FormViews
+[<AutoOpen>]
+module Fun.LightForm.FormViews.Views
 
 open Fable.React
 open Fable.React.Props
-open Fun.LightForm.Field
+open Fun.LightForm
 
 
 type FieldRenderer = FieldRenderer<Fable.React.ReactElement>

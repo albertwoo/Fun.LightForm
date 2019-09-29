@@ -4,7 +4,6 @@ open System
 open Fable.React
 open Fable.React.Props
 open Fun.LightForm
-open Fun.LightForm.Field
 open Fun.LightForm.FormViews
 open Client.Controls
 open Client.Controls.Form

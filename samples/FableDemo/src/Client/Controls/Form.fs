@@ -4,7 +4,6 @@ open Fable.React
 open Fable.React.Props
 open Fun.LightForm
 open Fun.LightForm.FormViews
-open Fun.LightForm.Field
 
 
 let formOuterClasses =

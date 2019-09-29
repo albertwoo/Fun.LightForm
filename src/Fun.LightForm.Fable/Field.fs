@@ -1,8 +1,10 @@
-module Fun.LightForm.Field
+[<AutoOpen>]
+module Fun.LightForm.FormViews.Field
 
 open System
 open Fable.React
 open Fable.React.Props
+open Fun.LightForm
 
 
 let Classes = String.concat " " >> Class
@@ -66,6 +68,7 @@ type InputProp<'T> =
   | Label of string
   | Value of 'T
   | ConvertTo of ('T -> InputValue)
+  | DisplayValueConverter of (InputValue -> obj)
   | InputValue of InputValue
   | ConvertFrom of (obj -> 'T)
   | OnValueChange of ('T -> unit)
@@ -112,13 +115,18 @@ let inputField (props: InputProp<_> list) =
               | Date _      -> "date"
               | Number _    -> "number"
               | Password _  -> "password")
-          yield DefaultValue (
-            match value with
-              | Text x      -> box x
-              | Email x     -> box x
-              | Password x  -> box x
-              | Number x    -> box x
-              | Date x      -> box (x.ToString("yyyy-MM-dd")))
+          yield HTMLAttr.Value (
+            props
+            |> UnionProps.tryLast (function InputProp.DisplayValueConverter x -> Some x | _ -> None)
+            |> function
+              | Some converter -> converter value
+              | None ->
+                  match value with
+                    | Text x      -> box x
+                    | Email x     -> box x
+                    | Password x  -> box x
+                    | Number x    -> box x
+                    | Date x      -> box (x.ToString("yyyy-MM-dd")))
           yield OnChange (fun e ->
             match onValueChange with
               | Some dispatch ->
