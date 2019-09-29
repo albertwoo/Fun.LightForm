@@ -35,7 +35,7 @@ let validators =
 
 let init() =
   { UserProfileForm =
-      generateFormByValue typeof<UserProfile> UserProfile.defaultValue
+      generateFormByValue UserProfile.defaultValue
       |> updateFormWithValidators validators }
   , Cmd.none
 

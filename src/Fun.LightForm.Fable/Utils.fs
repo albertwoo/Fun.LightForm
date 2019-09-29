@@ -32,46 +32,50 @@ let getFormFieldValue field =
 
 
 /// Generate form by a record
-let rec generateFormByValue ty value =
-    FSharpType.GetRecordFields ty
-    |> Seq.toList
-    |> List.map (fun p ->
-        if FSharpType.IsRecord p.PropertyType then
-          getRecordFieldValue p.Name value
-          |> generateFormByValue p.PropertyType 
-          |> List.map (fun f -> { f with Name = sprintf "%s.%s" p.Name f.Name })
-        else
-          [
-            {
-              Name = p.Name
-              Value = Valid (getRecordFieldValue p.Name value)
-            }
-          ])
-    |> List.concat
+let inline generateFormByValue<'T> (value: 'T): LightForm =
+    let rec loop ty value =
+      FSharpType.GetRecordFields ty
+      |> Seq.toList
+      |> List.map (fun p ->
+          if FSharpType.IsRecord p.PropertyType then
+            getRecordFieldValue p.Name value
+            |> loop p.PropertyType 
+            |> List.map (fun f -> { f with Name = sprintf "%s.%s" p.Name f.Name })
+          else
+            [
+              {
+                Name = p.Name
+                Value = Valid (getRecordFieldValue p.Name value)
+              }
+            ])
+      |> List.concat
+    loop typeof<'T> value
 
 
 /// Generate record from form based on an default record. It will modify the record itself underline.
-let rec generateValueByForm ty defaultValue (form: LightForm) =
-    FSharpType.GetRecordFields ty
-    |> Seq.toList
-    |> List.iter (fun p ->
-        if FSharpType.IsRecord p.PropertyType then
-            let prefix = sprintf "%s." p.Name
-            form
-            |> List.choose (fun x ->
-                if x.Name.StartsWith prefix then Some { x with Name = x.Name.Substring(prefix.Length) }
-                else None)
-            |> generateValueByForm p.PropertyType (getRecordFieldValue  p.Name defaultValue)
-            |> setRecordFieldValue p.Name defaultValue
-        else
-            form
-            |> List.tryFind (fun f -> f.Name = p.Name)
-            |> function
-              | Some f ->
-                  getFormFieldValue f
-                  |> setRecordFieldValue p.Name defaultValue
-              | None ->
-                  ())
+let inline generateValueByForm<'T> (defaultValue: 'T) (form: LightForm): 'T =
+    let rec loop ty defaultValue form =
+      FSharpType.GetRecordFields ty
+      |> Seq.toList
+      |> List.iter (fun p ->
+          if FSharpType.IsRecord p.PropertyType then
+              let prefix = sprintf "%s." p.Name
+              form
+              |> List.choose (fun x ->
+                  if x.Name.StartsWith prefix then Some { x with Name = x.Name.Substring(prefix.Length) }
+                  else None)
+              |> loop p.PropertyType (getRecordFieldValue  p.Name defaultValue)
+              |> setRecordFieldValue p.Name defaultValue
+          else
+              form
+              |> List.tryFind (fun f -> f.Name = p.Name)
+              |> function
+                | Some f ->
+                    getFormFieldValue f
+                    |> setRecordFieldValue p.Name defaultValue
+                | None ->
+                    ())
+    loop (defaultValue.GetType()) defaultValue form
     defaultValue
 
 
