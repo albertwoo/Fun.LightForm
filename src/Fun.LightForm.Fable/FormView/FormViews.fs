@@ -28,7 +28,7 @@ let input (props: InputProp<_> list): FieldRenderer =
       inputField [
         yield! props
         InputProp.Value (field |> getFormFieldValue |> unbox)
-        InputProp.OnValueChange (fun x -> ChangeField (field.Name, x) |> dispatch)
+        InputProp.OnValueChange (fun x -> LightFormMsg.ChangeField (field.Name, x) |> dispatch)
         InputProp.SimpleFieldProps [
           match field.Value with
             | Invalid (_, es) -> SimpleFieldProp.Errors es
@@ -48,7 +48,7 @@ let selector (props: SelectorProp<_, _> list): FieldRenderer =
           if onlyOne then [ unbox value ]
           else value |> unbox |> Seq.toList
         with ex ->
-          OnError (field.Name, string ex) |> dispatch
+          LightFormMsg.OnFieldError (field.Name, string ex) |> dispatch
           []
 
       selectorField [
@@ -58,7 +58,7 @@ let selector (props: SelectorProp<_, _> list): FieldRenderer =
           let newValue =
             if onlyOne then x |> Seq.tryHead |> box
             else x |> box
-          ChangeField (field.Name, newValue) |> dispatch)
+          LightFormMsg.ChangeField (field.Name, newValue) |> dispatch)
         SelectorProp.SimpleFieldProps [
           match field.Value with
             | Invalid (_, es) -> SimpleFieldProp.Errors es

@@ -3,9 +3,10 @@ namespace rec Fun.LightForm
 
 type LightForm = FormField list
 
+[<RequireQualifiedAccess>]
 type LightFormMsg =
     | ChangeField of FieldKey * value: obj
-    | OnError of FieldKey * string
+    | OnFieldError of FieldKey * string
 
 
 type FormField =

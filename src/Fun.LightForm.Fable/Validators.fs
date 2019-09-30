@@ -1,7 +1,6 @@
 module rec Fun.LightForm.Validators
 
 open System
-open Fun.LightForm.Utils
 
 
 let addValidators key newValidators validators: Map<string, Validator list> =

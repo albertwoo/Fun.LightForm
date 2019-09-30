@@ -5,7 +5,7 @@
     <Description></Description>
     <PackageProjectUrl>https://github.com/albertwoo/Fun.LightForm</PackageProjectUrl>
     <RepositoryUrl>https://github.com/albertwoo/Fun.LightForm</RepositoryUrl>
-    <Version>1.0.0-beta6</Version>
+    <Version>1.0.0-beta7</Version>
     <Authors>slaveoftime</Authors>
     <Company>https://www.slaveoftime.fun</Company>
     <PackageReleaseNotes></PackageReleaseNotes>
@@ -16,7 +16,7 @@
   <ItemGroup>
     <Compile Include="GlobalCommon.fs" />
     <Compile Include="Domain.fs" />
-    <Compile Include="Utils.fs" />
+    <Compile Include="FormUtils.fs" />
     <Compile Include="Validators.fs" />
     <Compile Include="Fable.React.Extra.fs" />
     <Compile Include="FormView\Field.fs" />

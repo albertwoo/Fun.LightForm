@@ -1,5 +1,5 @@
 [<AutoOpen>]
-module rec Fun.LightForm.Utils
+module rec Fun.LightForm.FormUtils
 
 #if FABLE_COMPILER
 open Fable.Core.JsInterop
@@ -107,7 +107,7 @@ let updateFormWithValidators validators (form: LightForm) =
 
 let updateFormWithMsg (validators: Map<FieldKey, Validator list>) (msg: LightFormMsg) (form: LightForm): LightForm =
     match msg with
-    | ChangeField (key, value) ->
+    | LightFormMsg.ChangeField (key, value) ->
         form
         |> List.map (fun field -> 
             if field.Name <> key then field
@@ -117,7 +117,7 @@ let updateFormWithMsg (validators: Map<FieldKey, Validator list>) (msg: LightFor
                     match validateFormValue validators field value with
                     | [] -> Valid value
                     | es -> Invalid (value, es) })
-    | OnError (k, e) ->
+    | LightFormMsg.OnFieldError (k, e) ->
         form
         |> List.map (fun field ->
             if field.Name <> k then field
