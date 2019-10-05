@@ -157,7 +157,7 @@ let inputField (props: InputProp<_> list) =
                   | InputValue.Email x     -> box x
                   | InputValue.Password x  -> box x
                   | InputValue.Number x    -> box x
-                  | InputValue.Date x      -> box (x.ToString("yyyy-MM-dd")))
+                  | InputValue.Date x      -> if x |> box |> isNull then box "" else box (x.ToString("yyyy-MM-dd")))
         OnChange (fun e ->
           match onValueChange with
             | Some dispatch ->
@@ -165,7 +165,13 @@ let inputField (props: InputProp<_> list) =
                 |> UnionProps.tryLast (function InputProp.ConvertFrom x -> Some x | _ -> None)
                 |> function
                   | Some cf -> cf e.Value |> dispatch
-                  | None    -> e.Value |> unbox |> dispatch
+                  | None    ->
+                      match value with
+                      | InputValue.Text _ 
+                      | InputValue.Email _
+                      | InputValue.Password _  -> e.Value |> unbox |> dispatch
+                      | InputValue.Date _      -> DateTime.Parse e.Value |> unbox |> dispatch
+                      | InputValue.Number _    -> Convert.ToDouble e.Value |> unbox |> dispatch
             | None ->
                 ())
         yield! inputAttrs
