@@ -132,7 +132,11 @@ let app state dispatch =
         ]
 
         infoCard [
-          Text (sprintf "%A" (generateValueByForm UserProfile.defaultValue state.UserProfileForm))
+          Children [
+            str (sprintf "%A" (generateValueByForm UserProfile.defaultValue state.UserProfileForm))
+            hr []
+            str (sprintf "%A" (tryGenerateValueByForm<UserProfile> state.UserProfileForm))
+          ]
           Classes [
             Tw.``text-green-600``
             Tw.``bg-green-100``

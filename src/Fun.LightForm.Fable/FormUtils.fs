@@ -79,6 +79,36 @@ let inline generateValueByForm<'T> (defaultValue: 'T) (form: LightForm): 'T =
     defaultValue
 
 
+/// Generate record from form
+let inline tryGenerateValueByForm<'T> (form: LightForm): Result<'T, exn> =
+    let rec loop ty form =
+      let values =
+        FSharpType.GetRecordFields ty
+        |> Seq.toList
+        |> List.map (fun p ->
+            if FSharpType.IsRecord p.PropertyType then
+                let prefix = sprintf "%s." p.Name
+                [
+                  form
+                  |> List.choose (fun x ->
+                      if x.Name.StartsWith prefix then Some { x with Name = x.Name.Substring(prefix.Length) }
+                      else None)
+                  |> loop p.PropertyType
+                ]
+            else
+                form
+                |> List.tryFind (fun f -> f.Name = p.Name)
+                |> function
+                  | Some f -> [ getFormFieldValue f ]
+                  | None   -> [])
+        |> List.concat
+        |> List.toArray
+      FSharpValue.MakeRecord (ty, values)
+
+    try loop typeof<'T> form |> unbox |> Ok
+    with ex -> ex |> Error
+
+
 let validateFormValue (validators: Map<FieldKey, Validator list>) field value =
     validators
     |> Map.filter (fun k _ -> k = field.Name)
