@@ -6,6 +6,4 @@ group Client
     Fable.Elmish.React
     Fable.Elmish.Debugger
     Fable.React
-    Thoth.Json
-    Thoth.Json.Net
     Zanaptak.TypedCssClasses
