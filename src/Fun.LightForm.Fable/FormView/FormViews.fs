@@ -45,7 +45,8 @@ let selector (props: SelectorProp<_, _> list): FieldRenderer =
       let selectedIds =
         try
           let value = field |> getFormFieldValue
-          if onlyOne then [ unbox value ]
+          if onlyOne && value |> isNull |> not then [ unbox value ]
+          elif onlyOne then []
           else value |> unbox |> Seq.toList
         with ex ->
           LightFormMsg.OnFieldError (field.Name, string ex) |> dispatch

@@ -47,6 +47,10 @@ let app state dispatch =
             Tw.``overflow-auto``
           ]
           Children [
+            field "IsPublish" selector [
+              SelectorProp.Source [ true, "Publish" ]
+            ]
+
             field "UserName" input [
               InputProp.Label "Email"
               InputProp.ConvertTo InputValue.Text
@@ -80,6 +84,7 @@ let app state dispatch =
             field "Country" selector [
               SelectorProp.Label "Selected Country"
               SelectorProp.OnlyOne true
+              SelectorProp.AtLeastOne true
               SelectorProp.Source [
                 for i in 1..100 -> i, sprintf "Country %d" i
               ]

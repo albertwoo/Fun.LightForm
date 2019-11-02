@@ -26,7 +26,8 @@ type UserProfile =
     Roles: int list
     DefaultRole: int
     Country: int option
-    Address: Address }
+    Address: Address
+    IsPublish: bool }
   static member defaultValue =
     { UserName = "email"
       Password = "password"
@@ -34,7 +35,8 @@ type UserProfile =
       Roles = []
       DefaultRole = -1
       Address = Address.defaultValue
-      Country = None }
+      Country = None
+      IsPublish = true }
 and Address =
   { Country: string
     City: string

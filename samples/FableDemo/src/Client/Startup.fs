@@ -15,6 +15,6 @@ Program.mkProgram App.States.init App.States.update App.Views.app
 #endif
 |> Program.withReactBatched "root"
 #if DEBUG
-|> Program.withDebugger
+//|> Program.withDebugger
 #endif
 |> Program.run

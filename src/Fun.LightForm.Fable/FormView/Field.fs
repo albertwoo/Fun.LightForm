@@ -57,6 +57,7 @@ type SelectorProp<'Id, 'Value> =
   | SelectionClasses of string list
   | SwitchType of SwitchType
   | OnlyOne of bool
+  | AtLeastOne of bool
   | SimpleFieldProps of ISimpleFieldProp list
 and [<RequireQualifiedAccess>] SwitchType =
   | CheckBox
@@ -218,12 +219,19 @@ let inline selectorField (props: SelectorProp<_, _> list) =
     let sourceList    = props |> UnionProps.tryLast (function SelectorProp.Source x -> Some x | _ -> None) |> Option.defaultValue []
     let displayer     = props |> UnionProps.tryLast (function SelectorProp.Displayer x -> Some x | _ -> None) |> Option.defaultValue defaultDisplayer
     let onlyOne       = props |> UnionProps.tryLast (function SelectorProp.OnlyOne x -> Some x | _ -> None) |> Option.defaultValue false
+    let atLeastOne    = props |> UnionProps.tryLast (function SelectorProp.AtLeastOne x -> Some x | _ -> None) |> Option.defaultValue false
     let inputAttrs    = props |> UnionProps.concat (function SelectorProp.InputAttrs x -> Some x | _ -> None)
-      
+    let dispatch      = props |> UnionProps.tryLast (function SelectorProp.OnSelect x -> Some x | _ -> None)
+
+
     let ids =
       match onlyOne, ids with
-      | true, x::_ -> [x]
-      | _ -> ids
+        | true, x::_ -> [x]
+        | _ -> ids
+
+    match ids, sourceList, atLeastOne, dispatch with
+      | [], (id, _)::_, true, Some dispatch -> dispatch [id]
+      | _ -> ()
 
     let generateValues id =
       ids
@@ -247,11 +255,10 @@ let inline selectorField (props: SelectorProp<_, _> list) =
                       | SwitchType.Radio    -> "radio")
                   Checked (ids |> Seq.exists ((=) id))
                   OnChange (fun _ -> 
-                    props
-                    |> UnionProps.tryLast (function SelectorProp.OnSelect x -> Some x | _ -> None)
-                    |> function
-                      | Some dispatch -> generateValues id |> dispatch
-                      | None -> ())
+                    match ids, atLeastOne, dispatch with
+                      | [x], true, _ when x = id -> ()
+                      | _, _, Some dispatch -> generateValues id |> dispatch
+                      | _ -> ())
                   yield! inputAttrs
                 ]
 
