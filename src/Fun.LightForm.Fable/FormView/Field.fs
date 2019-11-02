@@ -24,6 +24,7 @@ type SimpleFieldProp =
 type InputProp<'T> =
   | Label of string
   | Value of 'T
+  | AlwaysRerender of bool
   | InputValue of InputValue
   | DisplayValueConverter of (InputValue -> obj)
   | ConvertTo of ('T -> InputValue)
@@ -114,6 +115,8 @@ let inputField (props: InputProp<_> list) =
     let inputViewWrapper  = props |> UnionProps.tryLast (function InputProp.InputViewWrapper x -> Some x | _ -> None)
     let leftView          = props |> UnionProps.tryLast (function InputProp.LeftView x -> Some x | _ -> None)
     let rightView         = props |> UnionProps.tryLast (function InputProp.RightView x -> Some x | _ -> None)
+    let alwaysRerender    = props |> UnionProps.tryLast (function InputProp.AlwaysRerender x -> Some x | _ -> None) |> Option.defaultValue false
+
     let inputExtraProps, inputAttrs =
       props
       |> UnionProps.concat (function InputProp.InputAttrs x -> Some x | _ -> None)
@@ -136,6 +139,8 @@ let inputField (props: InputProp<_> list) =
 
     let inputView = 
       input [
+        if alwaysRerender then
+          Key (Random().Next(0, 10000000).ToString())
         match inputExtraProps |> List.map (fun x -> x :?> HTMLPropExtra) |> UnionProps.concat (function HTMLPropExtra.Classes x -> Some x | _ -> None) with
           | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
           | cs -> classes cs
@@ -146,7 +151,7 @@ let inputField (props: InputProp<_> list) =
             | InputValue.Date _      -> "date"
             | InputValue.Number _    -> "number"
             | InputValue.Password _  -> "password")
-        Value (
+        DefaultValue (
           props
           |> UnionProps.tryLast (function InputProp.DisplayValueConverter x -> Some x | _ -> None)
           |> function

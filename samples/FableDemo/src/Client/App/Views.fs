@@ -93,6 +93,7 @@ let app state dispatch =
 
             field "Address.Country" input [
               InputProp.Label "Country"
+              InputProp.AlwaysRerender true
               InputProp.ConvertTo InputValue.Text
               InputProp.RightView (Icon.simpleIcon [ Fa.fa; Fa.``fa-map-marked`` ])
             ]
