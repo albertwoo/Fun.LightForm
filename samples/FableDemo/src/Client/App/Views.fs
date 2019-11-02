@@ -51,6 +51,10 @@ let app state dispatch =
               SelectorProp.Source [ true, "Publish" ]
             ]
 
+            field "IsPublish" selector [
+              SelectorProp.Source [ false, "Unpublish" ]
+            ]
+
             field "UserName" input [
               InputProp.Label "Email"
               InputProp.ConvertTo InputValue.Text

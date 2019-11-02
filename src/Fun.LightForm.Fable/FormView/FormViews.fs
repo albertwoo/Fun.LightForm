@@ -52,12 +52,18 @@ let selector (props: SelectorProp<_, _> list): FieldRenderer =
           LightFormMsg.OnFieldError (field.Name, string ex) |> dispatch
           []
 
+      let source = props |> UnionProps.concat (function SelectorProp.Source x -> Some x | _ -> None)
+
       selectorField [
         yield! props
         SelectorProp.SelectedIds selectedIds
         SelectorProp.OnSelect (fun x ->
           let newValue =
-            if onlyOne then x |> Seq.tryHead |> box
+            if onlyOne then
+              match x, source with
+              | [], (id, _)::_ when unbox id = true  -> false |> box
+              | [], (id, _)::_ when unbox id = false -> true |> box
+              | _ -> x |> Seq.tryHead |> box
             else x |> box
           LightFormMsg.ChangeField (field.Name, newValue) |> dispatch)
         SelectorProp.SimpleFieldProps [
