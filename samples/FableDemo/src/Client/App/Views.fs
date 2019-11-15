@@ -98,25 +98,7 @@ let app state dispatch =
               SelectorProp.Label "Roles"
               SelectorProp.Source [ 1, "R1"; 2, "R2" ]
               SelectorProp.OnlyOne false
-              SelectorProp.DropdownProps [
-                DropdownProp.HeaderAttrs [
-                  Classes [
-                    Tw.``bg-gray-200``
-                    Tw.``px-02``
-                    Tw.``py-01``
-                    Tw.rounded
-                    Tw.``hover:bg-gray-100``
-                    Tw.``cursor-pointer``
-                  ]
-                ]
-                DropdownProp.DropdownAttrs [
-                  Classes [
-                    Tw.``w-64``
-                    Tw.``shadow-lg``
-                    Tw.rounded
-                  ]
-                ]
-              ]
+              SelectorProp.EnableDropdown true
             ]
 
             field "DefaultRole" selector [
@@ -144,15 +126,13 @@ let app state dispatch =
               SelectorProp.Label "Selected Country"
               SelectorProp.OnlyOne true
               SelectorProp.AtLeastOne true
+              SelectorProp.EnableDropdown true
               SelectorProp.Source [
                 for i in 1..100 -> i, sprintf "Country %d" i
               ]
-              SelectorProp.DropdownProps [
-
-              ]
               SelectorProp.SelectionsContainerAttrs [
                 Style [
-                  MaxHeight "100px"
+                  MaxHeight "200px"
                   OverflowY OverflowOptions.Auto
                 ]
               ]

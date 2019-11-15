@@ -117,16 +117,17 @@ let textArea props =
 
 
 let inline selector props =
-  let dropDownProps = props |> UnionProps.concat (function SelectorProp.DropdownProps x -> Some x | _ -> None)
+  let enableDropdown = props |> UnionProps.tryLast (function SelectorProp.EnableDropdown x -> Some x | _ -> None) |> Option.defaultValue false
   Form.selector [
     SelectorProp.SelectionClasses [
       Tw.flex
       Tw.``items-center``
       Tw.``text-gray-700``
       Tw.``w-full``
-      if dropDownProps |> Seq.isEmpty |> not then
+      if enableDropdown then
         Tw.rounded
         Tw.``bg-gray-200``
+        Tw.``hover:bg-gray-100``
         Tw.``py-01``
         Tw.``px-01``
         Tw.border
@@ -139,6 +140,25 @@ let inline selector props =
       SimpleFieldProp.OuterClasses formOuterClasses
       SimpleFieldProp.LabelClasses formLabelClasses
       SimpleFieldProp.ErrorClasses formErrorClasses
+    ]
+    SelectorProp.DropdownProps [
+      DropdownProp.HeaderAttrs [
+        Classes [
+          Tw.``bg-gray-200``
+          Tw.``px-02``
+          Tw.``py-01``
+          Tw.rounded
+          Tw.``hover:bg-gray-100``
+          Tw.``cursor-pointer``
+        ]
+      ]
+      DropdownProp.DropdownAttrs [
+        Classes [
+          Tw.``w-64``
+          Tw.``shadow-lg``
+          Tw.rounded
+        ]
+      ]
     ]
     yield! props
   ]
