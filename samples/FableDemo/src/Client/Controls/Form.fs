@@ -91,6 +91,27 @@ let input props =
   ]
 
 
+let textArea props =
+  Form.textArea [
+    TextAreaProp.Attrs [
+      Classes [
+        Tw.``py-01``
+        Tw.``px-02``
+        Tw.``w-full``
+        Tw.``bg-gray-200``
+        Tw.``focus:bg-gray-100``
+        Tw.rounded
+      ]
+    ]
+    TextAreaProp.SimpleFieldProps [
+      SimpleFieldProp.OuterClasses formOuterClasses
+      SimpleFieldProp.LabelClasses formLabelClasses
+      SimpleFieldProp.ErrorClasses formErrorClasses
+    ]
+    yield! props
+  ]
+
+
 let inline selector props =
   Form.selector [
     SelectorProp.SelectionClasses [

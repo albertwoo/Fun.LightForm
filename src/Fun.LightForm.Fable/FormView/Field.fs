@@ -46,6 +46,15 @@ and [<RequireQualifiedAccess>] InputValue =
 
 
 [<RequireQualifiedAccess>]
+type TextAreaProp =
+  | Label of string
+  | Value of string
+  | OnValueChange of (string -> unit)
+  | Attrs of IHTMLProp list
+  | SimpleFieldProps of ISimpleFieldProp list
+
+
+[<RequireQualifiedAccess>]
 type SelectorProp<'Id, 'Value> =
   | Label of string
   | Source of ('Id * 'Value) list
@@ -205,6 +214,42 @@ let inputField (props: InputProp<_> list) =
             | None   -> ()
         ]
       ])
+    ]
+
+
+let textAreaField (props: TextAreaProp list) =
+    let value         = props |> UnionProps.tryLast (function TextAreaProp.Value x -> Some x | _ -> None) |> Option.defaultValue ""
+    let onValueChange = props |> UnionProps.tryLast (function TextAreaProp.OnValueChange x -> Some x | _ -> None)
+
+    let extraProps, attrs =
+      props
+      |> UnionProps.concat (function TextAreaProp.Attrs x -> Some x | _ -> None)
+      |> List.partition (function
+        | :? HTMLPropExtra -> true
+        | _ -> false)
+
+    let fieldView = 
+      textarea </> [
+        extraProps
+        |> List.map (fun x -> x :?> HTMLPropExtra)
+        |> UnionProps.concat (function HTMLPropExtra.Classes x -> Some x | _ -> None)
+        |> function
+          | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
+          | cs -> Classes cs |> unbox
+        DefaultValue value
+        OnChange (fun e ->
+          match onValueChange with
+            | Some dispatch -> e.Value |> dispatch
+            | None -> ())
+        yield! attrs
+      ]
+
+    simpleField [
+      yield! props |> UnionProps.concat (function TextAreaProp.SimpleFieldProps x -> Some x | _ -> None)
+      match props |> UnionProps.tryLast (function TextAreaProp.Label x -> Some x | _ -> None) with
+        | Some x -> SimpleFieldProp.Label x
+        | None   -> ()
+      SimpleFieldProp.FieldView fieldView
     ]
 
 

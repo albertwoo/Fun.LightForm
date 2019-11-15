@@ -37,6 +37,20 @@ let input (props: InputProp<_> list): FieldRenderer =
       ]
 
 
+let textArea (props: TextAreaProp list): FieldRenderer =
+    fun field dispatch ->
+      textAreaField [
+        yield! props
+        TextAreaProp.Value (field |> getFormFieldValue |> unbox)
+        TextAreaProp.OnValueChange (fun x -> LightFormMsg.ChangeField (field.Name, x) |> dispatch)
+        TextAreaProp.SimpleFieldProps [
+          match field.Value with
+            | Invalid (_, es) -> SimpleFieldProp.Errors es
+            | Valid _ -> ()
+        ]
+      ]
+
+
 /// If OnlyOne is not true, then Field.Value must a a squence
 let selector (props: SelectorProp<_, _> list): FieldRenderer =
     fun field dispatch ->

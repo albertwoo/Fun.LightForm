@@ -135,6 +135,10 @@ let app state dispatch =
               InputProp.ConvertTo InputValue.Number
             ]
 
+            field "Description" textArea [
+              TextAreaProp.Label "Description"
+            ]
+
             errorSummary state.UserProfileForm
 
             Layout.level [
