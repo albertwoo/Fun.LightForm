@@ -73,6 +73,22 @@ let app state dispatch =
               InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
             ]
 
+            field "OptionTest1" input [
+              InputProp.Label "OptionTest1"
+              InputProp.ConvertTo InputValue.Text
+              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
+            ]
+            field "OptionTest2" input [
+              InputProp.Label "OptionTest2"
+              InputProp.ConvertTo InputValue.Number
+              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
+            ]
+            field "OptionTest3" input [
+              InputProp.Label "OptionTest3"
+              InputProp.ConvertTo InputValue.Date
+              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
+            ]
+
             field "Roles" selector [
               SelectorProp.Label "Roles"
               SelectorProp.Source [ 1, "R1"; 2, "R2" ]

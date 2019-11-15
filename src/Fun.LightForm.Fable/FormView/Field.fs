@@ -135,7 +135,8 @@ let inputField (props: InputProp<_> list) =
             let convertTo = props |> UnionProps.tryLast (function InputProp.ConvertTo x -> Some x | _ -> None)
             match v, convertTo with
             | Some v, Some converter -> converter v
-            | Some v, _              -> v |> box |> string |> InputValue.Text
+            | Some v, _ when box v |> isNull |> not -> v |> box |> string |> InputValue.Text
+            | Some _, _
             | None, _                -> InputValue.Text ""
 
     let inputView = 

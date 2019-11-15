@@ -23,6 +23,9 @@ type UserProfile =
   { UserName: string
     Password: string
     Birthday: DateTime
+    OptionTest1: string option
+    OptionTest2: int option
+    OptionTest3: DateTime option
     Roles: int list
     DefaultRole: int
     Country: int option
@@ -32,6 +35,9 @@ type UserProfile =
     { UserName = "email"
       Password = "password"
       Birthday = DateTime.Now
+      OptionTest1 = None
+      OptionTest2 = None
+      OptionTest3 = None
       Roles = []
       DefaultRole = -1
       Address = Address.defaultValue
