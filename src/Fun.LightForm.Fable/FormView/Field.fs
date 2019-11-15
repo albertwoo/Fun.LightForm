@@ -55,8 +55,19 @@ type TextAreaProp =
 
 
 [<RequireQualifiedAccess>]
+type DropdownProp =
+  | HeaderAttrs of IHTMLProp list
+  | DropdownAttrs of IHTMLProp list
+  | Position of DropdownPosition
+and [<RequireQualifiedAccess>] DropdownPosition =
+  | Left
+  | Right
+
+
+[<RequireQualifiedAccess>]
 type SelectorProp<'Id, 'Value> =
   | Label of string
+  | Placeholder of string
   | Source of ('Id * 'Value) list
   | Displayer of ('Id * 'Value -> ReactElement)
   | SelectedIds of 'Id list
@@ -67,10 +78,23 @@ type SelectorProp<'Id, 'Value> =
   | SwitchType of SwitchType
   | OnlyOne of bool
   | AtLeastOne of bool
+  | EnableDropdown of bool
+  | DropdownProps of DropdownProp list
   | SimpleFieldProps of ISimpleFieldProp list
 and [<RequireQualifiedAccess>] SwitchType =
   | CheckBox
   | Radio
+  | Flat
+
+
+let partitionProps (props: IHTMLProp list) =
+  props
+  |> List.partition (function
+    | :? HTMLPropExtra -> true
+    | _ -> false)
+  |> fun (extras, attrs) ->
+      extras |> List.map (fun x -> x :?> HTMLPropExtra)
+      , attrs
 
 
 let fieldLabel cs label =
@@ -127,12 +151,7 @@ let inputField (props: InputProp<_> list) =
     let rightView         = props |> UnionProps.tryLast (function InputProp.RightView x -> Some x | _ -> None)
     let alwaysRerender    = props |> UnionProps.tryLast (function InputProp.AlwaysRerender x -> Some x | _ -> None) |> Option.defaultValue false
 
-    let inputExtraProps, inputAttrs =
-      props
-      |> UnionProps.concat (function InputProp.InputAttrs x -> Some x | _ -> None)
-      |> List.partition (function
-        | :? HTMLPropExtra -> true
-        | _ -> false)
+    let inputExtraProps, inputAttrs = props |> UnionProps.concat (function InputProp.InputAttrs x -> Some x | _ -> None) |> partitionProps
 
     let value =
       props
@@ -152,7 +171,7 @@ let inputField (props: InputProp<_> list) =
       input [
         if alwaysRerender then
           Key (Random().Next(0, 10000000).ToString())
-        match inputExtraProps |> List.map (fun x -> x :?> HTMLPropExtra) |> UnionProps.concat (function HTMLPropExtra.Classes x -> Some x | _ -> None) with
+        match inputExtraProps |> UnionProps.concat (function HTMLPropExtra.Classes x -> Some x | _ -> None) with
           | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
           | cs -> classes cs
         Type (
@@ -218,20 +237,13 @@ let inputField (props: InputProp<_> list) =
 
 
 let textAreaField (props: TextAreaProp list) =
-    let value         = props |> UnionProps.tryLast (function TextAreaProp.Value x -> Some x | _ -> None) |> Option.defaultValue ""
-    let onValueChange = props |> UnionProps.tryLast (function TextAreaProp.OnValueChange x -> Some x | _ -> None)
-
-    let extraProps, attrs =
-      props
-      |> UnionProps.concat (function TextAreaProp.Attrs x -> Some x | _ -> None)
-      |> List.partition (function
-        | :? HTMLPropExtra -> true
-        | _ -> false)
+    let value             = props |> UnionProps.tryLast (function TextAreaProp.Value x -> Some x | _ -> None) |> Option.defaultValue ""
+    let onValueChange     = props |> UnionProps.tryLast (function TextAreaProp.OnValueChange x -> Some x | _ -> None)
+    let extraProps, attrs = props |> UnionProps.concat (function TextAreaProp.Attrs x -> Some x | _ -> None) |> partitionProps
 
     let fieldView = 
       textarea </> [
         extraProps
-        |> List.map (fun x -> x :?> HTMLPropExtra)
         |> UnionProps.concat (function HTMLPropExtra.Classes x -> Some x | _ -> None)
         |> function
           | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
@@ -253,11 +265,46 @@ let textAreaField (props: TextAreaProp list) =
     ]
 
 
+let dropdown =
+  FunctionComponent.Of(
+    (fun (props: DropdownProp list) ->
+      let position = props |> UnionProps.tryLast (function DropdownProp.Position x -> Some x | _ -> None) |> Option.defaultValue DropdownPosition.Right
+      let headerAttrs = props |> UnionProps.concat (function DropdownProp.HeaderAttrs x -> Some x | _ -> None)
+      let dropdownAttrs = props |> UnionProps.concat (function DropdownProp.DropdownAttrs x -> Some x | _ -> None)
+
+      let showDropdown = Hooks.useState false
+      let toggel _ = showDropdown.update (not showDropdown.current)
+
+      div </> [
+        Style [ Position PositionOptions.Relative ]
+        OnMouseEnter toggel
+        OnMouseLeave toggel
+        Children [
+          div </> [
+            yield! headerAttrs
+            OnClick toggel
+          ]
+          if showDropdown.current then
+            div </> [
+              yield! dropdownAttrs
+              Style [
+                Position PositionOptions.Absolute
+                match position with
+                  | DropdownPosition.Right -> Right 0
+                  | DropdownPosition.Left  -> Left 0
+              ]
+            ]
+        ]
+      ])
+     , "dropdown"
+  )
+
+
 let inline selectorField (props: SelectorProp<_, _> list) =
     let defaultDisplayer x =
       span </> [
         Style [ MarginLeft "10px" ]
-        Children [ x |> snd |> box |> string |> str ]
+        Text (x |> snd |> box |> string)
       ]
 
     let switchType    = props |> UnionProps.tryLast (function SelectorProp.SwitchType x -> Some x | _ -> None) |> Option.defaultValue SwitchType.CheckBox
@@ -266,9 +313,10 @@ let inline selectorField (props: SelectorProp<_, _> list) =
     let displayer     = props |> UnionProps.tryLast (function SelectorProp.Displayer x -> Some x | _ -> None) |> Option.defaultValue defaultDisplayer
     let onlyOne       = props |> UnionProps.tryLast (function SelectorProp.OnlyOne x -> Some x | _ -> None) |> Option.defaultValue false
     let atLeastOne    = props |> UnionProps.tryLast (function SelectorProp.AtLeastOne x -> Some x | _ -> None) |> Option.defaultValue false
-    let inputAttrs    = props |> UnionProps.concat (function SelectorProp.InputAttrs x -> Some x | _ -> None)
+    let enableDrop    = props |> UnionProps.tryLast (function SelectorProp.EnableDropdown x -> Some x | _ -> None) |> Option.defaultValue false
+    let dropdownProps = props |> UnionProps.concat  (function SelectorProp.DropdownProps x -> Some x | _ -> None)
+    let inputAttrs    = props |> UnionProps.concat  (function SelectorProp.InputAttrs x -> Some x | _ -> None)
     let dispatch      = props |> UnionProps.tryLast (function SelectorProp.OnSelect x -> Some x | _ -> None)
-
 
     let ids =
       match onlyOne, ids with
@@ -286,6 +334,30 @@ let inline selectorField (props: SelectorProp<_, _> list) =
           | [], x -> if onlyOne then [id] else id::x
           | _, x  -> if onlyOne then [] else x
 
+    let dispatchValueChange id =
+      match ids, atLeastOne, dispatch with
+      | [x], true, _ when x = id -> ()
+      | _, _, Some dispatch -> generateValues id |> dispatch
+      | _ -> ()
+
+    let switchView id =
+      input [
+        Type (
+          match switchType with
+            | SwitchType.CheckBox -> "checkbox"
+            | SwitchType.Radio    -> "radio"
+            | SwitchType.Flat     -> "text")
+        Checked (ids |> Seq.exists ((=) id))
+        OnChange (fun _ -> dispatchValueChange id)
+        yield! inputAttrs
+      ]
+
+    let switcher id =
+      match switchType with
+        | SwitchType.CheckBox
+        | SwitchType.Radio -> switchView id
+        | SwitchType.Flat -> span </> []
+
     let fieldView =
       div </> [
         yield! props |> UnionProps.concat (function SelectorProp.SelectionsContainerAttrs x -> Some x | _ -> None)
@@ -294,20 +366,7 @@ let inline selectorField (props: SelectorProp<_, _> list) =
             div </> [
               Classes (props |> UnionProps.concat (function SelectorProp.SelectionClasses x -> Some x | _ -> None))
               Children [
-                input [
-                  Type (
-                    match switchType with
-                      | SwitchType.CheckBox -> "checkbox"
-                      | SwitchType.Radio    -> "radio")
-                  Checked (ids |> Seq.exists ((=) id))
-                  OnChange (fun _ -> 
-                    match ids, atLeastOne, dispatch with
-                      | [x], true, _ when x = id -> ()
-                      | _, _, Some dispatch -> generateValues id |> dispatch
-                      | _ -> ())
-                  yield! inputAttrs
-                ]
-
+                switcher id
                 displayer (id, v)
               ]
             ]
@@ -319,5 +378,29 @@ let inline selectorField (props: SelectorProp<_, _> list) =
       match props |> UnionProps.tryLast (function SelectorProp.Label x -> Some x | _ -> None) with
         | Some x -> SimpleFieldProp.Label x
         | None   -> ()
-      SimpleFieldProp.FieldView fieldView
+      SimpleFieldProp.FieldView (
+        if enableDrop then
+          dropdown [
+            DropdownProp.HeaderAttrs [
+              Children [
+                span </> [
+                  Text (
+                    sourceList
+                    |> List.filter (fun (id, _) -> ids |> List.contains id)
+                    |> List.map (snd >> box >> string)
+                    |> function
+                      | [] -> props |> UnionProps.tryLast (function SelectorProp.Placeholder x -> Some x | _ -> None) |> Option.defaultValue "---"
+                      | x  -> x |> String.concat ", "
+                  )
+                ]
+              ]
+            ]
+            DropdownProp.DropdownAttrs [
+              Children [ fieldView ]
+            ]
+            DropdownProp.Position DropdownPosition.Left
+            yield! dropdownProps
+          ]
+        else fieldView
+      )
     ]

@@ -39,8 +39,8 @@ let input props =
     div </> [
       Classes [
         Tw.``bg-gray-300``
-        Tw.``py-02``
-        Tw.``px-02``
+        Tw.``py-01``
+        Tw.``px-01``
         Tw.``text-center``
       ]
       yield! props
@@ -100,6 +100,10 @@ let textArea props =
         Tw.``w-full``
         Tw.``bg-gray-200``
         Tw.``focus:bg-gray-100``
+        Tw.border
+        Tw.``border-gray-200``
+        Tw.``focus:border-gray-300``
+        Tw.``outline-none``
         Tw.rounded
       ]
     ]
@@ -113,17 +117,48 @@ let textArea props =
 
 
 let inline selector props =
+  let enableDropdown = props |> UnionProps.tryLast (function SelectorProp.EnableDropdown x -> Some x | _ -> None) |> Option.defaultValue false
   Form.selector [
     SelectorProp.SelectionClasses [
       Tw.flex
       Tw.``items-center``
       Tw.``text-gray-700``
-      Tw.``ml-01``
+      Tw.``w-full``
+      if enableDropdown then
+        Tw.rounded
+        Tw.``bg-gray-200``
+        Tw.``hover:bg-gray-100``
+        Tw.``py-01``
+        Tw.``px-01``
+        Tw.border
+        Tw.``border-gray-200``
+        Tw.``focus:bg-gray-100``
+        Tw.``focus:border-gray-300``
+        Tw.``outline-none``
     ]
     SelectorProp.SimpleFieldProps [
       SimpleFieldProp.OuterClasses formOuterClasses
       SimpleFieldProp.LabelClasses formLabelClasses
       SimpleFieldProp.ErrorClasses formErrorClasses
+    ]
+    SelectorProp.DropdownProps [
+      DropdownProp.HeaderAttrs [
+        Classes [
+          Tw.``bg-gray-200``
+          Tw.``px-02``
+          Tw.``py-01``
+          Tw.rounded
+          Tw.``hover:bg-gray-100``
+          Tw.``cursor-pointer``
+        ]
+      ]
+      DropdownProp.DropdownAttrs [
+        Classes [
+          Tw.``w-64``
+          Tw.``shadow-lg``
+          Tw.rounded
+        ]
+      ]
     ]
     yield! props
   ]
