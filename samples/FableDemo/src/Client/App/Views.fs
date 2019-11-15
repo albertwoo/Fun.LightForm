@@ -23,7 +23,6 @@ let infoCard props =
     yield! props
   ]
 
-
 let app state dispatch =
     let field key renderer arg = Form.field state.UserProfileForm (UserProfileMsg >> dispatch) key (renderer arg)
 
@@ -95,6 +94,31 @@ let app state dispatch =
               SelectorProp.OnlyOne false
             ]
 
+            field "Roles" selector [
+              SelectorProp.Label "Roles"
+              SelectorProp.Source [ 1, "R1"; 2, "R2" ]
+              SelectorProp.OnlyOne false
+              SelectorProp.DropdownProps [
+                DropdownProp.HeaderAttrs [
+                  Classes [
+                    Tw.``bg-gray-200``
+                    Tw.``px-02``
+                    Tw.``py-01``
+                    Tw.rounded
+                    Tw.``hover:bg-gray-100``
+                    Tw.``cursor-pointer``
+                  ]
+                ]
+                DropdownProp.DropdownAttrs [
+                  Classes [
+                    Tw.``w-64``
+                    Tw.``shadow-lg``
+                    Tw.rounded
+                  ]
+                ]
+              ]
+            ]
+
             field "DefaultRole" selector [
               SelectorProp.Label "Default Role"
               SelectorProp.Source [ 1, "R1"; 2, "R2" ]
@@ -107,6 +131,24 @@ let app state dispatch =
               SelectorProp.AtLeastOne true
               SelectorProp.Source [
                 for i in 1..100 -> i, sprintf "Country %d" i
+              ]
+              SelectorProp.SelectionsContainerAttrs [
+                Style [
+                  MaxHeight "100px"
+                  OverflowY OverflowOptions.Auto
+                ]
+              ]
+            ]
+
+            field "Country" selector [
+              SelectorProp.Label "Selected Country"
+              SelectorProp.OnlyOne true
+              SelectorProp.AtLeastOne true
+              SelectorProp.Source [
+                for i in 1..100 -> i, sprintf "Country %d" i
+              ]
+              SelectorProp.DropdownProps [
+
               ]
               SelectorProp.SelectionsContainerAttrs [
                 Style [
@@ -140,6 +182,7 @@ let app state dispatch =
             ]
 
             errorSummary state.UserProfileForm
+
 
             Layout.level [
               Children [

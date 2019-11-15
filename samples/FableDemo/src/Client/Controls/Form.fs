@@ -39,8 +39,8 @@ let input props =
     div </> [
       Classes [
         Tw.``bg-gray-300``
-        Tw.``py-02``
-        Tw.``px-02``
+        Tw.``py-01``
+        Tw.``px-01``
         Tw.``text-center``
       ]
       yield! props
@@ -100,6 +100,10 @@ let textArea props =
         Tw.``w-full``
         Tw.``bg-gray-200``
         Tw.``focus:bg-gray-100``
+        Tw.border
+        Tw.``border-gray-200``
+        Tw.``focus:border-gray-300``
+        Tw.``outline-none``
         Tw.rounded
       ]
     ]
@@ -113,12 +117,23 @@ let textArea props =
 
 
 let inline selector props =
+  let dropDownProps = props |> UnionProps.concat (function SelectorProp.DropdownProps x -> Some x | _ -> None)
   Form.selector [
     SelectorProp.SelectionClasses [
       Tw.flex
       Tw.``items-center``
       Tw.``text-gray-700``
-      Tw.``ml-01``
+      Tw.``w-full``
+      if dropDownProps |> Seq.isEmpty |> not then
+        Tw.rounded
+        Tw.``bg-gray-200``
+        Tw.``py-01``
+        Tw.``px-01``
+        Tw.border
+        Tw.``border-gray-200``
+        Tw.``focus:bg-gray-100``
+        Tw.``focus:border-gray-300``
+        Tw.``outline-none``
     ]
     SelectorProp.SimpleFieldProps [
       SimpleFieldProp.OuterClasses formOuterClasses
