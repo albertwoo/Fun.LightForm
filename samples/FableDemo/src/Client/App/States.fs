@@ -36,7 +36,11 @@ let validators =
 let init() =
   { UserProfileForm =
       generateFormByValue UserProfile.defaultValue
-      |> updateFormWithValidators validators }
+      |> updateFormWithValidators validators
+    UserProfileValueFrom =
+      generateValueForm UserProfile.defaultValue
+      |> updateValueFormWithValidators validators
+    ActiveTab = ActiveTab.UserProfileValueFrom }
   , Cmd.none
 
 
@@ -46,3 +50,10 @@ let update msg (state: State) =
       { state with
           UserProfileForm = updateFormWithMsg validators msg' state.UserProfileForm }
       , Cmd.none
+
+  | UserProfileValueFromMsg msg' ->
+      { state with
+          UserProfileValueFrom = updateValueFormWithMsg validators msg' state.UserProfileValueFrom }
+      , Cmd.none
+
+  | SwitchTab tab -> { state with ActiveTab = tab }, Cmd.none

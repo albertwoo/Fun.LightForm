@@ -5,19 +5,21 @@ open System
 open Fun.LightForm
 
 type State =
-  { UserProfileForm: LightForm }
+  { UserProfileForm: LightForm
+    UserProfileValueFrom: LightValueForm<UserProfile>
+    ActiveTab: ActiveTab }
 
 type Msg =
   | UserProfileMsg of LightFormMsg
+  | UserProfileValueFromMsg of LightFormMsg
+  | SwitchTab of ActiveTab
 
 
-type Page =
-  | Home of string
-  | About
-  | Blog of int option
-  | Loading
-  | NotFound of string
-
+[<RequireQualifiedAccess>]
+type ActiveTab =
+  | UserProfileForm
+  | UserProfileValueFrom
+  
 
 type UserProfile =
   { UserName: string

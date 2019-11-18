@@ -1,12 +1,9 @@
 module Client.App.Views
 
-open System
 open Fable.React
 open Fable.React.Props
 open Fun.LightForm
-open Fun.LightForm.FormView
 open Client.Controls
-open Client.Controls.Form
 
 
 let infoCard props =
@@ -23,9 +20,22 @@ let infoCard props =
     yield! props
   ]
 
-let app state dispatch =
-    let field key renderer arg = Form.field state.UserProfileForm (UserProfileMsg >> dispatch) key (renderer arg)
 
+let tabStyle isActive =
+  [
+    Tw.``w-01/02``
+    Tw.``text-center``
+    Tw.``bg-white``
+    Tw.``hover:bg-green-200``
+    Tw.``py-02``
+    Tw.``cursor-pointer``
+    if isActive then
+      Tw.``bg-green-300``
+      Tw.``font-semibold``
+  ]
+
+
+let app state dispatch =
     div </> [
       Classes [
         Tw.``font-sans``
@@ -38,131 +48,49 @@ let app state dispatch =
         Tw.``py-04``
       ]
       Children [
-        form </> [
+        div </> [
           Classes [
             Tw.``sm:w-full``
             Tw.``lg:w-02/04``
             Tw.``shadow-lg``
-            Tw.``overflow-auto``
+            Tw.flex
+            Tw.``flex-col``
+            Tw.``overflow-hidden``
           ]
           Children [
-            field "IsPublish" selector [
-              SelectorProp.Source [ true, "Publish" ]
-            ]
-
-            field "IsPublish" selector [
-              SelectorProp.Source [ false, "Unpublish" ]
-            ]
-
-            field "UserName" input [
-              InputProp.Label "Email"
-              InputProp.ConvertTo InputValue.Text
-              InputProp.LeftView (Icon.simpleIcon [ Fa.fa; Fa.``fa-mail-bulk`` ])
-            ]
-
-            field "Password" input [
-              InputProp.Label "Password"
-              InputProp.ConvertTo InputValue.Password
-              InputProp.LeftView (Icon.simpleIcon [ Fa.fa; Fa.``fa-lock``; Tw.``text-green-500`` ])
-            ]
-
-            field "Birthday" input [
-              InputProp.Label "Birthday"
-              InputProp.ConvertTo InputValue.Date
-              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
-            ]
-
-            field "OptionTest1" input [
-              InputProp.Label "OptionTest1"
-              InputProp.ConvertTo InputValue.Text
-              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
-            ]
-            field "OptionTest2" input [
-              InputProp.Label "OptionTest2"
-              InputProp.ConvertTo InputValue.Number
-              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
-            ]
-            field "OptionTest3" input [
-              InputProp.Label "OptionTest3"
-              InputProp.ConvertTo InputValue.Date
-              InputProp.InputAttrs [ Classes [ Tw.``text-purple-500`` ] ]
-            ]
-
-            field "Roles" selector [
-              SelectorProp.Label "Roles"
-              SelectorProp.Source [ 1, "R1"; 2, "R2" ]
-              SelectorProp.OnlyOne false
-            ]
-
-            field "Roles" selector [
-              SelectorProp.Label "Roles"
-              SelectorProp.Source [ 1, "R1"; 2, "R2" ]
-              SelectorProp.OnlyOne false
-              SelectorProp.EnableDropdown true
-            ]
-
-            field "DefaultRole" selector [
-              SelectorProp.Label "Default Role"
-              SelectorProp.Source [ 1, "R1"; 2, "R2" ]
-              SelectorProp.OnlyOne true
-            ]
-
-            field "Country" selector [
-              SelectorProp.Label "Selected Country"
-              SelectorProp.OnlyOne true
-              SelectorProp.AtLeastOne true
-              SelectorProp.Source [
-                for i in 1..100 -> i, sprintf "Country %d" i
+            div </> [
+              Classes [
+                Tw.flex
+                Tw.``flex-row``
+                Tw.``flex-no-wrap``
+                Tw.``items-center``
+                Tw.``w-full``
+                Tw.``bg-red-100``
+                Tw.``shadow-md``
               ]
-              SelectorProp.SelectionsContainerAttrs [
-                Style [
-                  MaxHeight "100px"
-                  OverflowY OverflowOptions.Auto
+              Children [
+                div </> [
+                  Text "Map form"
+                  OnClick (fun _ -> SwitchTab ActiveTab.UserProfileForm |> dispatch)
+                  Classes (tabStyle (match state.ActiveTab with ActiveTab.UserProfileForm -> true | _ -> false))
+                ]
+                div </> [
+                  Text "Value form"
+                  OnClick (fun _ -> SwitchTab ActiveTab.UserProfileValueFrom |> dispatch)
+                  Classes (tabStyle (match state.ActiveTab with ActiveTab.UserProfileValueFrom -> true | _ -> false))
                 ]
               ]
             ]
 
-            field "Country" selector [
-              SelectorProp.Label "Selected Country"
-              SelectorProp.OnlyOne true
-              SelectorProp.AtLeastOne true
-              SelectorProp.EnableDropdown true
-              SelectorProp.Source [
-                for i in 1..100 -> i, sprintf "Country %d" i
+            div </> [
+              Classes [
+                Tw.``flex-shrink``
+                Tw.``overflow-y-auto``
               ]
-              SelectorProp.SelectionsContainerAttrs [
-                Style [
-                  MaxHeight "200px"
-                  OverflowY OverflowOptions.Auto
-                ]
+              Children [
+                UserProfileForm.render state dispatch
               ]
             ]
-
-            field "Address.Country" input [
-              InputProp.Label "Country"
-              InputProp.AlwaysRerender true
-              InputProp.ConvertTo InputValue.Text
-              InputProp.RightView (Icon.simpleIcon [ Fa.fa; Fa.``fa-map-marked`` ])
-            ]
-
-            field "Address.Street" input [
-              InputProp.Label "Street"
-              InputProp.ConvertTo InputValue.Text
-              InputProp.LeftView (Icon.simpleIcon [ Fa.fa; Fa.``fa-funnel-dollar``; Tw.``text-orange-400`` ])
-              InputProp.RightView (Icon.simpleIcon [ Fa.fa; Fa.``fa-passport``; Tw.``text-red-500`` ])
-            ]
-
-            field "Address.ZipCode" input [
-              InputProp.Label "ZipCode"
-              InputProp.ConvertTo InputValue.Number
-            ]
-
-            field "Description" textArea [
-              TextAreaProp.Label "Description"
-            ]
-
-            errorSummary state.UserProfileForm
-
 
             Layout.level [
               Children [
@@ -189,6 +117,8 @@ let app state dispatch =
             str (sprintf "%A" (generateValueByForm UserProfile.defaultValue state.UserProfileForm))
             hr []
             str (sprintf "%A" (tryGenerateValueByForm<UserProfile> state.UserProfileForm))
+            hr []
+            str (sprintf "%A" state.UserProfileValueFrom.Value)
           ]
           Classes [
             Tw.``text-green-600``

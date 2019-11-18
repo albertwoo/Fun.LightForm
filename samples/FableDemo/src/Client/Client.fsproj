@@ -7,6 +7,7 @@
     <Compile Include="Controls\Form.fs" />
     <Compile Include="App\Domain.fs" />
     <Compile Include="App\States.fs" />
+    <Compile Include="App\UserProfileForm.fs" />
     <Compile Include="App\Views.fs" />
     <Compile Include="Startup.fs" />
   </ItemGroup>

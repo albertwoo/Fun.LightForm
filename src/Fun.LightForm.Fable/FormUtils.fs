@@ -52,6 +52,24 @@ let inline generateFormByValue<'T> (value: 'T): LightForm =
     loop typeof<'T> value
 
 
+let inline generateFromByValueForm (form: LightValueForm<'Value>): LightForm =
+    form.Value
+    |> generateFormByValue
+    |> List.map (fun f ->
+      { f with
+          Value =
+            form.Errors
+            |> Map.tryFind f.Name
+            |> function
+              | None -> f.Value
+              | Some es -> Invalid(getFormFieldValue f, es) })
+
+
+let generateValueForm value =
+  { Value = value
+    Errors = Map.empty }
+
+
 /// Generate record from form based on an default record. It will modify the record itself underline.
 let inline generateValueByForm<'T> (defaultValue: 'T) (form: LightForm): 'T =
     let rec loop ty defaultValue form =
@@ -166,3 +184,27 @@ let getFormErrors (form: LightForm) =
         | Valid _ -> []
         | Invalid (_, es) -> es)
     |> List.concat
+
+
+let getFromErrorMap (form: LightForm) =
+  form
+  |> List.choose (fun x ->
+    match x.Value with
+    | FieldValue.Invalid (_, es) -> Some(x.Name, es)
+    | FieldValue.Valid _ -> None)
+  |> Map.ofList
+
+
+let inline updateValueFrom<'Value> (form: LightValueForm<'Value>) updator =
+  let formFields = form |> generateFromByValueForm |> updator
+  let errors = getFromErrorMap formFields
+  match tryGenerateValueByForm<'Value> formFields with
+  | Ok f ->
+    { Value = f
+      Errors = errors }
+  | Error _ ->
+    { form with Errors = errors }
+
+let inline updateValueFormWithValidators<'Value> validators (form: LightValueForm<'Value>) = updateValueFrom form (updateFormWithValidators validators)
+
+let inline updateValueFormWithMsg<'Value> validators msg (form: LightValueForm<'Value>) = updateValueFrom form (updateFormWithMsg validators msg)
