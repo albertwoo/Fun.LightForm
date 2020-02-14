@@ -246,8 +246,8 @@ let textAreaField (props: TextAreaProp list) =
         extraProps
         |> UnionProps.concat (function HTMLPropExtra.Classes x -> Some x | _ -> None)
         |> function
-          | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ]
-          | cs -> Classes cs |> unbox
+          | [] -> Style [ Width "100%"; Margin "2px 0"; Padding "2px 5px"; BackgroundColor "#f1f1f1" ] |> unbox<IHTMLProp>
+          | cs -> Classes cs |> unbox<IHTMLProp>
         DefaultValue value
         OnChange (fun e ->
           match onValueChange with
