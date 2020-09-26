@@ -81,3 +81,23 @@ let seqMaxLen max errorMsg: Validator =
       else Ok()
     with _ ->
       Error [ "Not a sequence" ]
+
+
+let validate value validators =
+  let value = { Name = ""; Value = FieldValue.Valid value }
+  validators
+  |> Seq.fold
+      (fun s validate ->
+          match validate value with
+          | Ok _ -> s
+          | Error e ->s@e)
+      []
+  |> function
+      | [] -> Ok value
+      | es -> Error es
+
+
+let validateWith validators map value =
+  validators id
+  |> validate value
+  |> Result.map map
