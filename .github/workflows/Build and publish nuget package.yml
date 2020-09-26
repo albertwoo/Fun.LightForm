@@ -4,6 +4,9 @@ on:
   release:
     types:
       - published
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -17,7 +20,10 @@ jobs:
       with:
         dotnet-version: 3.1.402
     - name: Install dependencies
-      run: dotnet restore
+      run: |
+        dotnet tool install paket -g
+        dotnet tool install fake-cli -g
+        dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
