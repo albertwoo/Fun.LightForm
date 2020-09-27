@@ -55,49 +55,49 @@ let minNum min errorMsg: Validator =
 
 
 let dateValidator errorMsg: Validator =
-  fun field ->
-    match getFormFieldValue field with
-    | :? DateTime -> Ok()
-    | x ->
-        match string x |> DateTime.TryParse with
-        | true, _ -> Ok()
-        | false, _ -> Error [ errorMsg ]
+    fun field ->
+        match getFormFieldValue field with
+        | :? DateTime -> Ok()
+        | x ->
+            match string x |> DateTime.TryParse with
+            | true, _ -> Ok()
+            | false, _ -> Error [ errorMsg ]
 
 
 let seqMinLen min errorMsg: Validator =
-  fun field ->
-    try
-      if getFormFieldValue field |> unbox<_ seq> |> Seq.length < min
-      then Error [ errorMsg ]
-      else Ok()
-    with _ ->
-      Error [ "Not a sequence" ]
+    fun field ->
+        try
+            if getFormFieldValue field |> unbox<_ seq> |> Seq.length < min
+            then Error [ errorMsg ]
+            else Ok()
+        with _ ->
+            Error [ "Not a sequence" ]
 
 let seqMaxLen max errorMsg: Validator =
-  fun field ->
-    try
-      if getFormFieldValue field |> unbox<_ seq> |> Seq.length > max
-      then Error [ errorMsg ]
-      else Ok()
-    with _ ->
-      Error [ "Not a sequence" ]
+    fun field ->
+        try
+            if getFormFieldValue field |> unbox<_ seq> |> Seq.length > max
+            then Error [ errorMsg ]
+            else Ok()
+        with _ ->
+            Error [ "Not a sequence" ]
 
 
-let validate value validators =
-  let value = { Name = ""; Value = FieldValue.Valid value }
-  validators
-  |> Seq.fold
-      (fun s validate ->
-          match validate value with
-          | Ok _ -> s
-          | Error e ->s@e)
-      []
-  |> function
-      | [] -> Ok value
-      | es -> Error es
+let validate value (validators: Validator seq) =
+    let field = { Name = ""; Value = FieldValue.Valid value }
+    validators
+    |> Seq.fold
+        (fun s validate ->
+            match validate field with
+            | Ok _ -> s
+            | Error e -> s@e)
+        []
+    |> function
+        | [] -> Ok value
+        | es -> Error es
 
 
 let validateWith validators map value =
-  validators id
-  |> validate value
-  |> Result.map map
+    validators
+    |> validate value
+    |> Result.map map

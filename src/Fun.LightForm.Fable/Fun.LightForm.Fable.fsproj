@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>Fable light weight form utils</Description>
-    <PackageProjectUrl>https://github.com/albertwoo/Fun.LightForm</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/albertwoo/Fun.LightForm</RepositoryUrl>
-    <Version>1.0.6</Version>
-    <Authors>slaveoftime</Authors>
-    <Company>https://www.slaveoftime.fun</Company>
-    <PackageReleaseNotes>Add utils to Validators</PackageReleaseNotes>
-    <Copyright>https://www.slaveoftime.fun</Copyright>
-    <PackageIconUrl></PackageIconUrl>
-    <PackageTags>Fable, Form, F#</PackageTags>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="GlobalCommon.fs" />
-    <Compile Include="Domain.fs" />
-    <Compile Include="FormUtils.fs" />
-    <Compile Include="Validators.fs" />
-    <Compile Include="Fable.React.Extra.fs" />
-    <Compile Include="FormView\Field.fs" />
-    <Compile Include="FormView\FormViews.fs" />
-    <Compile Include="FormView\LightForm.fs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Fable.Core" Version="3.1.5" />
-    <PackageReference Include="Fable.React" Version="6.2.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="*.fsproj; **\*.fs" PackagePath="fable\" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Description>Fable light weight form utils</Description>
+		<PackageProjectUrl>https://github.com/albertwoo/Fun.LightForm</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/albertwoo/Fun.LightForm</RepositoryUrl>
+		<Version>1.0.7</Version>
+		<Authors>slaveoftime</Authors>
+		<Company>https://www.slaveoftime.fun</Company>
+		<PackageReleaseNotes>Add utils to Validators</PackageReleaseNotes>
+		<Copyright>https://www.slaveoftime.fun</Copyright>
+		<PackageIconUrl></PackageIconUrl>
+		<PackageTags>Fable, Form, F#</PackageTags>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="GlobalCommon.fs" />
+		<Compile Include="Domain.fs" />
+		<Compile Include="FormUtils.fs" />
+		<Compile Include="Validators.fs" />
+		<Compile Include="Fable.React.Extra.fs" />
+		<Compile Include="FormView\Field.fs" />
+		<Compile Include="FormView\FormViews.fs" />
+		<Compile Include="FormView\LightForm.fs" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Fable.Core" Version="3.1.5" />
+		<PackageReference Include="Fable.React" Version="6.2.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="*.fsproj; **\*.fs" PackagePath="fable\" />
+	</ItemGroup>
 </Project>
