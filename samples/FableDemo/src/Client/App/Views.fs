@@ -6,26 +6,6 @@ open Fun.LightForm
 open Client.Controls
 
 
-let infoCard props =
-    div </> [
-        Classes [
-            Tw.``text-gray-500``; Tw.``text-center``; Tw.``w-full``
-            Tw.``py-02``; Tw.``px-01``; Tw.``m-02``; Tw.``shadow-lg``
-        ]
-        yield! props
-    ]
-
-
-let tabStyle isActive =
-    [
-        Tw.``w-01/02``; Tw.``text-center``; Tw.``bg-white``; Tw.``hover:bg-green-200``
-        Tw.``py-02``; Tw.``cursor-pointer``
-        if isActive then
-            Tw.``bg-green-300``
-            Tw.``font-semibold``
-    ]
-
-
 let app state dispatch =
     div </> [
         Classes [
@@ -60,10 +40,15 @@ let app state dispatch =
                               OnClick (fun _ -> SwitchTab ActiveTab.UserProfileFromByFn |> dispatch)
                               Classes (tabStyle (match state.ActiveTab with ActiveTab.UserProfileFromByFn -> true | _ -> false))
                           ]
+                          div </> [
+                              Text "Use hooks"
+                              OnClick (fun _ -> SwitchTab ActiveTab.UserProfileHookDemo |> dispatch)
+                              Classes (tabStyle (match state.ActiveTab with ActiveTab.UserProfileHookDemo -> true | _ -> false))
+                          ]
                       ]
                   ]
 
-                  UserProfileForm.render state dispatch
+                  UserProfileForm.render (state, dispatch)
 
                   Layout.level [
                       Children [
@@ -78,17 +63,6 @@ let app state dispatch =
                           Tw.``py-02``; Tw.``text-center``; Tw.``text-green-800``
                       ]
                   ]
-                ]
-            ]
-
-            infoCard [
-                Classes [ Tw.``text-green-600``; Tw.``bg-green-100``; Tw.``sm:w-full``; Tw.``lg:w-02/04`` ]
-                Children [
-                    str (sprintf "%A" (generateValueByForm UserProfile.defaultValue state.UserProfileForm))
-                    hr []
-                    str (sprintf "%A" (tryGenerateValueByForm<UserProfile> state.UserProfileForm))
-                    hr []
-                    str (sprintf "%A" state.UserProfileValueFrom.Value)
                 ]
             ]
 

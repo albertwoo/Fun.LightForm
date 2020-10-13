@@ -21,7 +21,8 @@ type ActiveTab =
     | UserProfileForm
     | UserProfileValueFrom
     | UserProfileFromByFn
-  
+    | UserProfileHookDemo
+
 
 type UserProfile =
     { UserName: string

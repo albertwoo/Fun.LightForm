@@ -121,3 +121,25 @@ module Button =
       ]
       yield! props
     ]
+
+
+
+
+let infoCard props =
+    div </> [
+        Classes [
+            Tw.``text-gray-500``; Tw.``text-center``; Tw.``w-full``
+            Tw.``py-02``; Tw.``px-01``; Tw.``m-02``; Tw.``shadow-lg``
+        ]
+        yield! props
+    ]
+
+
+let tabStyle isActive =
+    [
+        Tw.``w-01/02``; Tw.``text-center``; Tw.``bg-white``; Tw.``hover:bg-green-200``
+        Tw.``py-02``; Tw.``cursor-pointer``
+        if isActive then
+            Tw.``bg-green-300``
+            Tw.``font-semibold``
+    ]
