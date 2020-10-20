@@ -24,10 +24,27 @@ type LightFormsHookBundle<'T, 'Key when 'Key: comparison> =
 
 type IHooks with
     member inline _.useLightForm<'Value> (value: 'Value, ?validators, ?dependencies): LightFormHookBundle<_> =
+        let form = Hooks.useState []
+        let error = Hooks.useState []
+        let changedValue = Hooks.useState None
+
         let validators = validators |> Option.defaultValue Map.empty
+
         let createFrom () = value |> generateFormByValue |> updateFormWithValidators validators
-        let form = Hooks.useState([])
-        let dispatch msg = updateFormWithMsg validators msg form.current |> form.update
+
+        let dispatch msg =
+            let newForm = updateFormWithMsg validators msg form.current
+            let newError = getFormErrors newForm
+            form.update newForm
+            error.update newError
+            changedValue.update None
+
+        let generateValue () =
+            form.current 
+            |> tryGenerateValueByForm<'Value>
+            |> Result.map (fun value ->
+                changedValue.update (Some value)
+                value)
 
         Hooks.useEffect
             (fun () -> createFrom() |> form.update
@@ -35,10 +52,13 @@ type IHooks with
         
         {
             From = form.current
-            GetValue = fun () -> form.current |> tryGenerateValueByForm<'Value>
+            GetValue = fun () ->
+                match changedValue.current with
+                | None -> generateValue()
+                | Some x -> Ok x
             GetFieldValue = fun k -> form.current |> List.tryFind (fun x -> x.Name = k) |> Option.map getFormFieldValue
-            GetError = fun () -> form.current |> getFormErrors
-            HasError = fun () -> form.current |> getFormErrors |> Seq.isEmpty |> not
+            GetError = fun () -> error.current
+            HasError = fun () -> error.current.Length > 0
             CreateField = fun key renderer -> Form.field form.current dispatch key renderer
         }
 
