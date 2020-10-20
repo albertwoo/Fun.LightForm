@@ -3,7 +3,7 @@ namespace rec Fun.LightForm
 
 type LightForm = FormField list
 
-/// This form state can be easier for SSR,especially when deserialize in front end
+/// This form state can be easier for SSR, especially when deserialize in front end
 type LightValueForm<'Value> =
     { Value: 'Value
       Errors: Map<FieldKey, string list> }
