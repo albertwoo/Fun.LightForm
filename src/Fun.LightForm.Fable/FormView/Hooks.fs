@@ -15,7 +15,7 @@ type LightFormHookBundle<'T> =
       CreateField: FieldKey -> FieldRenderer<ReactElement> -> ReactElement }
 
 type LightFormsHookBundle<'T, 'Key when 'Key: comparison> =
-    { Froms: Map<'Key, LightForm>
+    { Froms: ('Key * LightForm) list
       GetValue: unit -> Result<'T list, exn>
       GetError: unit -> string list
       HasError: unit -> bool
@@ -44,7 +44,14 @@ type IHooks with
 
 
     member inline _.useLightForms<'Value, 'Key when 'Key : comparison> (values: 'Value list, getKey: 'Value -> 'Key, ?validators, ?dependencies): LightFormsHookBundle<_, _> =
-        let getValidators key = validators |> Option.map (fun f -> f key) |> Option.defaultValue Map.empty
+        let forms = Hooks.useState []
+        let errors = Hooks.useState []
+        let changedValues = Hooks.useState []
+
+        let getValidators key = 
+            validators 
+            |> Option.map (fun f -> f key)
+            |> Option.defaultValue Map.empty
         
         let createForms() =
             values
@@ -52,21 +59,27 @@ type IHooks with
                 let key = getKey v
                 key
                 ,generateFormByValue v |> updateFormWithValidators (getValidators key))
-            |> Map.ofList   
-        
-        let forms = Hooks.useState(Map.empty)
-        
+                
         let dispatch key msg =
-            forms.current
-            |> Map.map (fun k f ->
-                if k = key then updateFormWithMsg (getValidators key) msg f
-                else f)
-            |> forms.update
+            let newForms =
+                forms.current
+                |> List.map (fun (k, f) ->
+                    if k = key then k, updateFormWithMsg (getValidators key) msg f
+                    else k, f)
+
+            let newErrors =
+                newForms
+                |> Seq.map (snd >> getFormErrors)
+                |> Seq.concat
+                |> Seq.toList
+
+            forms.update newForms
+            errors.update newErrors
+            changedValues.update []
         
-        let getValue () =
+        let generateValues () =
             let values = 
                 forms.current
-                |> Map.toList
                 |> List.map (snd >> tryGenerateValueByForm<'Value>)
 
             let mutable result = Ok []
@@ -82,14 +95,11 @@ type IHooks with
                     result <- Error e
                     shouldContinue <- false
 
-            result
+            match result with
+            | Ok x -> changedValues.update x
+            | _ -> ()
 
-        let getError () =
-            forms.current
-            |> Map.toSeq
-            |> Seq.map (snd >> getFormErrors)
-            |> Seq.concat
-            |> Seq.toList
+            result
 
         Hooks.useEffect
             (fun () -> createForms() |> forms.update
@@ -97,12 +107,14 @@ type IHooks with
         
         {
             Froms = forms.current
-            GetValue = getValue
-            GetError = getError
-            HasError = fun () -> getError () |> Seq.isEmpty |> not
-            CreateField = fun siteNr key renderer ->
-                match forms.current |> Map.tryFind siteNr with
-                | Some form -> Form.field form (dispatch siteNr) key renderer
+            GetValue = fun () ->
+                if changedValues.current.Length = 0 then generateValues()
+                else Ok changedValues.current             
+            GetError = fun () -> errors.current
+            HasError = fun () -> errors.current.Length > 0
+            CreateField = fun key fieldName renderer ->
+                match forms.current |> List.tryFind (fun (k, _) -> k = key) with
+                | Some (_, form) -> Form.field form (dispatch key) fieldName renderer
                 | None -> str "Create field failed because no form found"
         }
 
