@@ -24,13 +24,13 @@ type LightFormsHookBundle<'T, 'Key when 'Key: comparison> =
 
 type IHooks with
     member inline _.useLightForm<'Value> (value: 'Value, ?validators, ?dependencies): LightFormHookBundle<_> =
-        let form = Hooks.useState []
-        let error = Hooks.useState []
-        let changedValue = Hooks.useState None
-
         let validators = validators |> Option.defaultValue Map.empty
-
         let createFrom () = value |> generateFormByValue |> updateFormWithValidators validators
+
+        let initLoaded = Hooks.useState false
+        let form = Hooks.useStateLazy createFrom
+        let error = Hooks.useStateLazy (fun () -> getFormErrors form.current)
+        let changedValue = Hooks.useState None
 
         let dispatch msg =
             let newForm = updateFormWithMsg validators msg form.current
@@ -47,7 +47,14 @@ type IHooks with
                 value)
 
         Hooks.useEffect
-            (fun () -> createFrom() |> form.update
+            (fun () ->
+                if initLoaded.current then
+                    Browser.Dom.console.error "loaded"
+                    let newForm = createFrom() 
+                    newForm |> form.update
+                    newForm |> getFormErrors |> error.update
+                else
+                    initLoaded.update true
             ,dependencies |> Option.defaultValue [||])
         
         {
@@ -64,10 +71,6 @@ type IHooks with
 
 
     member inline _.useLightForms<'Value, 'Key when 'Key : comparison> (values: 'Value list, getKey: 'Value -> 'Key, ?validators, ?dependencies): LightFormsHookBundle<_, _> =
-        let forms = Hooks.useState []
-        let errors = Hooks.useState []
-        let changedValues = Hooks.useState []
-
         let getValidators key = 
             validators 
             |> Option.map (fun f -> f key)
@@ -79,7 +82,18 @@ type IHooks with
                 let key = getKey v
                 key
                 ,generateFormByValue v |> updateFormWithValidators (getValidators key))
-                
+
+        let getErrors (forms: ('Key * LightForm) seq) =
+            forms
+            |> Seq.map (snd >> getFormErrors)
+            |> Seq.concat
+            |> Seq.toList
+        
+        let initLoaded = Hooks.useState false
+        let forms = Hooks.useStateLazy createForms
+        let errors = Hooks.useStateLazy (fun () -> forms.current |> getErrors)
+        let changedValues = Hooks.useState []
+                        
         let dispatch key msg =
             let newForms =
                 forms.current
@@ -122,7 +136,13 @@ type IHooks with
             result
 
         Hooks.useEffect
-            (fun () -> createForms() |> forms.update
+            (fun () ->
+                if initLoaded.current then
+                    let newForms = createForms()
+                    newForms |> forms.update
+                    newForms |> getErrors |> errors.update
+                else
+                    initLoaded.update true
             ,dependencies |> Option.defaultValue [||])
         
         {
@@ -137,4 +157,3 @@ type IHooks with
                 | Some (_, form) -> Form.field form (dispatch key) fieldName renderer
                 | None -> str "Create field failed because no form found"
         }
-

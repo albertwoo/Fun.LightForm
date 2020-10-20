@@ -1,6 +1,7 @@
 [<RequireQualifiedAccess>]
 module Fun.LightForm.FormView.Form
 
+open System
 open Fable.React
 open Fable.React.Props
 open Fun.LightForm
@@ -9,14 +10,18 @@ open Fun.LightForm
 type FieldRenderer = FieldRenderer<Fable.React.ReactElement>
 
 
+let private fieldWithKey = FunctionComponent.Of(fun (props: {| name: string; view: ReactElement |}) ->
+    let key = Hooks.useStateLazy (fun () -> Random().Next(0, 10000000).ToString())
+    fragment 
+        [ FragmentProp.Key (key.current + props.name) ] 
+        [ props.view ])
+
+
 let field (state: LightForm) dispatch key (render: FieldRenderer) =
     state
     |> List.tryFind (fun x -> x.Name = key)
-    |> Option.map (fun field ->
-        fragment 
-            [ FragmentProp.Key field.Name ] 
-            [ render field dispatch ])
-    |> Option.defaultValue (
+    |> Option.map (fun field -> fieldWithKey {| name = field.Name; view = render field dispatch |})
+    |> Option.defaultWith (fun () ->
         div </> [
             Styles [ Color "red" ]
             Text (sprintf "Field is not configured for %s" key)

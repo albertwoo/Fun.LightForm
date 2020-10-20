@@ -32,7 +32,7 @@ let init() =
       UserProfileValueFrom =
         generateValueForm UserProfile.defaultValue
         |> updateValueFormWithValidators validators
-      ActiveTab = ActiveTab.UserProfileValueFrom }
+      ActiveTab = ActiveTab.UserProfileHookDemo }
     , Cmd.none
 
 

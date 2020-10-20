@@ -117,14 +117,17 @@ let fieldError cs es =
     ]
 
 
-let simpleField (props: ISimpleFieldProp list) =
-    let props = props |> List.choose (function :? SimpleFieldProp as x -> Some x | _ -> None)
+let simpleField = FunctionComponent.Of(fun (props: ISimpleFieldProp list) ->
+    let props             = props |> List.choose (function :? SimpleFieldProp as x -> Some x | _ -> None)
     let label             = props |> UnionProps.tryLast (function SimpleFieldProp.Label x -> Some x | _ -> None)
     let errorClasses      = props |> UnionProps.tryLast (function SimpleFieldProp.ErrorClasses x -> Some x | _ -> None) |> Option.defaultValue []
     let outerClasses      = props |> UnionProps.concat (function SimpleFieldProp.OuterClasses x -> Some x | _ -> None)
     let labelClasses      = props |> UnionProps.concat (function SimpleFieldProp.LabelClasses x -> Some x | _ -> None)
+    
+    let key = Hooks.useStateLazy (fun () -> Random().Next(0, 10000000).ToString())
 
     div </> [
+        Key key.current
         yield! props |> UnionProps.concat (function SimpleFieldProp.OuterAttrs x -> Some x | _ -> None)
         match outerClasses with
         | [] -> Styles [ Margin "5px"; Padding "5px" ]
@@ -141,7 +144,7 @@ let simpleField (props: ISimpleFieldProp list) =
                 |> UnionProps.concat (function SimpleFieldProp.Errors x -> Some x | _ -> None)
                 |> fieldError errorClasses
         ]
-    ]
+    ])
 
 
 let inputField (props: InputProp<_> list) =
