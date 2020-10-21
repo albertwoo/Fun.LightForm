@@ -5,7 +5,7 @@
 		<Description>Fable light weight form utils</Description>
 		<PackageProjectUrl>https://github.com/albertwoo/Fun.LightForm</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/albertwoo/Fun.LightForm</RepositoryUrl>
-		<Version>1.0.11</Version>
+		<Version>1.0.12</Version>
 		<Authors>slaveoftime</Authors>
 		<Company>https://www.slaveoftime.fun</Company>
 		<PackageReleaseNotes>Add new hooks to enable setLightForm at later time</PackageReleaseNotes>

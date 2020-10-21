@@ -139,7 +139,7 @@ type IHooks with
                 index <- index + 1
                 match value with
                 | Ok x ->
-                    result <- result |> Result.map (fun ls -> x::ls)
+                    result <- result |> Result.map (fun ls -> ls@[x])
                 | Error e ->
                     result <- Error e
                     shouldContinue <- false
