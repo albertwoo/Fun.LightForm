@@ -22,18 +22,24 @@ type LightFormsHookBundle<'T, 'Key when 'Key: comparison> =
       CreateField: 'Key -> FieldKey -> FieldRenderer<ReactElement> -> ReactElement }
 
 
-type IHooks with
-    member inline _.useLightForm<'Value> (value: 'Value, ?validators, ?dependencies): LightFormHookBundle<_> =
-        let validators = validators |> Option.defaultValue Map.empty
-        let createFrom () = value |> generateFormByValue |> updateFormWithValidators validators
 
+type IHooks with
+    member inline _.useLightForm<'Value> (?initValidators: Map<FieldKey, Validator list>, ?initValue: 'Value): LightFormHookBundle<_> * ('Value * Map<FieldKey, Validator list> -> unit) =
         let initLoaded = Hooks.useState false
-        let form = Hooks.useStateLazy createFrom
-        let error = Hooks.useStateLazy (fun () -> getFormErrors form.current)
+        let form = Hooks.useState []
+        let validators = Hooks.useState Map.empty
+        let error = Hooks.useState []
         let changedValue = Hooks.useState None
 
+        let setLightForm (value: 'Value, validators: Map<FieldKey, Validator list>) =
+            let newForm = value |> generateFormByValue |> updateFormWithValidators validators
+            let newError = getFormErrors newForm
+            form.update newForm
+            error.update newError
+            changedValue.update None            
+
         let dispatch msg =
-            let newForm = updateFormWithMsg validators msg form.current
+            let newForm = updateFormWithMsg validators.current msg form.current
             let newError = getFormErrors newForm
             form.update newForm
             error.update newError
@@ -46,17 +52,13 @@ type IHooks with
                 changedValue.update (Some value)
                 value)
 
-        Hooks.useEffect
-            (fun () ->
-                if initLoaded.current then
-                    Browser.Dom.console.error "loaded"
-                    let newForm = createFrom() 
-                    newForm |> form.update
-                    newForm |> getFormErrors |> error.update
-                else
-                    initLoaded.update true
-            ,dependencies |> Option.defaultValue [||])
-        
+        match initValue, initLoaded.current with
+        | Some value, false ->
+            setLightForm(value, initValidators |> Option.defaultValue Map.empty)
+            initLoaded.update true
+        | _ ->
+            ()
+
         {
             From = form.current
             GetValue = fun () ->
@@ -68,6 +70,19 @@ type IHooks with
             HasError = fun () -> error.current.Length > 0
             CreateField = fun key renderer -> Form.field form.current dispatch key renderer
         }
+        , setLightForm
+
+
+    member inline _.useLightForm<'Value> (value: 'Value, ?validators, ?dependencies): LightFormHookBundle<_> =
+        let validators = validators |> Option.defaultValue Map.empty
+        let lightForm, setLightForm = Hooks.useLightForm(validators, value)
+
+        Hooks.useEffect
+            (fun () ->
+                setLightForm(value, validators)
+            ,dependencies |> Option.defaultValue [||])
+        
+        lightForm
 
 
     member inline _.useLightForms<'Value, 'Key when 'Key : comparison> (values: 'Value list, getKey: 'Value -> 'Key, ?validators, ?dependencies): LightFormsHookBundle<_, _> =
