@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - 'src/Fun.LightForm.React/**'
+    - '.github/workflows/Build and publish Fun.LightFrom.React.yml'
     branches:
     - master
 
@@ -21,12 +22,9 @@ jobs:
 
     - name: Try to bundle
       run: dotnet fsi Build.fsx -t BundleClient
-
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-
+      
     - name: Test
-      run: dotnet run --project samples/Sample2/Sample2.fsproj --no-restore
+      run: dotnet run --project samples/Sample2/Sample2.fsproj
       
     - name: Publish NuGet
       uses: brandedoutcast/publish-nuget@v2.5.5
