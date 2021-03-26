@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "fable": {
+      "version": "3.1.7",
+      "commands": [
+        "fable"
+      ]
+    },
+    "dotnet-ef": {
+      "version": "5.0.4",
+      "commands": [
+        "dotnet-ef"
+      ]
+    }
+  }
+}

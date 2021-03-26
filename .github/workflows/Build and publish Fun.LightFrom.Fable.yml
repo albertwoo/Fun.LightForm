@@ -1,9 +1,11 @@
-name: Build and publish nuget packages
+name: Build and publish Fun.LightFrom.Fable
 
 on:
-  release:
-    types:
-      - published
+  push:
+    paths:
+    - 'src/Fun.LightForm.Fable/**'
+    branches:
+    - master
 
 jobs:
   build:
@@ -15,16 +17,14 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.402
+        dotnet-version: 5.0.x
+
     - name: Install dependencies
-      run: |
-        dotnet tool install paket -g
-        dotnet tool install fake-cli -g
-        dotnet restore
+      run: dotnet restore
+
     - name: Build
       run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+
     - name: Publish NuGet
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:

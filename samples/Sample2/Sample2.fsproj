@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Expecto" Version="9.0.2" />
+    <PackageReference Include="Expecto.VisualStudio.TestAdapter" Version="10.0.2" />
+    <PackageReference Include="Fun.Result" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="TestUserDomain.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Fun.LightForm.React\Fun.LightForm.React.fsproj" />
+  </ItemGroup>
+
+</Project>

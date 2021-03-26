@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Description>React light weight form utils</Description>
+		<PackageProjectUrl>https://github.com/albertwoo/Fun.LightForm</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/albertwoo/Fun.LightForm</RepositoryUrl>
+		<Version>1.0.0-beta1</Version>
+		<Authors>slaveoftime</Authors>
+		<Company>https://www.slaveoftime.fun</Company>
+		<PackageReleaseNotes>Light weight react forms</PackageReleaseNotes>
+		<Copyright>https://www.slaveoftime.fun</Copyright>
+		<PackageIconUrl></PackageIconUrl>
+		<PackageTags>Fable, React, Form, F#</PackageTags>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<Compile Include="Domain.fs" />
+		<Compile Include="Validation.fs" />
+		<Compile Include="NestFrom.fs" />
+		<Compile Include="Utils.fs" />
+		<Compile Include="Hooks.fs" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Fable.Core" Version="3.1.5" />
+		<PackageReference Include="Fable.React" Version="6.2.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Content Include="*.fsproj; **\*.fs" Exclude="obj\**\*.*" PackagePath="fable\" />
+	</ItemGroup>
+	
+</Project>
