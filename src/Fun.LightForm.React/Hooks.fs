@@ -29,9 +29,10 @@ type LightForm =
         let error = Hooks.useState []
         let changedValue = Hooks.useState None
 
-        let setLightForm (value: 'Value, validators: Map<FieldKey, Validator<'Error> list>) =
-            let newForm = value |> generateFormByRecord |> updateFormWithValidators validators
+        let setLightForm (value: 'Value, newValidators: Map<FieldKey, Validator<'Error> list>) =
+            let newForm = value |> generateFormByRecord |> updateFormWithValidators newValidators
             let newError = getFormErrors newForm
+            validators.update newValidators
             form.update newForm
             error.update newError
             changedValue.update None            
