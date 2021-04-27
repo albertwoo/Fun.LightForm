@@ -114,6 +114,12 @@ let UserProfile () =
                 ]
             ]
 
+            if form.IsModified then
+                div [
+                    text "Form is changed"
+                    classes [ ]
+                ]
+
             div [
                 classes [ Tw.rounded; Tw.``bg-green-100``; Tw.``p-4``; Tw.``my-4`` ]
                 text (form.GetValue() |> string)

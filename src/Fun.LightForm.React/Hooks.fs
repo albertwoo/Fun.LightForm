@@ -10,24 +10,27 @@ type LightFormHookBundle<'T, 'Error> =
       GetValue: unit -> 'T
       GetFieldValue: FieldKey -> obj option
       Errors: 'Error list
-      CreateField: FieldKey -> FieldRenderer<'Error, ReactElement> -> ReactElement }
+      CreateField: FieldKey -> FieldRenderer<'Error, ReactElement> -> ReactElement
+      IsModified: bool }
 
 
 type LightFormsHookBundle<'T, 'Error, 'Key when 'Key: comparison> =
     { Forms: ('Key * LightForm<'Error>) list
       GetValues: unit -> 'T list
       Errors: 'Error list
+      IsModified: bool
       CreateField: 'Key -> FieldKey -> FieldRenderer<'Error, ReactElement> -> ReactElement }
 
 
 
 type LightForm =
-    static member inline useLightForm<'Value, 'Error> (?initValue: 'Value, ?initValidators: Map<FieldKey, Validator<'Error> list>): LightFormHookBundle<'Value, 'Error> * ('Value * Map<FieldKey, Validator<'Error> list> -> unit) =
+    static member inline useLightForm<'Value, 'Error> (?initValue: 'Value, ?initValidators: Map<FieldKey, Validator<'Error> list>, ?onChanged: unit -> unit): LightFormHookBundle<'Value, 'Error> * ('Value * Map<FieldKey, Validator<'Error> list> -> unit) =
         let initLoaded = Hooks.useState false
         let form = Hooks.useState []
         let validators = Hooks.useState (initValidators |> Option.defaultValue Map.empty)
         let error = Hooks.useState []
         let changedValue = Hooks.useState None
+        let isModified = Hooks.useState false
 
         let setLightForm (value: 'Value, newValidators: Map<FieldKey, Validator<'Error> list>) =
             let newForm = value |> generateFormByRecord |> updateFormWithValidators newValidators
@@ -35,7 +38,8 @@ type LightForm =
             validators.update newValidators
             form.update newForm
             error.update newError
-            changedValue.update None            
+            changedValue.update None      
+            isModified.update false
 
         let dispatch msg =
             let newForm = updateFormWithMsg validators.current msg form.current
@@ -43,6 +47,8 @@ type LightForm =
             form.update newForm
             error.update newError
             changedValue.update None
+            isModified.update true
+            onChanged |> Option.iter (fun fn -> fn ())
 
         let generateValue () =
             let value = generateRecordByForm form.current
@@ -67,6 +73,7 @@ type LightForm =
                 | Some x -> x
             GetFieldValue = fun k -> form.current |> List.tryFind (fun x -> x.Name = k) |> Option.map (fun x -> x.RawValue)
             Errors = error.current
+            IsModified = isModified.current
             CreateField = 
                 fun key renderer ->
                     form.current
@@ -77,9 +84,9 @@ type LightForm =
         , setLightForm
 
 
-    static member inline useLightForm (value: 'Value, ?validators, ?dependencies): LightFormHookBundle<'Value, 'Error> =
+    static member inline useLightForm' (value: 'Value, ?validators, ?dependencies, ?onChanged): LightFormHookBundle<'Value, 'Error> =
         let validators = validators |> Option.defaultValue Map.empty
-        let lightForm, setLightForm = LightForm.useLightForm<'Value, 'Error>(value, validators)
+        let lightForm, setLightForm = LightForm.useLightForm<'Value, 'Error>(value, validators, Option.defaultValue ignore onChanged)
 
         Hooks.useEffect
             (fun () ->
@@ -89,7 +96,7 @@ type LightForm =
         lightForm
 
 
-    static member inline useLightForms<'Value, 'Error, 'Key when 'Key : comparison> (values: 'Value list, getKey: 'Value -> 'Key, ?validators, ?dependencies): LightFormsHookBundle<'Value, 'Error, 'Key> =
+    static member inline useLightForms<'Value, 'Error, 'Key when 'Key : comparison> (values: 'Value list, getKey: 'Value -> 'Key, ?validators, ?dependencies, ?onChanged): LightFormsHookBundle<'Value, 'Error, 'Key> =
         let getValidators key = 
             validators
             |> Option.map (fun f -> f key)
@@ -112,6 +119,7 @@ type LightForm =
         let forms = Hooks.useStateLazy createForms
         let errors = Hooks.useState []
         let changedValues = Hooks.useState []
+        let isModified = Hooks.useState false
                         
         let dispatch key msg =
             let newForms =
@@ -129,6 +137,8 @@ type LightForm =
             forms.update newForms
             errors.update newErrors
             changedValues.update []
+            isModified.update true
+            onChanged |> Option.iter (fun fn -> fn ())
         
         let generateValues () =
             let values = forms.current |> List.map (snd >> generateRecordByForm<'Value, 'Error>)
@@ -151,6 +161,7 @@ type LightForm =
                 if changedValues.current.Length = 0 then generateValues()
                 else changedValues.current             
             Errors = errors.current
+            IsModified = isModified.current
             CreateField =
                 fun key field renderer ->
                     match forms.current |> List.tryFind (fun (k, _) -> k = key) with
